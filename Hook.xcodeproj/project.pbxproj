@@ -16,6 +16,7 @@
 		E6F0C0FC1E4183D700C3B990 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FB1E4183D700C3B990 /* OrderViewController.swift */; };
 		E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */; };
 		E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FF1E41847800C3B990 /* MainViewController.swift */; };
+		E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E6F0C0FB1E4183D700C3B990 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitViewController.swift; sourceTree = "<group>"; };
 		E6F0C0FF1E41847800C3B990 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				E6F0C0E41E417ECE00C3B990 /* Assets.xcassets */,
 				E6F0C0E61E417ECE00C3B990 /* LaunchScreen.storyboard */,
 				E6F0C0E91E417ECE00C3B990 /* Info.plist */,
+				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
 				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
 				E6F0C0F91E4183C900C3B990 /* SearchViewController.swift */,
 				E6F0C0FB1E4183D700C3B990 /* OrderViewController.swift */,
@@ -153,6 +156,7 @@
 				E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */,
 				E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */,
 				E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */,
+				E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */,
 				E6F0C0FC1E4183D700C3B990 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +317,7 @@
 				E6F0C0EE1E417ECE00C3B990 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
