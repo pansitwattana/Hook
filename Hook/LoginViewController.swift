@@ -10,9 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var popUpView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        popUpView.layer.cornerRadius = 10;
+        popUpView.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
 
