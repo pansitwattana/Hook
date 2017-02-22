@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var tableView: UITableView!
     var stores = ["Sixth Dorm Resturant", "Sushi"]
     
     var index = 0
@@ -30,9 +31,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "storeCell")
+        //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "storeCell")
         
-        cell.textLabel?.text = stores[indexPath.row]
+        //cell.textLabel?.text = stores[indexPath.row]
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! SearchTableViewCell
+        
+        cell.name.text = stores[indexPath.row]
         
         return cell
     }
