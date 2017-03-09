@@ -12,11 +12,35 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     var stores = ["Sixth Dorm Resturant", "Sushi"]
-    
+  	
+    var storesSearch = Store()
     var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*
+        let requestURL: NSURL = NSURL(string: "http://jqhook.azurewebsites.net/search")!
+        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL as URL)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest as URLRequest) {
+            (data, response, error) -> Void in
+            
+            let httpResponse = response as! HTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            
+            if (statusCode == 200) {
+                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+                if let array = json as? [Any] {
+                    if let stores = array.first {
+                        print(stores)
+                    }
+                }
+            }
+        }
+        
+        task.resume()
+ */
 
         // Do any additional setup after loading the view.
     }
