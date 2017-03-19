@@ -7,47 +7,52 @@
 //
 
 import UIKit
+import Alamofire
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
 
     @IBOutlet weak var tableView: UITableView!
-    var stores = ["Sixth Dorm Resturant", "Sushi"]
   	
-    var storesSearch = Store()
+    var stores = NSMutableArray()
+    //var storesSearch = Store()
     var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        let requestURL: NSURL = NSURL(string: "http://jqhook.azurewebsites.net/search")!
-        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL as URL)
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest as URLRequest) {
-            (data, response, error) -> Void in
-            
-            let httpResponse = response as! HTTPURLResponse
-            let statusCode = httpResponse.statusCode
-            
-            if (statusCode == 200) {
-                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-                if let array = json as? [Any] {
-                    if let stores = array.first {
-                        print(stores)
-                    }
-                }
-            }
-        }
-        
-        task.resume()
- */
-
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let api = HookAPI()
+        if let keyword = searchBar.text! as String? {
+        
+            
+            Alamofire.request(api.URL + "search").responseJSON {
+                response in
+                
+                api.parseStore(JSONData: response.data!, stores: self.stores)
+                
+                print("Call Search")
+                for item in self.stores {
+                    if let store = item as? Store {
+                        print(store.name)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+        else {
+            print("No Result")
+        }
+        
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,8 +65,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //cell.textLabel?.text = stores[indexPath.row]
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! SearchTableViewCell
         
-        cell.name.text = stores[indexPath.row]
-        
+        if let store = stores[indexPath.row] as? Store {
+            cell.name.text = store.name
+        }
+
         return cell
     }
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -71,11 +78,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let store = self.stores[self.index]
-        
-        if segue.identifier == "segueOrder" {
-            if let destination = segue.destination as? OrderViewController {
-                destination.SetStore(store: store)
+        if let store = self.stores[self.index] as? Store {
+            if segue.identifier == "segueOrder" {
+                if let destination = segue.destination as? OrderViewController{
+                    destination.SetStore(store: store)
+                }
             }
         }
     }

@@ -23,8 +23,8 @@ class OrderViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func SetStore(store: String) {
-        print(store)
+    func SetStore(store: Store) {
+        print(store.name)
     }
 
     /*

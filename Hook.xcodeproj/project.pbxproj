@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		E601D5541E7198E400B906CD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601D5531E7198E400B906CD /* Store.swift */; };
+		E602B1A81E7E93B100F084BC /* HookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602B1A71E7E93B100F084BC /* HookTests.swift */; };
+		E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
+		E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E666162B1E7E6A8800267D98 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */; };
+		E666162C1E7E6ADC00267D98 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6B5E4701E76619A0048F75B /* HookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B5E46F1E76619A0048F75B /* HookAPI.swift */; };
 		E6BECDEA1E5DA44300E74643 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BECDE91E5DA44300E74643 /* SearchTableViewCell.swift */; };
 		E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */; };
 		E6F0C0E31E417ECE00C3B990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F0C0E11E417ECE00C3B990 /* Main.storyboard */; };
@@ -21,8 +27,39 @@
 		E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E602B1AA1E7E93B100F084BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6F0C0D21E417ECE00C3B990 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6F0C0D91E417ECE00C3B990;
+			remoteInfo = Hook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E66616281E7E6A7B00267D98 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E666162C1E7E6ADC00267D98 /* SwiftyJSON.framework in Embed Frameworks */,
+				E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E601D5531E7198E400B906CD /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		E602B1A51E7E93B100F084BC /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E602B1A71E7E93B100F084BC /* HookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookTests.swift; sourceTree = "<group>"; };
+		E602B1A91E7E93B100F084BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E66616251E7E6A7A00267D98 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		E6B5E46F1E76619A0048F75B /* HookAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HookAPI.swift; sourceTree = "<group>"; };
 		E6BECDE91E5DA44300E74643 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E6F0C0DA1E417ECE00C3B990 /* Hook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,21 +76,50 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E6F0C0D71E417ECE00C3B990 /* Frameworks */ = {
+		E602B1A21E7E93B100F084BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6F0C0D71E417ECE00C3B990 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E666162B1E7E6A8800267D98 /* SwiftyJSON.framework in Frameworks */,
+				E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E602B1A61E7E93B100F084BC /* HookTests */ = {
+			isa = PBXGroup;
+			children = (
+				E602B1A71E7E93B100F084BC /* HookTests.swift */,
+				E602B1A91E7E93B100F084BC /* Info.plist */,
+			);
+			path = HookTests;
+			sourceTree = "<group>";
+		};
+		E66616291E7E6A8800267D98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E6F0C0D11E417ECE00C3B990 = {
 			isa = PBXGroup;
 			children = (
+				E66616251E7E6A7A00267D98 /* Alamofire.framework */,
 				E6F0C0DC1E417ECE00C3B990 /* Hook */,
+				E602B1A61E7E93B100F084BC /* HookTests */,
 				E6F0C0DB1E417ECE00C3B990 /* Products */,
+				E66616291E7E6A8800267D98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F0C0DA1E417ECE00C3B990 /* Hook.app */,
+				E602B1A51E7E93B100F084BC /* HookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +148,7 @@
 				E6F0C0FB1E4183D700C3B990 /* OrderViewController.swift */,
 				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,
 				E601D5531E7198E400B906CD /* Store.swift */,
+				E6B5E46F1E76619A0048F75B /* HookAPI.swift */,
 			);
 			path = Hook;
 			sourceTree = "<group>";
@@ -88,6 +156,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E602B1A41E7E93B100F084BC /* HookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E602B1AE1E7E93B100F084BC /* Build configuration list for PBXNativeTarget "HookTests" */;
+			buildPhases = (
+				E602B1A11E7E93B100F084BC /* Sources */,
+				E602B1A21E7E93B100F084BC /* Frameworks */,
+				E602B1A31E7E93B100F084BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E602B1AB1E7E93B100F084BC /* PBXTargetDependency */,
+			);
+			name = HookTests;
+			productName = HookTests;
+			productReference = E602B1A51E7E93B100F084BC /* HookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E6F0C0D91E417ECE00C3B990 /* Hook */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6F0C0EC1E417ECE00C3B990 /* Build configuration list for PBXNativeTarget "Hook" */;
@@ -95,6 +181,7 @@
 				E6F0C0D61E417ECE00C3B990 /* Sources */,
 				E6F0C0D71E417ECE00C3B990 /* Frameworks */,
 				E6F0C0D81E417ECE00C3B990 /* Resources */,
+				E66616281E7E6A7B00267D98 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -115,6 +202,11 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Pansit Wattana";
 				TargetAttributes = {
+					E602B1A41E7E93B100F084BC = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E6F0C0D91E417ECE00C3B990;
+					};
 					E6F0C0D91E417ECE00C3B990 = {
 						CreatedOnToolsVersion = 8.2;
 						ProvisioningStyle = Automatic;
@@ -135,11 +227,19 @@
 			projectRoot = "";
 			targets = (
 				E6F0C0D91E417ECE00C3B990 /* Hook */,
+				E602B1A41E7E93B100F084BC /* HookTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E602B1A31E7E93B100F084BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6F0C0D81E417ECE00C3B990 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +253,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E602B1A11E7E93B100F084BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E602B1A81E7E93B100F084BC /* HookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6F0C0D61E417ECE00C3B990 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,10 +274,19 @@
 				E6BECDEA1E5DA44300E74643 /* SearchTableViewCell.swift in Sources */,
 				E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */,
 				E6F0C0FC1E4183D700C3B990 /* OrderViewController.swift in Sources */,
+				E6B5E4701E76619A0048F75B /* HookAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E602B1AB1E7E93B100F084BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6F0C0D91E417ECE00C3B990 /* Hook */;
+			targetProxy = E602B1AA1E7E93B100F084BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E6F0C0E11E417ECE00C3B990 /* Main.storyboard */ = {
@@ -191,6 +308,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E602B1AC1E7E93B100F084BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hook.app/Hook";
+			};
+			name = Debug;
+		};
+		E602B1AD1E7E93B100F084BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hook.app/Hook";
+			};
+			name = Release;
+		};
 		E6F0C0EA1E417ECE00C3B990 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -286,6 +429,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.Hook;
@@ -298,6 +445,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Hook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.Hook;
@@ -309,6 +460,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E602B1AE1E7E93B100F084BC /* Build configuration list for PBXNativeTarget "HookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E602B1AC1E7E93B100F084BC /* Debug */,
+				E602B1AD1E7E93B100F084BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E6F0C0D51E417ECE00C3B990 /* Build configuration list for PBXProject "Hook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

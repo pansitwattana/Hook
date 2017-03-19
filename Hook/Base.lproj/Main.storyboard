@@ -254,7 +254,6 @@
                 <searchDisplayController id="BiE-xh-Egw">
                     <connections>
                         <outlet property="delegate" destination="xGe-6q-jvc" id="KyB-Wk-0Z7"/>
-                        <outlet property="searchBar" destination="cfx-gE-Hnp" id="mKZ-GW-uSW"/>
                         <outlet property="searchContentsController" destination="xGe-6q-jvc" id="axy-pa-m46"/>
                         <outlet property="searchResultsDataSource" destination="xGe-6q-jvc" id="c6Y-2K-ZQ5"/>
                         <outlet property="searchResultsDelegate" destination="xGe-6q-jvc" id="tuf-aY-6hU"/>
@@ -285,7 +284,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3jW-sg-YQc" id="SbE-6s-iun">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dqT-Jr-8Cs">
@@ -338,13 +337,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="xGe-6q-jvc" id="0ip-Yf-eGi"/>
+                                    <outlet property="delegate" destination="rrz-VQ-lsV" id="ilm-I4-AwE"/>
                                 </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.89411764709999997" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="X5P-Qg-ayd" id="uuW-G6-Gyr"/>
                         <outlet property="tableView" destination="P7M-sw-73r" id="1xg-yP-o2H"/>
                         <segue destination="Ntl-YB-9zB" kind="show" identifier="segueOrder" id="yAP-yT-had"/>
                     </connections>
