@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E601D5541E7198E400B906CD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601D5531E7198E400B906CD /* Store.swift */; };
-		E602B1A81E7E93B100F084BC /* HookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602B1A71E7E93B100F084BC /* HookTests.swift */; };
+		E602B1B01E7E950E00F084BC /* HookAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602B1AF1E7E950E00F084BC /* HookAPITests.swift */; };
 		E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
 		E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E666162B1E7E6A8800267D98 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */; };
@@ -55,8 +55,8 @@
 /* Begin PBXFileReference section */
 		E601D5531E7198E400B906CD /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E602B1A51E7E93B100F084BC /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E602B1A71E7E93B100F084BC /* HookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookTests.swift; sourceTree = "<group>"; };
 		E602B1A91E7E93B100F084BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E602B1AF1E7E950E00F084BC /* HookAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HookAPITests.swift; sourceTree = "<group>"; };
 		E66616251E7E6A7A00267D98 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		E6B5E46F1E76619A0048F75B /* HookAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HookAPI.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		E602B1A61E7E93B100F084BC /* HookTests */ = {
 			isa = PBXGroup;
 			children = (
-				E602B1A71E7E93B100F084BC /* HookTests.swift */,
+				E602B1AF1E7E950E00F084BC /* HookAPITests.swift */,
 				E602B1A91E7E93B100F084BC /* Info.plist */,
 			);
 			path = HookTests;
@@ -257,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E602B1A81E7E93B100F084BC /* HookTests.swift in Sources */,
+				E602B1B01E7E950E00F084BC /* HookAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

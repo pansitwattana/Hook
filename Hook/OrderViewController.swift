@@ -11,6 +11,9 @@ import UIKit
 class OrderViewController: UIViewController {
 
     @IBOutlet weak var titleNavigator: UINavigationItem!
+    
+    var store = Store(name: "store")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -24,9 +27,12 @@ class OrderViewController: UIViewController {
     }
     
     func SetStore(store: Store) {
-        print(store.name)
+        self.store = store
     }
 
+    @IBAction func backButtonClick(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

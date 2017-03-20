@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import SwiftyJSON
 import Alamofire
 
@@ -18,6 +19,33 @@ class HookAPI {
         if jsonData != JSON.null{
             for (name, storeJson):(String, JSON) in jsonData {
                 let store = Store(name: name)
+                
+                if let address = storeJson["Address"].string {
+                    store.address = address
+                }
+                
+                if let imgUrl = storeJson["Img"].url {
+                    let imageData = NSData(contentsOf: imgUrl)
+                    store.img = UIImage(data: imageData as! Data)
+                }
+                
+                if let location = storeJson["Location"].dictionary {
+                    if let lat = location["Lat"]?.double {
+                        if let long = location["Long"]?.double {
+                            store.coordinates = (lat, long)
+                        }
+                    }
+                }
+                
+                if let open = storeJson["Open"].bool {
+                    store.open = open
+                }
+                
+                if let id = storeJson["Owner_ID"].int {
+                    store.ownerId = id
+                }
+                
+                
                 
                 print(stores.count)
                 stores.add(store)

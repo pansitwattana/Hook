@@ -1,6 +1,6 @@
 //
-//  HookTests.swift
-//  HookTests
+//  HookAPITests.swift
+//  Hook
 //
 //  Created by Pansit Wattana on 3/19/17.
 //  Copyright © 2017 Pansit Wattana. All rights reserved.
@@ -8,7 +8,9 @@
 
 import XCTest
 
-class HookTests: XCTestCase {
+@testable import Hook
+
+class HookAPITests: XCTestCase {
     
     override func setUp() {
         super.setUp()

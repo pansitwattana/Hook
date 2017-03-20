@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Store {
     var name: String = "not assigned"
-    var img: String = "not assigned"
+    var address: String = "not assigned"
+    var img: UIImage!
     var detail: String = "detail"
     var open: Bool = false
+    var ownerId: Int = -1
     var coordinates: (latitude: Double, longitude: Double) = (1.2, 2.2)
     init(name: String) {
         self.name = name
