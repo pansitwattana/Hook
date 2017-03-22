@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import SwiftyJSON
 
 public enum SearchType {
     case Text
@@ -43,17 +43,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     public func SetSearchText(keyword: String) {
         textToSearch = keyword
-        RequestStoresFromText(keyword: keyword)
+        print("Start loading Store...")
+        Request.getSearchJson(keyword: textToSearch) {
+            (error, searchJson) in
+            if error != nil {
+                print("error: \(error!)")
+            }
+            else {
+                self.SetStoresFromJson(json: searchJson!)
+            }
+        }
     }
     
     public func SearchByLocation() {
         let coordinate = GetLocation()
-        RequestStoresFromLocation(location: coordinate)
+        Request.getSearchJson(location: coordinate) {
+            (error, searchJson) in
+            self.SetStoresFromJson(json: searchJson!)
+        }
     }
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text! as String? {
-            SearchStoreByText(text: searchText)
+            Request.getSearchJson(keyword: searchText) {
+                (error, searchJson) in
+                self.SetStoresFromJson(json: searchJson!)
+            }
         }
         else {
             print("No search result")
@@ -65,26 +80,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func SearchStoreByText(text: String) {
-        RequestStoresFromText(keyword: text)
-    }
-    
-    func RequestStoresFromLocation(location: (Double, Double)) {
-        
-    }
-    
-    func RequestStoresFromText(keyword: String) {
-        let api = HookAPI()
-        Alamofire.request(api.URL + "search").responseJSON {
-            response in
-            
-            api.parseStore(JSONData: response.data!, stores: self.stores)
-                
-            print("Call Search")
-                
-            self.storeCount = self.stores.count
-                
-            self.tableView.reloadData()
+        Request.getSearchJson(keyword: text) {
+            (error, searchJson) in
+            self.SetStoresFromJson(json: searchJson!)
         }
+    }
+    
+    func SetStoresFromJson(json: JSON) {
+        HookAPI.parseStores(json: json, stores: self.stores)
+        
+        self.storeCount = self.stores.count
+        
+        self.tableView.reloadData()
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

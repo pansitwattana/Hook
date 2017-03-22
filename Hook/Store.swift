@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Store {
     var name: String = "not assigned"
@@ -19,30 +20,36 @@ class Store {
     var coordinates: (latitude: Double, longitude: Double) = (1.2, 2.2)
     init(name: String) {
         self.name = name
+    }
+    
+    init(name: String, json: JSON) {
         
-        /*
-        if let name = json["Name"].string {
-            self.name = name
+        self.name = name
+        
+        if let address = json["Address"].string {
+            self.address = address
         }
         
-        if let img = json["Img"].string {
-            self.img = img
+        if let imgUrl = json["Img"].url {
+            let imageData = NSData(contentsOf: imgUrl)
+            self.img = UIImage(data: imageData as! Data)
         }
         
-        if let detail = json["Detail"].string {
-            self.detail = detail
+        if let location = json["Location"].dictionary {
+            if let lat = location["Lat"]?.double {
+                if let long = location["Long"]?.double {
+                    self.coordinates = (lat, long)
+                }
+            }
         }
         
         if let open = json["Open"].bool {
             self.open = open
         }
         
-        if let lat = json["Location"]["Lat"].double {
-            if let long = json["Location"]["Long"].double {
-                self.coordinates = (lat, long)
-            }
-        }*/
+        if let id = json["Owner_ID"].int {
+            self.ownerId = id
+        }
     }
-    
     
 }
