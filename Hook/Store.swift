@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class Store {
     var name: String = "not assigned"
+    var id: Int = -1
     var address: String = "not assigned"
     var img: UIImage!
     var detail: String = "detail"
@@ -28,6 +29,10 @@ class Store {
         
         if let address = json["Address"].string {
             self.address = address
+        }
+        
+        if let id = json["ID"].int {
+            self.id = id
         }
         
         if let imgUrl = json["Img"].url {

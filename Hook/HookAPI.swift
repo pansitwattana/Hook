@@ -14,7 +14,7 @@ import Alamofire
 class HookAPI {
     static let URL = "http://jqhook.azurewebsites.net/"
 
-    static func parseStores(json : JSON, stores: NSMutableArray){
+    static func parseStores(json : JSON, stores: NSMutableArray) {
         stores.removeAllObjects()
         let jsonData = json
         if jsonData != JSON.null{
@@ -23,6 +23,22 @@ class HookAPI {
                 
                 print("Loaded: \(store.name)")
                 stores.add(store)
+            }
+        }
+        else {
+            print("No Result")
+        }
+    }
+    
+    static func parseMenus(json : JSON, menus: NSMutableArray) {
+        menus.removeAllObjects()
+        let jsonData = json
+        if jsonData != JSON.null {
+            for (id, menuJson) : (String, JSON) in jsonData {
+                let menu = Menu(id: id, json: menuJson)
+                
+                print("Loaded: \(menu.name)")
+                menus.add(menu)
             }
         }
         else {

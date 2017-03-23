@@ -29,6 +29,7 @@
 		E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */; };
 		E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FF1E41847800C3B990 /* MainViewController.swift */; };
 		E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */; };
+		E6FDE6DB1E822B4C00B55059 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDE6DA1E822B4C00B55059 /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitViewController.swift; sourceTree = "<group>"; };
 		E6F0C0FF1E41847800C3B990 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E6FDE6DA1E822B4C00B55059 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,32 @@
 				E65E01E71E7FD7DE0045562F /* SearchViewControllerTest.swift */,
 			);
 			path = HookTests;
+			sourceTree = "<group>";
+		};
+		E6262FF41E8361F80022EB25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E601D5531E7198E400B906CD /* Store.swift */,
+				E6B5E46F1E76619A0048F75B /* HookAPI.swift */,
+				E65E01E91E7FDADD0045562F /* Request.swift */,
+				E650C94D1E8100E9002CF5D7 /* Menu.swift */,
+				E6FDE6DA1E822B4C00B55059 /* Order.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E6262FF51E8362020022EB25 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
+				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
+				E6F0C0F91E4183C900C3B990 /* SearchViewController.swift */,
+				E6BECDE91E5DA44300E74643 /* SearchTableViewCell.swift */,
+				E6F0C0FB1E4183D700C3B990 /* OrderViewController.swift */,
+				E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */,
+				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		E66616291E7E6A8800267D98 /* Frameworks */ = {
@@ -144,23 +172,14 @@
 		E6F0C0DC1E417ECE00C3B990 /* Hook */ = {
 			isa = PBXGroup;
 			children = (
+				E6262FF51E8362020022EB25 /* Controller */,
+				E6262FF41E8361F80022EB25 /* Model */,
 				E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */,
 				E6F0C0FF1E41847800C3B990 /* MainViewController.swift */,
 				E6F0C0E11E417ECE00C3B990 /* Main.storyboard */,
 				E6F0C0E41E417ECE00C3B990 /* Assets.xcassets */,
 				E6F0C0E61E417ECE00C3B990 /* LaunchScreen.storyboard */,
 				E6F0C0E91E417ECE00C3B990 /* Info.plist */,
-				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
-				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
-				E6F0C0F91E4183C900C3B990 /* SearchViewController.swift */,
-				E6BECDE91E5DA44300E74643 /* SearchTableViewCell.swift */,
-				E6F0C0FB1E4183D700C3B990 /* OrderViewController.swift */,
-				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,
-				E601D5531E7198E400B906CD /* Store.swift */,
-				E6B5E46F1E76619A0048F75B /* HookAPI.swift */,
-				E65E01E91E7FDADD0045562F /* Request.swift */,
-				E650C94D1E8100E9002CF5D7 /* Menu.swift */,
-				E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */,
 			);
 			path = Hook;
 			sourceTree = "<group>";
@@ -284,6 +303,7 @@
 				E601D5541E7198E400B906CD /* Store.swift in Sources */,
 				E650C9501E810279002CF5D7 /* MenuCollectionViewCell.swift in Sources */,
 				E65E01EA1E7FDADD0045562F /* Request.swift in Sources */,
+				E6FDE6DB1E822B4C00B55059 /* Order.swift in Sources */,
 				E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */,
 				E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */,
 				E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */,

@@ -33,11 +33,72 @@ class Request {
     }
     
     static func getMenuJson(store: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        Alamofire.request(HookAPI.URL + "menu/get/\(store)").validate().responseJSON { (response) in
+        
+        let url = HookAPI.URL + "menu/get/\(store)"
+        
+        let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        if urlString != nil {
+            Alamofire.request(urlString!).validate().responseJSON { (response) in
+                do {
+                    let menuJson = JSON(data: response.data!)
+                    let error = response.error
+                    completion(error as NSError?, menuJson)
+                }
+            }
+        }
+        else {
+            print(url + " is incorrect")
+        }
+    }
+    
+    static func cancelOrder(orderID: Int, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+        Alamofire.request(HookAPI.URL + "order/cancel/\(orderID)").validate().responseJSON { (response) in
             do {
                 let menuJson = JSON(data: response.data!)
                 let error = response.error
                 completion(error as NSError?, menuJson)
+            }
+        }
+    }
+    
+    static func postOrderJson(order: Parameters, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+      /*   var order = Dictionary<String, Any>()
+        order["Comment"] = "-"
+        order["Customer_ID"] = 1
+        order["Date"] = "22"
+        order["ID"] = 1
+        order["Store_ID"] = 1
+        order["Type"] = "Undone"
+        
+         {
+            "Comment":"ok"
+            ,"Customer_ID":1
+            ,"Date":"22"
+            ,"ID":1
+            ,"Store_ID":1
+            ,"Type":"Done"
+        }
+        */
+//        let order: Parameters = [
+//            "Comment" : "ok",
+//            "Customer_ID" : 1,
+//            "Data" : "22",
+//            "ID" : 1,
+//            "Store_ID" : 1,
+//            "Type" : "Undone",
+//            "MenuList" : [
+//                0, 1
+//            ]
+//        ]
+//        
+        
+        Alamofire.request("\(HookAPI.URL)order/add/", method: .post, parameters: order, encoding: JSONEncoding.default).validate().responseJSON {
+            (response) in
+            do {
+                let json = JSON(response.data!)
+                let error = response.error
+                completion(error as NSError?, json)
             }
         }
     }

@@ -12,19 +12,55 @@ class WaitViewController: UIViewController {
 
     @IBOutlet weak var hookWaitImage: UIImageView!
     
+    var order = Order()
+    
     var timer = Timer()
     
     var hookImageNameSet = [#imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_right"), #imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_left")]
     
+    var menus = NSMutableArray()
+    
+    var store = Store(name: "-")
+    
     var index = 0
     
+    @IBOutlet weak var waitLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(WaitViewController.animate), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view.
+        
+        waitLabel.text = "Wait \(order.queue) Queues."
+        timeLabel.text = "Estimate wait time \(order.time) minutes"
     }
 
+    func SetMenus(menus: NSMutableArray) {
+        self.menus = menus
+    }
+    
+    func SetStore(store: Store) {
+        self.store = store
+    }
+    
+    func SetOrder(order: Order) {
+        self.order = order
+    }
+    
+    @IBAction func cancelOrder(_ sender: Any) {
+        Request.cancelOrder(orderID: 1, {
+            (error, response) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                print(response!)
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
