@@ -24,20 +24,15 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var order = Order()
 
+    //do not have user -> default customer id = 1
+    func SetStore(store: Store) {
+        self.store = store
+        self.order.storeId = store.id
+        self.order.customerId = 1
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-//        menus.add(Menu(name: "egg"))
-//        menus.add(Menu(name: "first"))
-//        menus.add(Menu(name: "a"))
-//        menus.add(Menu(name: "b"))
-//        menus.add(Menu(name: "c"))
-//        menus.add(Menu(name: "d"))
-//        menus.add(Menu(name: "e"))
-//        
-//        
-
-        
         
         Request.getMenuJson(store: store.name, {
             (error, json) in
@@ -50,14 +45,15 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
                 self.collectionView.reloadData()
             }
         })
-        
-        
-        
-        
-        
         // Do any additional setup after loading the view.
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     @IBAction func sendOrder(_ sender: Any) {
         if menusSelected.count > 0 {
             order.SetMenus(menus: menusSelected)
@@ -84,19 +80,7 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
             })
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    
-    //do not have user -> default customer id = 1
-    func SetStore(store: Store) {
-        self.store = store
-        self.order.storeId = store.id
-        self.order.customerId = 1
-    }
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

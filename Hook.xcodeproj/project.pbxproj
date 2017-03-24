@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E601D5541E7198E400B906CD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601D5531E7198E400B906CD /* Store.swift */; };
-		E602B1B01E7E950E00F084BC /* HookAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602B1AF1E7E950E00F084BC /* HookAPITests.swift */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
 		E650C9501E810279002CF5D7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */; };
-		E65E01E81E7FD7DE0045562F /* SearchViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E71E7FD7DE0045562F /* SearchViewControllerTest.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
 		E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
 		E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -30,6 +28,7 @@
 		E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FF1E41847800C3B990 /* MainViewController.swift */; };
 		E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */; };
 		E6FDE6DB1E822B4C00B55059 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDE6DA1E822B4C00B55059 /* Order.swift */; };
+		E6FF7E921E84F5940076ABB7 /* OrderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FF7E911E84F5940076ABB7 /* OrderTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +60,8 @@
 		E601D5531E7198E400B906CD /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E602B1A51E7E93B100F084BC /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E602B1A91E7E93B100F084BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E602B1AF1E7E950E00F084BC /* HookAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HookAPITests.swift; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		E65E01E71E7FD7DE0045562F /* SearchViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTest.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E66616251E7E6A7A00267D98 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -83,6 +80,8 @@
 		E6F0C0FF1E41847800C3B990 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E6FDE6DA1E822B4C00B55059 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		E6FF7E901E84F5940076ABB7 /* HookTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HookTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		E6FF7E911E84F5940076ABB7 /* OrderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +107,9 @@
 		E602B1A61E7E93B100F084BC /* HookTests */ = {
 			isa = PBXGroup;
 			children = (
-				E602B1AF1E7E950E00F084BC /* HookAPITests.swift */,
 				E602B1A91E7E93B100F084BC /* Info.plist */,
-				E65E01E71E7FD7DE0045562F /* SearchViewControllerTest.swift */,
+				E6FF7E911E84F5940076ABB7 /* OrderTest.swift */,
+				E6FF7E901E84F5940076ABB7 /* HookTests-Bridging-Header.h */,
 			);
 			path = HookTests;
 			sourceTree = "<group>";
@@ -235,6 +234,7 @@
 				TargetAttributes = {
 					E602B1A41E7E93B100F084BC = {
 						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E6F0C0D91E417ECE00C3B990;
 					};
@@ -288,8 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E65E01E81E7FD7DE0045562F /* SearchViewControllerTest.swift in Sources */,
-				E602B1B01E7E950E00F084BC /* HookAPITests.swift in Sources */,
+				E6FF7E921E84F5940076ABB7 /* OrderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,10 +347,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HookTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HookTests/HookTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hook.app/Hook";
 			};
@@ -361,10 +363,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HookTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HookTests/HookTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hook.app/Hook";
 			};

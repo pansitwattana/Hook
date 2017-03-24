@@ -32,8 +32,13 @@ class Order {
     }
     
     func SetMenus(menus: NSMutableArray) {
-        for menu in menus as NSArray as! [Menu] {
-            menus.add(menu.id)
+        if let menusArray = menus as NSArray as? [Menu] {
+            for menu in menusArray {
+                self.menus.append(menu.id)
+            }
+        }
+        else {
+            print("Cant set menus")
         }
     }
     

@@ -26,16 +26,7 @@ class WaitViewController: UIViewController {
     
     @IBOutlet weak var waitLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(WaitViewController.animate), userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view.
-        
-        waitLabel.text = "Wait \(order.queue) Queues."
-        timeLabel.text = "Estimate wait time \(order.time) minutes"
-    }
-
+    
     func SetMenus(menus: NSMutableArray) {
         self.menus = menus
     }
@@ -46,6 +37,16 @@ class WaitViewController: UIViewController {
     
     func SetOrder(order: Order) {
         self.order = order
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(WaitViewController.animate), userInfo: nil, repeats: true)
+        // Do any additional setup after loading the view.
+        
+        waitLabel.text = "Wait \(order.queue) Queues."
+        timeLabel.text = "Estimate wait time \(order.time) minutes"
     }
     
     @IBAction func cancelOrder(_ sender: Any) {
@@ -60,12 +61,7 @@ class WaitViewController: UIViewController {
             }
         })
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     func animate() {
         index += 1
         if index >= hookImageNameSet.count{
@@ -73,16 +69,4 @@ class WaitViewController: UIViewController {
         }
         hookWaitImage.image = hookImageNameSet[index]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
