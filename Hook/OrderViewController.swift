@@ -18,10 +18,6 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var menus = NSMutableArray()
     
-    var menusSelected = NSMutableArray()
-    
-    var menuCount = 0
-    
     var order = Order()
 
     //do not have user -> default customer id = 1
@@ -41,7 +37,6 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
             else {
                 HookAPI.parseMenus(json: json!, menus: self.menus)
-                self.menuCount = self.menus.count
                 self.collectionView.reloadData()
             }
         })
@@ -55,29 +50,8 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     
     @IBAction func sendOrder(_ sender: Any) {
-        if menusSelected.count > 0 {
-            order.SetMenus(menus: menusSelected)
-            menusSelected.removeAllObjects()
-            Request.postOrderJson(order: order.GetParam(), {
-                (error, queueJson) in
-                if error != nil {
-                    print(error!)
-                }
-                else {
-                    print(queueJson!)
-                    let queue = queueJson!
-                    if queue != JSON.null {
-                        let id = queue["ID"].int,
-                        time = queue["time"].int,
-                        queue = queue["Queue"].int
-                        do {
-                            self.order.Set(id: id!, queue: queue!, time: time!)
-                            self.performSegue(withIdentifier: "orderSegue", sender: self)
-                        }
-                    }
-                    
-                }
-            })
+        if order.menus.count > 0 {
+            performSegue(withIdentifier: "orderSegue", sender: self)
         }
     }
     
@@ -89,12 +63,12 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
         let index = indexPath.row
         if let menu = menus[index] as? Menu {
             print(menu.name + " is selected")
-            menusSelected.add(menu)
+            order.AddMenu(menu: menu)
         }   
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuCount
+        return menus.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -115,10 +89,9 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "orderSegue" {
-            if let destination = segue.destination as? WaitViewController{
-                destination.SetMenus(menus: self.menusSelected)
-                destination.SetStore(store: self.store)
+            if let destination = segue.destination as? SummaryViewController{
                 destination.SetOrder(order: self.order)
+                destination.SetStore(store: self.store)
             }
         }
     }

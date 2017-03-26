@@ -17,6 +17,7 @@ class Menu {
     var detail: String = "detail"
     var img: UIImage!
     var catagory: String = "none"
+    var count: Int = 1
     
     init(name: String) {
         self.name = name
@@ -46,5 +47,9 @@ class Menu {
             let imageData = NSData(contentsOf: imgUrl)
             self.img = UIImage(data: imageData as! Data)
         }
+    }
+    
+    func GetTotalPrice() -> Int {
+        return price * count
     }
 }

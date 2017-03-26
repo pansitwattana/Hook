@@ -53,11 +53,11 @@ class Request {
     }
     
     static func cancelOrder(orderID: Int, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        Alamofire.request(HookAPI.URL + "order/cancel/\(orderID)").validate().responseJSON { (response) in
+        Alamofire.request(HookAPI.URL + "order/\(orderID)/cancel").validate().responseJSON { (response) in
             do {
-                let menuJson = JSON(data: response.data!)
+                let orderJson = JSON(data: response.data!)
                 let error = response.error
-                completion(error as NSError?, menuJson)
+                completion(error as NSError?, orderJson)
             }
         }
     }

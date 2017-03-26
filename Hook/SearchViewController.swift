@@ -69,6 +69,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 (error, searchJson) in
                 self.SetStoresFromJson(json: searchJson!)
             }
+            self.view.endEditing(true)
         }
         else {
             print("No search result")
@@ -87,11 +88,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func SetStoresFromJson(json: JSON) {
-        HookAPI.parseStores(json: json, stores: self.stores)
         
-        self.storeCount = self.stores.count
+        if (json != JSON.null){
+            HookAPI.parseStores(json: json, stores: self.stores)
+            
+            self.storeCount = self.stores.count
+            
+            self.tableView.reloadData()
+
+        }
+        else {
+            print("No Search Match Result")
+        }
         
-        self.tableView.reloadData()
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,9 +108,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "storeCell")
-        
-        //cell.textLabel?.text = stores[indexPath.row]
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! SearchTableViewCell
         
         if let store = stores[indexPath.row] as? Store {

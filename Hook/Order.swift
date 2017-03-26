@@ -16,8 +16,9 @@ class Order {
     var id: Int = -1
     var storeId: Int = -1
     var type: String = "Undone"
-    var menus: [Int] = []
     
+    var menus: [Menu] = []
+ 
     var queue: Int = -1
     var time: Int = 1
     
@@ -31,10 +32,37 @@ class Order {
         self.date = date
     }
     
+    func AddMenu(menu: Menu) {
+        let isDuplicated = menus.contains { item in
+            return item.id == menu.id
+        }
+        
+        if (!isDuplicated) {
+            self.menus.append(menu)
+        }
+        else {
+            let index = self.menus.index{ item in
+                return item.id == menu.id
+            }
+            
+            self.menus[index!].count += 1
+        }
+    }
+    
+    func GetMenuListID() -> [Int] {
+        var menuListID: [Int] = []
+        if let menusArray = menus as NSArray as? [Menu] {
+            for menu in menusArray {
+                menuListID.append(menu.id)
+            }
+        }
+        return menuListID
+    }
+    
     func SetMenus(menus: NSMutableArray) {
         if let menusArray = menus as NSArray as? [Menu] {
             for menu in menusArray {
-                self.menus.append(menu.id)
+                self.menus.append(menu)
             }
         }
         else {
@@ -56,11 +84,18 @@ class Order {
             "ID" : id,
             "Store_ID" : storeId,
             "Type" : type,
-            "MenuList" : menus
+            "MenuList" : GetMenuListID()
         ]
         return param
     }
     
+    func GetSumPrice() -> Int {
+        var sum = 0
+        for menu in menus {
+            sum += menu.GetTotalPrice()
+        }
+        return sum
+    }
     
 }
 //let order: Parameters = [

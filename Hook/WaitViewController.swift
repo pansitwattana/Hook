@@ -16,25 +16,15 @@ class WaitViewController: UIViewController {
     
     var timer = Timer()
     
+    var checkOrderSubmit = false
+    
     var hookImageNameSet = [#imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_right"), #imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_left")]
-    
-    var menus = NSMutableArray()
-    
-    var store = Store(name: "-")
-    
+
     var index = 0
     
     @IBOutlet weak var waitLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    func SetMenus(menus: NSMutableArray) {
-        self.menus = menus
-    }
-    
-    func SetStore(store: Store) {
-        self.store = store
-    }
-    
+
     func SetOrder(order: Order) {
         self.order = order
     }
@@ -50,18 +40,31 @@ class WaitViewController: UIViewController {
     }
     
     @IBAction func cancelOrder(_ sender: Any) {
-        Request.cancelOrder(orderID: 1, {
-            (error, response) in
-            if error != nil {
-                print(error!)
-            }
-            else {
-                print(response!)
-                self.dismiss(animated: true, completion: nil)
-            }
-        })
+        if (!checkOrderSubmit) {
+            checkOrderSubmit = true
+            
+            print("cancel order id: \(order.id)")
+            
+            Request.cancelOrder(orderID: order.id, {
+                (error, response) in
+                if error != nil {
+                    print(error!)
+                    self.checkOrderSubmit = false
+                }
+                else {
+                    print(response!)
+                    self.performSegue(withIdentifier: "cancelSegue", sender: self)
+                }
+            })
+        }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cancelSegue" {
+            
+        }
+    }
+    
     func animate() {
         index += 1
         if index >= hookImageNameSet.count{

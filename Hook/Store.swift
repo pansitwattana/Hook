@@ -27,34 +27,35 @@ class Store {
         
         self.name = name
         
-        if let address = json["Address"].string {
-            self.address = address
-        }
-        
-        if let id = json["ID"].int {
-            self.id = id
-        }
-        
-        if let imgUrl = json["Img"].url {
-            let imageData = NSData(contentsOf: imgUrl)
-            self.img = UIImage(data: imageData as! Data)
-        }
-        
-        if let location = json["Location"].dictionary {
-            if let lat = location["Lat"]?.double {
-                if let long = location["Long"]?.double {
-                    self.coordinates = (lat, long)
+        if json != JSON.null {
+            if let address = json["Address"].string {
+                self.address = address
+            }
+            
+            if let id = json["ID"].int {
+                self.id = id
+            }
+            //
+            //        if let imgUrl = json["Img"].url {
+            //            let imageData = NSData(contentsOf: imgUrl)
+            //            self.img = UIImage(data: imageData as! Data)
+            //        }
+            //
+            if let location = json["Location"].dictionary {
+                if let lat = location["Lat"]?.double {
+                    if let long = location["Long"]?.double {
+                        self.coordinates = (lat, long)
+                    }
                 }
             }
-        }
-        
-        if let open = json["Open"].bool {
-            self.open = open
-        }
-        
-        if let id = json["Owner_ID"].int {
-            self.ownerId = id
+            
+            if let open = json["Open"].bool {
+                self.open = open
+            }
+            
+            if let id = json["Owner_ID"].int {
+                self.ownerId = id
+            }
         }
     }
-    
 }
