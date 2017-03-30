@@ -66,7 +66,7 @@ class OrderTest: XCTestCase {
     func testGetParams() {
         let orderParam: Parameters = [
             "Comment" : "ok",
-            "Customer_ID" : 1,
+            "Customer_ID" : "HSjRqk2ClfbaKpQSGzpUgiI1gV52",
             "Date" : "22",
             "ID" : 1,
             "Store_ID" : 1,
@@ -77,7 +77,7 @@ class OrderTest: XCTestCase {
         ]
         
         order.comment = "ok"
-        order.customerId = 1
+        order.customerId = "HSjRqk2ClfbaKpQSGzpUgiI1gV52"
         order.date = "22"
         order.id = 1
         order.storeId = 1
@@ -126,7 +126,7 @@ class OrderTest: XCTestCase {
         order.AddMenu(menu: menu2)
         XCTAssert(!order.menus.isEmpty)
         XCTAssert(order.menus.count == 2)
-        if order.menus.count > 0{
+        if order.menus.count > 0 {
             XCTAssert(order.menus[0].id == 111)
             XCTAssert(order.menus[1].name == "test2")
         }
@@ -159,6 +159,7 @@ class OrderTest: XCTestCase {
         let sum = order.GetSumPrice()
         
         XCTAssert(order.menus.count == 1, "Set Order is invalue")
+        XCTAssert(menu.count == 2, "Expected Count of menu \(2), Actual \(menu.count)")
         XCTAssert(sum == 44, "Expected 44, Actual \(sum)")
     }
     
@@ -167,6 +168,20 @@ class OrderTest: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testIsDone() {
+        
+        let order = Order()
+        order.queue = 2
+        
+        order.Set(id: 0, queue: 0, time: 0)
+        
+        //var isDone = order.IsDone()
+        
+        XCTAssert(order.IsDone())
+        
+        
     }
     
 }

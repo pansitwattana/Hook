@@ -24,7 +24,7 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
     func SetStore(store: Store) {
         self.store = store
         self.order.storeId = store.id
-        self.order.customerId = 1
+        self.order.customerId = User.current.id
     }
 
     override func viewDidLoad() {
@@ -79,7 +79,7 @@ class OrderViewController: UIViewController, UICollectionViewDataSource, UIColle
         if indexPath.row < menus.count {
             if let menu = menus[indexPath.row] as? Menu {
                 cell.nameLabel.text = menu.name
-                cell.priceLabel.text = String(menu.price)
+                cell.priceLabel.text = menu.GetPriceWithCurrency()
                 cell.img.image = menu.img
             }
         }

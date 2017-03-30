@@ -11,7 +11,7 @@ import Alamofire
 
 class Order {
     var comment: String = "-"
-    var customerId: Int = -1
+    var customerId: String = ""
     var date: String = "22"
     var id: Int = -1
     var storeId: Int = -1
@@ -26,7 +26,7 @@ class Order {
         
     }
     
-    init(customerId: Int, storeId: Int, date: String) {
+    init(customerId: String, storeId: Int, date: String) {
         self.customerId = customerId
         self.storeId = storeId
         self.date = date
@@ -38,6 +38,7 @@ class Order {
         }
         
         if (!isDuplicated) {
+            menu.count += 1
             self.menus.append(menu)
         }
         else {
@@ -95,6 +96,22 @@ class Order {
             sum += menu.GetTotalPrice()
         }
         return sum
+    }
+    
+    func SetQueue(json: JSON) {
+        let queue = json
+        if queue != JSON.null {
+            let id = queue["ID"].int,
+            time = queue["time"].int,
+            queue = queue["Queue"].int
+            do {
+                Set(id: id!, queue: queue!, time: time!)
+            }
+        }
+    }
+    
+    func IsDone() -> Bool {
+        return queue == 0
     }
     
 }

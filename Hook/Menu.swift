@@ -17,13 +17,17 @@ class Menu {
     var detail: String = "detail"
     var img: UIImage!
     var catagory: String = "none"
-    var count: Int = 1
+    var count: Int = 0
+    var currency: String = "฿"
     
     init(name: String) {
         self.name = name
     }
     
     init(id: String, json: JSON) {
+        
+        count = 0
+        
         if let orderID = Int(id) {
             self.id = orderID
         }
@@ -51,5 +55,9 @@ class Menu {
     
     func GetTotalPrice() -> Int {
         return price * count
+    }
+    
+    func GetPriceWithCurrency() -> String {
+        return currency + String(price)
     }
 }

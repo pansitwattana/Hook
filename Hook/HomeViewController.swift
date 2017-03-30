@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueSearch" {
-            if let destination = segue.destination as? SearchViewController {
+            if let destination = segue.destination as? SearchStoreViewController {
                 switch self.searchType {
                 case .Text:
                     destination.SetSearchText(keyword: textToSearch)

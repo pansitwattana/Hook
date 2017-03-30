@@ -9,15 +9,22 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import Alamofire
+
+public enum SearchType {
+    case Text
+    case Location
+    case Popular
+}
 
 class Store {
     var name: String = "not assigned"
     var id: Int = -1
     var address: String = "not assigned"
-    var img: UIImage!
+    var imgUrl: String = ""
     var detail: String = "detail"
     var open: Bool = false
-    var ownerId: Int = -1
+    var ownerId: String = ""
     var coordinates: (latitude: Double, longitude: Double) = (1.2, 2.2)
     init(name: String) {
         self.name = name
@@ -35,12 +42,13 @@ class Store {
             if let id = json["ID"].int {
                 self.id = id
             }
-            //
-            //        if let imgUrl = json["Img"].url {
-            //            let imageData = NSData(contentsOf: imgUrl)
-            //            self.img = UIImage(data: imageData as! Data)
-            //        }
-            //
+            
+            if let imgUrl = json["Img"].string {
+//                let imageData = NSData(contentsOf: imgUrl)
+//                self.img = UIImage(data: imageData as! Data)
+                self.imgUrl = imgUrl
+            }
+            
             if let location = json["Location"].dictionary {
                 if let lat = location["Lat"]?.double {
                     if let long = location["Long"]?.double {
@@ -53,9 +61,19 @@ class Store {
                 self.open = open
             }
             
-            if let id = json["Owner_ID"].int {
+            if let id = json["Owner_ID"].string {
                 self.ownerId = id
             }
         }
+    }
+    
+    func getDistance() -> Double {
+        
+        return 1.3
+    }
+
+    func getStatusImage() -> UIImage {
+        
+        return UIImage()
     }
 }

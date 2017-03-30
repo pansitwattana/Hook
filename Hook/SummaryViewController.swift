@@ -18,6 +18,8 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var store = Store(name: "-")
     
+    var checkSubmit = false
+    
     func SetOrder(order: Order) {
         self.order = order
     }
@@ -29,7 +31,8 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        totalLabel.text = String(order.GetSumPrice())
+        totalLabel.text = "Total " + String(order.GetSumPrice())  + " Baht"
+        tableView.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -40,26 +43,22 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
 
     @IBAction func submit(_ sender: Any) {
-        Request.postOrderJson(order: order.GetParam(), {
-            (error, queueJson) in
-            if error != nil {
-                print(error!)
-            }
-            else {
-                print(queueJson!)
-                let queue = queueJson!
-                if queue != JSON.null {
-                    let id = queue["ID"].int,
-                    time = queue["time"].int,
-                    queue = queue["Queue"].int
-                    do {
-                        self.order.Set(id: id!, queue: queue!, time: time!)
-                        self.performSegue(withIdentifier: "summarySegue", sender: self)
-                    }
+        if (!checkSubmit) {
+            checkSubmit = true
+            print("Submit Order \(order.GetParam())")
+            Request.postOrderJson(order: order.GetParam(), {
+                (error, queueJson) in
+                if error != nil {
+                    self.checkSubmit = false
+                    print(error!)
                 }
-                
-            }
-        })
+                else {
+                    self.checkSubmit = false
+                    self.order.SetQueue(json: queueJson!)
+                    self.performSegue(withIdentifier: "summarySegue", sender: self)
+                }
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

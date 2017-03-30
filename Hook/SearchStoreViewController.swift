@@ -1,27 +1,19 @@
 //
-//  SearchViewController.swift
+//  SearchStoreViewController.swift
 //  Hook
 //
-//  Created by Pansit Wattana on 1/31/17.
+//  Created by Pansit Wattana on 3/29/17.
 //  Copyright © 2017 Pansit Wattana. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 
-public enum SearchType {
-    case Text
-    case Location
-    case Popular
-}
+class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-
+    @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-  	
+    
     var stores = NSMutableArray()
     //var storesSearch = Store()
     var index = 0
@@ -32,13 +24,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        searchBar.text = textToSearch
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func GetLocation() -> (Double, Double) {
+        return (0, 0)
     }
     
     public func SetSearchText(keyword: String) {
@@ -55,26 +46,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    
     public func SearchByLocation() {
         let coordinate = GetLocation()
         Request.getSearchJson(location: coordinate) {
             (error, searchJson) in
             self.SetStoresFromJson(json: searchJson!)
         }
-    }
-    
-    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchText = searchBar.text! as String? {
-            SetSearchText(keyword: searchText)
-            self.view.endEditing(true)
-        }
-        else {
-            print("No search result")
-        }
-    }
-    
-    func GetLocation() -> (Double, Double) {
-        return (0, 0)
     }
     
     func SearchStoreByText(text: String) {
@@ -92,7 +70,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.storeCount = self.stores.count
             
             self.tableView.reloadData()
-
+            
         }
         else {
             print("No Search Match Result")
@@ -100,20 +78,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.storeCount
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! SearchTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! StoreTableViewCell
         
         if let store = stores[indexPath.row] as? Store {
             cell.name.text = store.name
-            //zcell.img.image = store.img
-            cell.detail.text = store.detail
+            cell.distanceLabel.text = "< " + String(store.getDistance()) + " km"
+            cell.statusImage.image = store.getStatusImage()
+            
+            let url = URL(string: store.imgUrl)
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async {
+                    cell.mainImage.image = UIImage(data: data!)
+                }
+            }
             
         }
-
+        
         return cell
     }
     
@@ -122,11 +113,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.performSegue(withIdentifier: "segueOrder", sender: self)
     }
-    
-    @IBAction func backButtonClick(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let store = self.stores[self.index] as? Store {
             if segue.identifier == "segueOrder" {

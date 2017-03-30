@@ -1,24 +1,27 @@
 //
-//  MenuTableViewCell.swift
+//  StoreTableViewCell.swift
 //  Hook
 //
-//  Created by Pansit Wattana on 3/24/17.
+//  Created by Pansit Wattana on 3/29/17.
 //  Copyright © 2017 Pansit Wattana. All rights reserved.
 //
 
 import UIKit
 
-class MenuTableViewCell: UITableViewCell {
-    @IBOutlet weak var countLabel: UILabel!
+class StoreTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var mainImage: UIImageView!
+    
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    @IBOutlet weak var statusImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
