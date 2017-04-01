@@ -26,8 +26,8 @@ class Order {
         
     }
     
-    init(customerId: String, storeId: Int, date: String) {
-        self.customerId = customerId
+    init(customerName: String, storeId: Int, date: String) {
+        self.customerId = customerName
         self.storeId = storeId
         self.date = date
     }
@@ -47,6 +47,17 @@ class Order {
             }
             
             self.menus[index!].count += 1
+        }
+    }
+    
+    func RemoveMenu(menu: Menu) {
+        
+        let index = self.menus.index{ item in
+            return item.id == menu.id
+        }
+        
+        if index != nil {
+            self.menus.remove(at: index!)
         }
     }
     
@@ -80,7 +91,7 @@ class Order {
     func GetParam() -> Parameters {
         let param: Parameters = [
             "Comment" : comment,
-            "Customer_ID" : customerId,
+            "Name" : customerId,
             "Date" : date,
             "ID" : id,
             "Store_ID" : storeId,
@@ -101,11 +112,13 @@ class Order {
     func SetQueue(json: JSON) {
         let queue = json
         if queue != JSON.null {
-            let id = queue["ID"].int,
-            time = queue["time"].int,
-            queue = queue["Queue"].int
-            do {
-                Set(id: id!, queue: queue!, time: time!)
+            if let id = queue["ID"].int,
+            let time = queue["time"].int,
+            let queue = queue["Queue"].int {
+                Set(id: id, queue: queue, time: time)
+            }
+            else {
+                print("Can't Set Queue")
             }
         }
     }
@@ -117,7 +130,7 @@ class Order {
 }
 //let order: Parameters = [
 //    "Comment" : "ok",
-//    "Customer_ID" : 1,
+//    "Name" : 1,
 //    "Data" : "22",
 //    "ID" : 1,
 //    "Store_ID" : 1,

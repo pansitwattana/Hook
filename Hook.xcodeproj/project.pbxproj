@@ -10,9 +10,7 @@
 		E601D5541E7198E400B906CD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601D5531E7198E400B906CD /* Store.swift */; };
 		E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */; };
 		E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */; };
-		E60FE59B1E8952A800FF163B /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60FE59A1E8952A800FF163B /* FinishViewController.swift */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
-		E650C9501E810279002CF5D7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
 		E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
 		E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -21,10 +19,7 @@
 		E6ADE7801E85531700389E5D /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE77F1E85531700389E5D /* SummaryViewController.swift */; };
 		E6ADE7821E8558BB00389E5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7811E8558BB00389E5D /* User.swift */; };
 		E6ADE7841E85676400389E5D /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */; };
-		E6ADE7861E856DC100389E5D /* MenuTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7851E856DC100389E5D /* MenuTest.swift */; };
 		E6ADE78C1E857D1500389E5D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6ADE78B1E857D1500389E5D /* MapKit.framework */; };
-		E6ADE78D1E857E8D00389E5D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
-		E6ADE78E1E857E8D00389E5D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */; };
 		E6B5E4701E76619A0048F75B /* HookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B5E46F1E76619A0048F75B /* HookAPI.swift */; };
 		E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */; };
 		E6F0C0E31E417ECE00C3B990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F0C0E11E417ECE00C3B990 /* Main.storyboard */; };
@@ -37,18 +32,10 @@
 		E6F234B81E8CD35500396261 /* SearchStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */; };
 		E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */; };
 		E6FDE6DB1E822B4C00B55059 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDE6DA1E822B4C00B55059 /* Order.swift */; };
-		E6FF7E921E84F5940076ABB7 /* OrderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FF7E911E84F5940076ABB7 /* OrderTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E602B1AA1E7E93B100F084BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6F0C0D21E417ECE00C3B990 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E6F0C0D91E417ECE00C3B990;
-			remoteInfo = Hook;
-		};
-		E6ADE7891E857B4F00389E5D /* PBXContainerItemProxy */ = {
+		E603D9431E8EAEC300E18E65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6F0C0D21E417ECE00C3B990 /* Project object */;
 			proxyType = 1;
@@ -79,9 +66,7 @@
 		E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderTableViewCell.swift; sourceTree = "<group>"; };
 		E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bangnampueng.ttf; sourceTree = "<group>"; };
-		E60FE59A1E8952A800FF163B /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E66616251E7E6A7A00267D98 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -104,7 +89,6 @@
 		E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStoreViewController.swift; sourceTree = "<group>"; };
 		E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E6FDE6DA1E822B4C00B55059 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		E6FF7E901E84F5940076ABB7 /* HookTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HookTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		E6FF7E911E84F5940076ABB7 /* OrderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,8 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6ADE78D1E857E8D00389E5D /* Alamofire.framework in Frameworks */,
-				E6ADE78E1E857E8D00389E5D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +118,6 @@
 			children = (
 				E602B1A91E7E93B100F084BC /* Info.plist */,
 				E6FF7E911E84F5940076ABB7 /* OrderTest.swift */,
-				E6FF7E901E84F5940076ABB7 /* HookTests-Bridging-Header.h */,
 				E6ADE7851E856DC100389E5D /* MenuTest.swift */,
 			);
 			path = HookTests;
@@ -162,13 +143,11 @@
 				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
 				E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */,
 				E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */,
-				E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */,
 				E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */,
-				E650C94F1E810279002CF5D7 /* MenuCollectionViewCell.swift */,
+				E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */,
 				E6ADE77F1E85531700389E5D /* SummaryViewController.swift */,
 				E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */,
 				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,
-				E60FE59A1E8952A800FF163B /* FinishViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -225,14 +204,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E602B1AE1E7E93B100F084BC /* Build configuration list for PBXNativeTarget "HookTests" */;
 			buildPhases = (
-				E602B1A11E7E93B100F084BC /* Sources */,
 				E602B1A21E7E93B100F084BC /* Frameworks */,
+				E602B1A11E7E93B100F084BC /* Sources */,
 				E602B1A31E7E93B100F084BC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E602B1AB1E7E93B100F084BC /* PBXTargetDependency */,
 			);
 			name = HookTests;
 			productName = HookTests;
@@ -251,7 +229,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E6ADE78A1E857B4F00389E5D /* PBXTargetDependency */,
+				E603D9441E8EAEC300E18E65 /* PBXTargetDependency */,
 			);
 			name = Hook;
 			productName = Hook;
@@ -330,8 +308,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6ADE7861E856DC100389E5D /* MenuTest.swift in Sources */,
-				E6FF7E921E84F5940076ABB7 /* OrderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,12 +319,10 @@
 				E6F0C0F81E4183BC00C3B990 /* LoginViewController.swift in Sources */,
 				E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */,
 				E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */,
-				E60FE59B1E8952A800FF163B /* FinishViewController.swift in Sources */,
 				E6F234B81E8CD35500396261 /* SearchStoreViewController.swift in Sources */,
 				E601D5541E7198E400B906CD /* Store.swift in Sources */,
 				E6ADE7821E8558BB00389E5D /* User.swift in Sources */,
 				E6ADE7841E85676400389E5D /* MenuTableViewCell.swift in Sources */,
-				E650C9501E810279002CF5D7 /* MenuCollectionViewCell.swift in Sources */,
 				E65E01EA1E7FDADD0045562F /* Request.swift in Sources */,
 				E6FDE6DB1E822B4C00B55059 /* Order.swift in Sources */,
 				E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */,
@@ -364,15 +338,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E602B1AB1E7E93B100F084BC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E6F0C0D91E417ECE00C3B990 /* Hook */;
-			targetProxy = E602B1AA1E7E93B100F084BC /* PBXContainerItemProxy */;
-		};
-		E6ADE78A1E857B4F00389E5D /* PBXTargetDependency */ = {
+		E603D9441E8EAEC300E18E65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E602B1A41E7E93B100F084BC /* HookTests */;
-			targetProxy = E6ADE7891E857B4F00389E5D /* PBXContainerItemProxy */;
+			targetProxy = E603D9431E8EAEC300E18E65 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -401,12 +370,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = HookTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HookTests/HookTests-Bridging-Header.h";
@@ -421,12 +387,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = HookTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HookTests/HookTests-Bridging-Header.h";

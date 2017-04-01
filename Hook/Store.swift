@@ -22,9 +22,12 @@ class Store {
     var id: Int = -1
     var address: String = "not assigned"
     var imgUrl: String = ""
+    var imageView: UIImage!
+    var doneLoadImg: Bool = false
     var detail: String = "detail"
     var open: Bool = false
     var ownerId: String = ""
+    var categories: [String] = ["Food", "Drink", "Dessert", "Fruit"]
     var coordinates: (latitude: Double, longitude: Double) = (1.2, 2.2)
     init(name: String) {
         self.name = name
@@ -44,8 +47,6 @@ class Store {
             }
             
             if let imgUrl = json["Img"].string {
-//                let imageData = NSData(contentsOf: imgUrl)
-//                self.img = UIImage(data: imageData as! Data)
                 self.imgUrl = imgUrl
             }
             
@@ -70,10 +71,5 @@ class Store {
     func getDistance() -> Double {
         
         return 1.3
-    }
-
-    func getStatusImage() -> UIImage {
-        
-        return UIImage()
     }
 }

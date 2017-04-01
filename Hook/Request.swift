@@ -13,13 +13,30 @@ import Alamofire
 class Request {
     
     static func Login(user: String, password: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        Alamofire.request(HookAPI.URL + "/login/\(user)&\(password)").validate().responseJSON { (response) in
+        
+//        Alamofire.request(HookAPI.URL + "/login/").validate().responseJSON { (response) in
+//            do {
+//                let userJson = JSON(data: response.data!)
+//                let error = response.error
+//                completion(error as NSError?, userJson)
+//            }
+//        }
+        
+        let userParam: Parameters = [
+            "username" : user,
+            "password" : password,
+            ]
+        
+        print(userParam)
+        Alamofire.request("\(HookAPI.URL)login/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
+            (response) in
             do {
-                let userJson = JSON(data: response.data!)
+                let json = JSON(response.data!)
                 let error = response.error
-                completion(error as NSError?, userJson)
+                completion(error as NSError?, json)
             }
         }
+
     }
     
     static func getSearchJson(keyword: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
@@ -74,7 +91,8 @@ class Request {
     }
     
     static func postOrderJson(order: Parameters, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-
+        
+        print(order)    
         Alamofire.request("\(HookAPI.URL)order/add/", method: .post, parameters: order, encoding: JSONEncoding.default).validate().responseJSON {
             (response) in
             do {

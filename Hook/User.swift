@@ -19,6 +19,10 @@ class User {
     var lastName: String = "Unknown"
     var type: String = "Guest"
     
+    init() {
+        self.name = "Guest"
+    }
+    
     init(name: String) {
         self.name = name
     }
@@ -26,25 +30,34 @@ class User {
     init(userJson: JSON) {
         let jsonData = userJson
         if jsonData != JSON.null{
-            for (key, json):(String, JSON) in jsonData {
-                self.key = key
-                
+                let json = jsonData
                 if let email = json["Email"].string {
                     self.email = email
+                }
+                else {
+                    print("Cant parse email")
                 }
                 
                 if let name = json["Name"].string {
                     self.name = name
                 }
+                else {
+                    print ("Cant parse name")
+                }
                 
                 if let lastName = json["Lastname"].string {
                     self.lastName = lastName
+                }
+                else {
+                    print ("Cant parse lastname")
                 }
                 
                 if let type = json["Type"].string {
                     self.type = type
                 }
-            }
+                else {
+                    print("Cant parse type")
+                }
         }
         else {
             print("JSON can't parse")

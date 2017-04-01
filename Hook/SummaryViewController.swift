@@ -44,20 +44,25 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBAction func submit(_ sender: Any) {
         if (!checkSubmit) {
-            checkSubmit = true
-            print("Submit Order \(order.GetParam())")
-            Request.postOrderJson(order: order.GetParam(), {
-                (error, queueJson) in
-                if error != nil {
-                    self.checkSubmit = false
-                    print(error!)
-                }
-                else {
-                    self.checkSubmit = false
-                    self.order.SetQueue(json: queueJson!)
-                    self.performSegue(withIdentifier: "summarySegue", sender: self)
-                }
-            })
+            if (order.customerId != "" || order.customerId != "Guest") {
+                checkSubmit = true
+                print("Submit Order \(order.GetParam())")
+                Request.postOrderJson(order: order.GetParam(), {
+                    (error, queueJson) in
+                    if error != nil {
+                        self.checkSubmit = false
+                        print(error!)
+                    }
+                    else {
+                        self.checkSubmit = false
+                        self.order.SetQueue(json: queueJson!)
+                        self.performSegue(withIdentifier: "summarySegue", sender: self)
+                    }
+                })
+            }
+            else {
+                print("Please Login Before Sent Order")
+            }
         }
     }
     

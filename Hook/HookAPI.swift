@@ -37,7 +37,7 @@ class HookAPI {
             for (id, menuJson) : (String, JSON) in jsonData {
                 let menu = Menu(id: id, json: menuJson)
                 
-                print("Loaded: \(menu.name) \(menu.count)")
+                print("Loaded: \(menu.name) \(menu.catagory)")
                 menus.add(menu)
             }
         }

@@ -92,17 +92,31 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         if let store = stores[indexPath.row] as? Store {
             cell.name.text = store.name
             cell.distanceLabel.text = "< " + String(store.getDistance()) + " km"
-            cell.statusImage.image = store.getStatusImage()
+            
+            if store.open {
+                cell.statusImage.image = #imageLiteral(resourceName: "status_online")
+            }
+            else {
+                cell.statusImage.image = #imageLiteral(resourceName: "status_offline")
+            }
+            
             
             let url = URL(string: store.imgUrl)
             
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                DispatchQueue.main.async {
-                    cell.mainImage.image = UIImage(data: data!)
+            print("cell change \(store.name)")
+            if store.doneLoadImg {
+                cell.mainImage.image = store.imageView
+            }
+            else {
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    DispatchQueue.main.async {
+                        store.imageView = UIImage(data: data!)
+                        store.doneLoadImg = true
+                        cell.mainImage.image = store.imageView
+                    }
                 }
             }
-            
         }
         
         return cell
@@ -110,12 +124,13 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         index = indexPath.row
-        
+        print("Start perform")
         self.performSegue(withIdentifier: "segueOrder", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let store = self.stores[self.index] as? Store {
+            print("Selected \(store.name)")
             if segue.identifier == "segueOrder" {
                 if let destination = segue.destination as? MenuOrderViewController{
                     destination.SetStore(store: store)

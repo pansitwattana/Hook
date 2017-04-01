@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     var searchType = SearchType.Text
     
     @IBAction func backButtonClick(_ sender: Any) {
+        User.current = User()
         dismiss(animated: true, completion: nil)
     }
     

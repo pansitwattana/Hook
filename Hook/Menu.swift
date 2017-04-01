@@ -16,9 +16,11 @@ class Menu {
     var price: Int = 0
     var detail: String = "detail"
     var img: UIImage!
+    var imgUrl: String = ""
     var catagory: String = "none"
     var count: Int = 0
     var currency: String = "฿"
+    var isLoadDone: Bool = false
     
     init(name: String) {
         self.name = name
@@ -47,9 +49,8 @@ class Menu {
             self.price = price
         }
         
-        if let imgUrl = json["Img"].url {
-            let imageData = NSData(contentsOf: imgUrl)
-            self.img = UIImage(data: imageData as! Data)
+        if let imgUrl = json["Img"].string {
+            self.imgUrl = imgUrl
         }
     }
     

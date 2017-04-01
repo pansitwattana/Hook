@@ -5,7 +5,7 @@
 //  Created by Pansit Wattana on 1/31/17.
 //  Copyright © 2017 Pansit Wattana. All rights reserved.
 //
-
+import UserNotifications
 import UIKit
 
 class WaitViewController: UIViewController {
@@ -34,6 +34,8 @@ class WaitViewController: UIViewController {
         self.order = order
     }
     
+    var isGrantedNotificationAccess = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,11 @@ class WaitViewController: UIViewController {
         updateQueue(order: self.order)
         
         waitOrderDone()
+        UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
+            (granted,error) in
+                self.isGrantedNotificationAccess = granted
+            }
+        )
     }
     
     func waitOrderDone() {
@@ -76,6 +83,26 @@ class WaitViewController: UIViewController {
         waitLabel.text = "Your order is now complete"
         timeLabel.text = ""
         submitButton.setImage(okImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Your Order done!"
+        content.subtitle = "From storename=?"
+        content.body = "Ready!!"
+        content.categoryIdentifier = "message"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 0.1,
+            repeats: false)
+        
+        let request = UNNotificationRequest(
+            identifier: "order notification",
+            content: content,
+            trigger: trigger
+        )
+        
+        UNUserNotificationCenter.current().add(
+            request, withCompletionHandler: nil)
+
     }
     
     func updateQueue(order: Order) {
