@@ -50,14 +50,14 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 Request.postOrderJson(order: order.GetParam(), {
                     (error, queueJson) in
                     if error != nil {
-                        self.checkSubmit = false
                         print(error!)
                     }
                     else {
-                        self.checkSubmit = false
+                        print(queueJson!)
                         self.order.SetQueue(json: queueJson!)
                         self.performSegue(withIdentifier: "summarySegue", sender: self)
                     }
+                    self.checkSubmit = false
                 })
             }
             else {

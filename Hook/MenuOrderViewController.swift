@@ -15,7 +15,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var thirdCat: UIButton!
     @IBOutlet weak var forthCat: UIButton!
     
-    var store = Store(name: "-")
+    var store = Store(name: "not assigned")
     
     var order = Order()
     
@@ -45,8 +45,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     //do not have user -> default customer id = 1
     func SetStore(store: Store) {
         self.store = store
-        self.order.storeId = store.id
-        self.order.customerId = User.current.name
+        self.order.setUser(customerUser: User.current, storeId: store.id)
     }
 
     @IBAction func orderSubmit(_ sender: Any) {

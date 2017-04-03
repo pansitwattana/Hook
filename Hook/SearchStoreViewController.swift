@@ -8,11 +8,15 @@
 
 import UIKit
 import SwiftyJSON
+import CoreLocation
+import NVActivityIndicatorView
 
 class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    var locationManager = CLLocationManager()
     
     var stores = NSMutableArray()
     //var storesSearch = Store()
@@ -24,7 +28,9 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+      
+        
         // Do any additional setup after loading the view.
     }
 

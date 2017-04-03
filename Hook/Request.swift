@@ -91,11 +91,10 @@ class Request {
     }
     
     static func postOrderJson(order: Parameters, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        
-        print(order)    
         Alamofire.request("\(HookAPI.URL)order/add/", method: .post, parameters: order, encoding: JSONEncoding.default).validate().responseJSON {
             (response) in
             do {
+                print(response)
                 let json = JSON(response.data!)
                 let error = response.error
                 completion(error as NSError?, json)

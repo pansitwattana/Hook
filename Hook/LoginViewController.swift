@@ -15,17 +15,18 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passLabel: UITextField!
     
+    var isLoginClick = false
+    
     @IBOutlet weak var login: UIButton!
     @IBAction func login(_ sender: Any) {
         User.current = User()
         let user = userLabel.text!
         let password = passLabel.text!
-        if (user == "jjinwinw"){
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-        }
-        else if (user != "" && password != "") {
+        if (!isLoginClick && user != "" && password != "") {
+            isLoginClick = true
             Request.Login(user: user, password: password, {
                 (error, userJson) in
+                self.isLoginClick = false
                 if (error != nil) {
                     print(error!)
                 }

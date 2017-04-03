@@ -9,10 +9,16 @@ import SwiftyJSON
 import Foundation
 import Alamofire
 
+enum OrderStatus : Int {
+    case Wait
+    case Done
+    case Cancel
+}
+
 class Order {
     var comment: String = "-"
     var customerId: String = ""
-    var date: String = "22"
+    var user = User()
     var id: Int = -1
     var storeId: Int = -1
     var type: String = "Undone"
@@ -22,14 +28,15 @@ class Order {
     var queue: Int = -1
     var time: Int = 1
     
+    var status: OrderStatus = .Wait
+    
     init() {
         
     }
     
-    init(customerName: String, storeId: Int, date: String) {
-        self.customerId = customerName
+    func setUser(customerUser: User, storeId: Int) {
+        self.user = customerUser
         self.storeId = storeId
-        self.date = date
     }
     
     func AddMenu(menu: Menu) {
@@ -82,25 +89,27 @@ class Order {
         }
     }
     
-    func Set(id: Int, queue: Int, time: Int) {
+    func Set(id: Int, queue: Int, time: Int, status: OrderStatus) {
         self.id = id
         self.queue = queue
         self.time = time
+        self.status = status
     }
 
     func GetParam() -> Parameters {
         let param: Parameters = [
             "Comment" : comment,
-            "Name" : customerId,
-            "Date" : date,
+            "Name" : user.name,
+            "LastName": user.lastName,
+            "Date" : "0",
             "ID" : id,
             "Store_ID" : storeId,
-            "Type" : type,
+            "Status" : status.rawValue,
             "MenuList" : GetMenuListID()
         ]
         return param
     }
-    
+
     func GetSumPrice() -> Int {
         var sum = 0
         for menu in menus {
@@ -113,21 +122,32 @@ class Order {
         let queue = json
         if queue != JSON.null {
             if let id = queue["ID"].int,
-            let time = queue["time"].int,
-            let queue = queue["Queue"].int {
-                Set(id: id, queue: queue, time: time)
+                let time = queue["time"].int,
+                let queueNo = queue["Queue"].int,
+                let status = queue["Status"].int
+            {
+                if status < 3 && status > 0 {
+                    Set(id: id, queue: queueNo, time: time, status: OrderStatus(rawValue: status)!)
+                }
+                else {
+                    print("status code is incorrect \(status)")
+                }
             }
+                
+               
             else {
+                
                 print("Can't Set Queue")
             }
         }
     }
     
     func IsDone() -> Bool {
-        return queue == 0
+        return queue == 0 || status == OrderStatus.Done
     }
-    
 }
+
+
 //let order: Parameters = [
 //    "Comment" : "ok",
 //    "Name" : 1,

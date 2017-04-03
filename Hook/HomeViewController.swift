@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var testLoading: NVActivityIndicatorView!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     

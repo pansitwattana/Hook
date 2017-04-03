@@ -10,6 +10,7 @@
 		E601D5541E7198E400B906CD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601D5531E7198E400B906CD /* Store.swift */; };
 		E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */; };
 		E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */; };
+		E62160011E924071002FD161 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62160001E924071002FD161 /* NVActivityIndicatorView.framework */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
 		E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
@@ -66,6 +67,7 @@
 		E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderTableViewCell.swift; sourceTree = "<group>"; };
 		E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bangnampueng.ttf; sourceTree = "<group>"; };
+		E62160001E924071002FD161 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E66616251E7E6A7A00267D98 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E62160011E924071002FD161 /* NVActivityIndicatorView.framework in Frameworks */,
 				E666162B1E7E6A8800267D98 /* SwiftyJSON.framework in Frameworks */,
 				E6ADE78C1E857D1500389E5D /* MapKit.framework in Frameworks */,
 				E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */,
@@ -155,6 +158,7 @@
 		E66616291E7E6A8800267D98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E62160001E924071002FD161 /* NVActivityIndicatorView.framework */,
 				E6ADE78B1E857D1500389E5D /* MapKit.framework */,
 				E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */,
 			);
