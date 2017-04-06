@@ -58,7 +58,7 @@ class Request {
     
     static func Register(userParam: Parameters,  _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
         print("\(HookAPI.URL)register/")
-        Alamofire.request("\(HookAPI.URL)register/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
+        Alamofire.request("\(HookAPI.URL)signup/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
             (response) in
             do {
                 let json = JSON(response.data!)

@@ -48,7 +48,7 @@ class WaitViewController: UIViewController{
         UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
             (granted,error) in
                 self.isGrantedNotificationAccess = granted
-                self.pushNotification()
+            
             }
         )
         
@@ -81,6 +81,7 @@ class WaitViewController: UIViewController{
     }
     
     func showDone(order: Order) {
+        pushNotification()
         isDone = true
         waitLabel.text = "Your order is now complete"
         timeLabel.text = ""
@@ -92,20 +93,34 @@ class WaitViewController: UIViewController{
         if isGrantedNotificationAccess {
             print("push notificaiton")
             // Define identifier
-            let notificationName = Notification.Name("NotificationIdentifier")
+            //add notification code here
             
-            // Register to receive notification
-            //            NotificationCenter.default.addObserver(self, selector: #selector(YourClassName.methodOfReceivedNotification), name: notificationName, object: nil)
+            //Set the content of the notification
+            let content = UNMutableNotificationContent()
+            content.title = "Your Order is DONE!"
+            content.subtitle = "Go To The Store to Get your menu"
+            content.body = "Your food is done"
             
-            // Post notification
-            NotificationCenter.default.post(name: notificationName, object: nil)
+            //Set the trigger of the notification -- here a timer.
+            let trigger = UNTimeIntervalNotificationTrigger(
+                timeInterval: 0.01,
+                repeats: false)
             
-            //            // Stop listening notification
-            //            NotificationCenter.default.removeObserver(self, name: notificationName, object: nil);
+            //Set the request for the notification from the above
+            let request = UNNotificationRequest(
+                identifier: "order done",
+                content: content,
+                trigger: trigger
+            )
+            
+            //Add the notification to the currnet notification center
+            UNUserNotificationCenter.current().add(
+                request, withCompletionHandler: nil)
             
         }
 
     }
+
     
     func updateQueue(order: Order) {
         waitLabel.text = "Wait \(order.queue) Queues."
