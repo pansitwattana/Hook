@@ -12,6 +12,7 @@ class RegisterViewController: UIViewController {
 
     var checkSubmit = false
     
+    @IBOutlet weak var lastNameText: UITextField!
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -33,16 +34,19 @@ class RegisterViewController: UIViewController {
     @IBAction func submit(_ sender: Any) {
         
         let email = emailText.text
-        let user = userText.text
+        let firstname = userText.text
+        let lastname = lastNameText.text
         let password = passwordText.text
         let confirmPass = confirmPasswordText.text
         
-        if email != nil && user != nil && password != nil && confirmPass != nil {
+        if email != nil && firstname != nil && password != nil && lastname != nil && confirmPass != nil {
             if password == confirmPass {
                 let userParam: Parameters = [
                     "Email" : email!,
-                    "Username" : user!,
-                    "Password" : password!
+                    "Lastname" : lastname!,
+                    "Name" : firstname!,
+                    "Password" : password!,
+                    "Type" : 0
                 ]
                 SubmitToServer(userParam: userParam)
             }
