@@ -1,0 +1,19 @@
+{
+  "commitish" : "3.6.0",
+  "iOS" : [
+    {
+      "hash" : "16a1b5ae34d33cdc4d8f99fdfc14d58680c5a99dbde80af7bdef8793d9f185f6",
+      "name" : "NVActivityIndicatorView"
+    }
+  ],
+  "xcodeVersion" : "Xcode 8.2\nBuild version 8C38",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}

@@ -56,6 +56,19 @@ class Request {
         
     }
     
+    static func Register(userParam: Parameters,  _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+        print("\(HookAPI.URL)register/")
+        Alamofire.request("\(HookAPI.URL)register/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
+            (response) in
+            do {
+                let json = JSON(response.data!)
+                let error = response.error
+                completion(error as NSError?, json)
+            }
+        }
+        
+    }
+    
     static func getSearchJson(keyword: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
 //        let lowercaseKeyword = keyword.lowercased()
         Alamofire.request(HookAPI.URL + "search/\(keyword)").validate().responseJSON { (response) in

@@ -11,14 +11,17 @@
 		E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */; };
 		E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */; };
 		E607C2961E93D99600FD4454 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607C2951E93D99600FD4454 /* RegisterViewController.swift */; };
-		E62160011E924071002FD161 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62160001E924071002FD161 /* NVActivityIndicatorView.framework */; };
-		E62160031E924246002FD161 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62160021E924246002FD161 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E620873D1E960F7600F48C73 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62087391E960F7600F48C73 /* Alamofire.framework */; };
+		E620873E1E960F7600F48C73 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620873A1E960F7600F48C73 /* NVActivityIndicatorView.framework */; };
+		E620873F1E960F7600F48C73 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620873B1E960F7600F48C73 /* SwiftyJSON.framework */; };
+		E62087401E960F7600F48C73 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620873C1E960F7600F48C73 /* TextFieldEffects.framework */; };
+		E62087411E960F8C00F48C73 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62087391E960F7600F48C73 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62087421E960F8C00F48C73 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E620873A1E960F7600F48C73 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62087431E960F8C00F48C73 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E620873B1E960F7600F48C73 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62087441E960F8C00F48C73 /* TextFieldEffects.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E620873C1E960F7600F48C73 /* TextFieldEffects.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62087451E960F8C00F48C73 /* MapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6ADE78B1E857D1500389E5D /* MapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
-		E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; };
-		E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E66616251E7E6A7A00267D98 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E666162B1E7E6A8800267D98 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */; };
-		E666162C1E7E6ADC00267D98 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6ADE7801E85531700389E5D /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE77F1E85531700389E5D /* SummaryViewController.swift */; };
 		E6ADE7821E8558BB00389E5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7811E8558BB00389E5D /* User.swift */; };
 		E6ADE7841E85676400389E5D /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */; };
@@ -58,13 +61,15 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		E66616281E7E6A7B00267D98 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E62160031E924246002FD161 /* NVActivityIndicatorView.framework in Embed Frameworks */,
-				E666162C1E7E6ADC00267D98 /* SwiftyJSON.framework in Embed Frameworks */,
-				E66616271E7E6A7A00267D98 /* Alamofire.framework in Embed Frameworks */,
+				E62087411E960F8C00F48C73 /* Alamofire.framework in Embed Frameworks */,
+				E62087421E960F8C00F48C73 /* NVActivityIndicatorView.framework in Embed Frameworks */,
+				E62087431E960F8C00F48C73 /* SwiftyJSON.framework in Embed Frameworks */,
+				E62087441E960F8C00F48C73 /* TextFieldEffects.framework in Embed Frameworks */,
+				E62087451E960F8C00F48C73 /* MapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,12 +83,12 @@
 		E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		E607C2951E93D99600FD4454 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bangnampueng.ttf; sourceTree = "<group>"; };
-		E62160001E924071002FD161 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
-		E62160021E924246002FD161 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		E62087391E960F7600F48C73 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		E620873A1E960F7600F48C73 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		E620873B1E960F7600F48C73 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		E620873C1E960F7600F48C73 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = Carthage/Build/iOS/TextFieldEffects.framework; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		E66616251E7E6A7A00267D98 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		E6ADE77F1E85531700389E5D /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		E6ADE7811E8558BB00389E5D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,10 +121,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E62160011E924071002FD161 /* NVActivityIndicatorView.framework in Frameworks */,
-				E666162B1E7E6A8800267D98 /* SwiftyJSON.framework in Frameworks */,
+				E620873D1E960F7600F48C73 /* Alamofire.framework in Frameworks */,
+				E620873E1E960F7600F48C73 /* NVActivityIndicatorView.framework in Frameworks */,
+				E620873F1E960F7600F48C73 /* SwiftyJSON.framework in Frameworks */,
+				E62087401E960F7600F48C73 /* TextFieldEffects.framework in Frameworks */,
 				E6ADE78C1E857D1500389E5D /* MapKit.framework in Frameworks */,
-				E66616261E7E6A7A00267D98 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,9 +165,11 @@
 		E66616291E7E6A8800267D98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E62160001E924071002FD161 /* NVActivityIndicatorView.framework */,
+				E62087391E960F7600F48C73 /* Alamofire.framework */,
+				E620873A1E960F7600F48C73 /* NVActivityIndicatorView.framework */,
+				E620873B1E960F7600F48C73 /* SwiftyJSON.framework */,
+				E620873C1E960F7600F48C73 /* TextFieldEffects.framework */,
 				E6ADE78B1E857D1500389E5D /* MapKit.framework */,
-				E666162A1E7E6A8800267D98 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,8 +185,6 @@
 		E6F0C0D11E417ECE00C3B990 = {
 			isa = PBXGroup;
 			children = (
-				E62160021E924246002FD161 /* NVActivityIndicatorView.framework */,
-				E66616251E7E6A7A00267D98 /* Alamofire.framework */,
 				E6F0C0DC1E417ECE00C3B990 /* Hook */,
 				E6F0C0DB1E417ECE00C3B990 /* Products */,
 				E66616291E7E6A8800267D98 /* Frameworks */,
@@ -447,6 +453,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -495,6 +502,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -521,13 +529,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Hook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jqhook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -542,13 +551,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Hook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jqhook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

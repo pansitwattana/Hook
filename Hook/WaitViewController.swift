@@ -8,7 +8,7 @@
 import UserNotifications
 import UIKit
 
-class WaitViewController: UIViewController {
+class WaitViewController: UIViewController{
 
     @IBOutlet weak var hookWaitImage: UIImageView!
     
@@ -48,8 +48,10 @@ class WaitViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
             (granted,error) in
                 self.isGrantedNotificationAccess = granted
+                self.pushNotification()
             }
         )
+        
     }
     
     func waitOrderDone() {
@@ -83,25 +85,25 @@ class WaitViewController: UIViewController {
         waitLabel.text = "Your order is now complete"
         timeLabel.text = ""
         submitButton.setImage(okImage.withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    func pushNotification() {
         
-        let content = UNMutableNotificationContent()
-        content.title = "Your Order done!"
-        content.subtitle = "From storename=?"
-        content.body = "Ready!!"
-        content.categoryIdentifier = "message"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 0.1,
-            repeats: false)
-        
-        let request = UNNotificationRequest(
-            identifier: "order notification",
-            content: content,
-            trigger: trigger
-        )
-        
-        UNUserNotificationCenter.current().add(
-            request, withCompletionHandler: nil)
+        if isGrantedNotificationAccess {
+            print("push notificaiton")
+            // Define identifier
+            let notificationName = Notification.Name("NotificationIdentifier")
+            
+            // Register to receive notification
+            //            NotificationCenter.default.addObserver(self, selector: #selector(YourClassName.methodOfReceivedNotification), name: notificationName, object: nil)
+            
+            // Post notification
+            NotificationCenter.default.post(name: notificationName, object: nil)
+            
+            //            // Stop listening notification
+            //            NotificationCenter.default.removeObserver(self, name: notificationName, object: nil);
+            
+        }
 
     }
     
