@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class HomeViewController: UIViewController, UISearchBarDelegate {
+    @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var testLoading: NVActivityIndicatorView!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     
@@ -21,8 +20,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     var searchType = SearchType.Text
     
     @IBAction func backButtonClick(_ sender: Any) {
-        User.current = User()
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "logoutSegue", sender: self)
     }
     
     @IBAction func nearbyButtonClick(_ sender: Any) {
@@ -31,13 +29,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        textToSearch = ""        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -55,10 +52,15 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
                 case .Text:
                     destination.SetSearchText(keyword: textToSearch)
                 case .Location:
-                    destination.SetSearchText(keyword: textToSearch)
+                    destination.SearchByLocation()
                 case .Popular:
                     destination.SetSearchText(keyword: textToSearch)
                 }
+            }
+        }
+        else if segue.identifier == "logoutSegue" {
+            if let destination = segue.destination as? LoginViewController {
+                destination.logout()
             }
         }
     }

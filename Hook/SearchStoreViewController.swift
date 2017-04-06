@@ -11,15 +11,16 @@ import SwiftyJSON
 import CoreLocation
 import NVActivityIndicatorView
 
-class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var locationManager = CLLocationManager()
+    var locationManager: CLLocationManager = CLLocationManager()
+    var userLocation:(Double, Double)!
     
     var stores = NSMutableArray()
-    //var storesSearch = Store()
+
     var index = 0
     
     var storeCount = 0
@@ -28,14 +29,44 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-        
-        // Do any additional setup after loading the view.
     }
 
-    func GetLocation() -> (Double, Double) {
-        return (0, 0)
+    func CheckLocationServices() -> Bool {
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        return CLLocationManager.locationServicesEnabled()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location:CLLocation = locations[0] as CLLocation
+        
+        print("user latitude = \(location.coordinate.latitude)")
+        print("user longitude = \(location.coordinate.longitude)")
+        
+        
+        userLocation = (location.coordinate.latitude, location.coordinate.longitude)
+        if userLocation != nil {
+            Request.getSearchJson(location: userLocation!) {
+                (error, searchJson) in
+                if (error != nil) {
+                    print(error!)
+                }
+                else {
+                    print(searchJson!)
+                    self.SetStoresFromJson(json: searchJson!)
+                }
+            }
+        }
+        else {
+            print("error cant set coordinate")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
     
     public func SetSearchText(keyword: String) {
@@ -54,11 +85,14 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     public func SearchByLocation() {
-        let coordinate = GetLocation()
-        Request.getSearchJson(location: coordinate) {
-            (error, searchJson) in
-            self.SetStoresFromJson(json: searchJson!)
+        if CheckLocationServices() {
+            locationManager.requestLocation()
         }
+        else {
+            print("Location Service is disable!")
+        }
+        
+        
     }
     
     func SearchStoreByText(text: String) {
@@ -94,7 +128,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! StoreTableViewCell
-        
+
         if let store = stores[indexPath.row] as? Store {
             cell.name.text = store.name
             cell.distanceLabel.text = "< " + String(store.getDistance()) + " km"
@@ -109,7 +143,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             
             let url = URL(string: store.imgUrl)
             
-            print("cell change \(store.name)")
+            print("cell change \(store.name) \(indexPath.row)")
             if store.doneLoadImg {
                 cell.mainImage.image = store.imageView
             }
@@ -117,9 +151,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {
-                        store.imageView = UIImage(data: data!)
-                        store.doneLoadImg = true
-                        cell.mainImage.image = store.imageView
+                        if data != nil {
+                            store.imageView = UIImage(data: data!)
+                            store.doneLoadImg = true
+                            cell.mainImage.image = store.imageView
+                        }
                     }
                 }
             }

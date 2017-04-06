@@ -114,8 +114,10 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {
                             menu.isLoadDone = true
-                            menu.img = UIImage(data: data!)
-                            cell.storeImg.image = menu.img
+                            if data != nil {
+                                menu.img = UIImage(data: data!)
+                                cell.storeImg.image = menu.img
+                            }
                         }
                     }
                 }

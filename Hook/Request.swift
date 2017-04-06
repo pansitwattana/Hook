@@ -39,6 +39,23 @@ class Request {
 
     }
     
+    static func Logout(user: String,  _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+        
+        let userParam: Parameters = [
+            "username" : user
+        ]
+        
+        Alamofire.request("\(HookAPI.URL)logout/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
+            (response) in
+            do {
+                let json = JSON(response.data!)
+                let error = response.error
+                completion(error as NSError?, json)
+            }
+        }
+        
+    }
+    
     static func getSearchJson(keyword: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
 //        let lowercaseKeyword = keyword.lowercased()
         Alamofire.request(HookAPI.URL + "search/\(keyword)").validate().responseJSON { (response) in
@@ -51,7 +68,7 @@ class Request {
     }
     
     static func getSearchJson(location: (Double, Double), _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        Alamofire.request(HookAPI.URL + "search/").validate().responseJSON { (response) in
+        Alamofire.request(HookAPI.URL + "browse/\(location.0),\(location.1)").validate().responseJSON { (response) in
             do {
                 let searchJson = JSON(data: response.data!)
                 let error = response.error

@@ -128,7 +128,7 @@ class WaitViewController: UIViewController {
                     }
                     else {
                         print(response!)
-                        self.performSegue(withIdentifier: "cancelSegue", sender: self)
+                        self.performSegue(withIdentifier: "finishSegue", sender: self)
                     }
                 })
             }

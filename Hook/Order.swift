@@ -122,11 +122,11 @@ class Order {
         let queue = json
         if queue != JSON.null {
             if let id = queue["ID"].int,
-                let time = queue["time"].int,
+                let time = queue["Time"].int,
                 let queueNo = queue["Queue"].int,
                 let status = queue["Status"].int
             {
-                if status < 3 && status > 0 {
+                if status < 3 && status >= 0 {
                     Set(id: id, queue: queueNo, time: time, status: OrderStatus(rawValue: status)!)
                 }
                 else {
