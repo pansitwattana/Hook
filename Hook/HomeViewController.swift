@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UISearchBarDelegate {
+class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate {
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -20,6 +20,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     
     var searchType = SearchType.Text
     
+    var recommendStores = NSMutableArray()
+    
     @IBAction func backButtonClick(_ sender: Any) {
         performSegue(withIdentifier: "logoutSegue", sender: self)
     }
@@ -30,6 +32,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        recommendStores.add(Store(name: "test"))
         // Do any additional setup after loading the view.
     }
     
@@ -65,4 +68,40 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
             }
         }
     }
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.row
+        print("selected \(index)")
+//        if let menu = menus[index] as? Menu {
+//            print(menu.name + " is selected")
+//            order.AddMenu(menu: menu)
+//        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recommendStores.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell",
+                                                      for: indexPath) as! StoreCollectionViewCell
+        
+        print(indexPath)
+        if indexPath.row < recommendStores.count {
+            if let store = recommendStores[indexPath.row] as? Store {
+                
+            }
+        }
+        
+        return cell
+    }
+    
 }

@@ -27,6 +27,7 @@
 		E6ADE7841E85676400389E5D /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */; };
 		E6B2FABB1E9504D3007CC9A8 /* Bangnampueng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */; };
 		E6B5E4701E76619A0048F75B /* HookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B5E46F1E76619A0048F75B /* HookAPI.swift */; };
+		E6B9D7D31E968203000CCC25 /* StoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */; };
 		E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */; };
 		E6F0C0E31E417ECE00C3B990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F0C0E11E417ECE00C3B990 /* Main.storyboard */; };
 		E6F0C0E51E417ECE00C3B990 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6F0C0E41E417ECE00C3B990 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		E6ADE78B1E857D1500389E5D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E6B5E46F1E76619A0048F75B /* HookAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HookAPI.swift; sourceTree = "<group>"; };
+		E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6F0C0DA1E417ECE00C3B990 /* Hook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6F0C0E21E417ECE00C3B990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
 				E607C2951E93D99600FD4454 /* RegisterViewController.swift */,
 				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
+				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
 				E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */,
 				E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */,
 				E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */,
@@ -337,6 +340,7 @@
 				E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */,
 				E6F0C0F81E4183BC00C3B990 /* LoginViewController.swift in Sources */,
 				E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */,
+				E6B9D7D31E968203000CCC25 /* StoreCollectionViewCell.swift in Sources */,
 				E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */,
 				E6F234B81E8CD35500396261 /* SearchStoreViewController.swift in Sources */,
 				E601D5541E7198E400B906CD /* Store.swift in Sources */,
