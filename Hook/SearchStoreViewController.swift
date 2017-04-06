@@ -86,7 +86,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     public func SearchByLocation() {
         if CheckLocationServices() {
-            locationManager.requestLocation()
+            if #available(iOS 9.0, *) {
+                locationManager.requestLocation()
+            } else {
+                // Fallback on earlier versions
+            }
         }
         else {
             print("Location Service is disable!")

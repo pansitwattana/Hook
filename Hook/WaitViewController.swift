@@ -45,13 +45,14 @@ class WaitViewController: UIViewController{
         updateQueue(order: self.order)
         
         waitOrderDone()
-        UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
-            (granted,error) in
-                self.isGrantedNotificationAccess = granted
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
+                (granted,error) in
+                    self.isGrantedNotificationAccess = granted
             
-            }
-        )
-        
+                }
+            )
+        }
     }
     
     func waitOrderDone() {
@@ -95,28 +96,29 @@ class WaitViewController: UIViewController{
             // Define identifier
             //add notification code here
             
-            //Set the content of the notification
-            let content = UNMutableNotificationContent()
-            content.title = "Your Order is DONE!"
-            content.subtitle = "Go To The Store to Get your menu"
-            content.body = "Your food is done"
+            if #available(iOS 10.0, *) {
+                //Set the content of the notification
+                let content = UNMutableNotificationContent()
+                content.title = "Your Order is DONE!"
+                content.subtitle = "Go To The Store to Get your menu"
+                content.body = "Your food is done"
             
-            //Set the trigger of the notification -- here a timer.
-            let trigger = UNTimeIntervalNotificationTrigger(
-                timeInterval: 0.01,
-                repeats: false)
+                //Set the trigger of the notification -- here a timer.
+                let trigger = UNTimeIntervalNotificationTrigger(
+                    timeInterval: 0.01,
+                    repeats: false)
             
-            //Set the request for the notification from the above
-            let request = UNNotificationRequest(
-                identifier: "order done",
-                content: content,
-                trigger: trigger
-            )
+                //Set the request for the notification from the above
+                let request = UNNotificationRequest(
+                    identifier: "order done",
+                    content: content,
+                    trigger: trigger
+                )
             
-            //Add the notification to the currnet notification center
-            UNUserNotificationCenter.current().add(
-                request, withCompletionHandler: nil)
-            
+                //Add the notification to the currnet notification center
+                UNUserNotificationCenter.current().add(
+                    request, withCompletionHandler: nil)
+            }
         }
 
     }

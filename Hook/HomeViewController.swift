@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var nameLabel: UILabel!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
