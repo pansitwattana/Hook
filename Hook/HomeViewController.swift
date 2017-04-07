@@ -9,6 +9,9 @@ import SwiftyJSON
 import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate {
+    
+    
+    
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -35,7 +38,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     @IBAction func nearbyButtonClick(_ sender: Any) {
         self.searchType = SearchType.Location
-        self.performSegue(withIdentifier: "segueSearch", sender: self)
     }
     
     override func viewDidLoad() {

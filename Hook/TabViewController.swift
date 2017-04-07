@@ -56,7 +56,7 @@ class TabViewController: UIViewController {
         
         let previousIndex = selectedIndex
         
-        selectedIndex = sender.tag
+        showView(index: sender.tag)
         
         if previousIndex < buttons.count {
             
@@ -66,12 +66,14 @@ class TabViewController: UIViewController {
         
         sender.isSelected = true
         
-        showView(index: selectedIndex, previousIndex: previousIndex)
+        
         
         
     }
     
-    func showView(index: Int, previousIndex: Int) {
+    func showView(index: Int) {
+        
+        let previousIndex = selectedIndex
         
         selectedIndex = index
         
@@ -99,15 +101,29 @@ class TabViewController: UIViewController {
         case homeViewController:
             if let home = homeViewController as? HomeViewController {
                 home.actionButtonPress()
-                showView(index: 2, previousIndex: selectedIndex)
+                showView(index: 2)
             }
-        case searchStoreViewController:
-        if let search = searchStoreViewController as? SearchStoreViewController {
-            
-            }
+//        case searchStoreViewController:
+//            if let search = searchStoreViewController as? SearchStoreViewController {
+//                print("show advance search")
+//            }
             
         default:
             print("did Press in Tab is not work")
         }
+    }
+    
+    public func ActionToStore(type: SearchType) {
+        if let store = searchStoreViewController as? SearchStoreViewController {
+            switch type {
+            case .Location:
+                store.SearchByLocation()
+            case .Popular:
+                store.SearchStoreByText(text: "Popular")
+            default:
+                store.SearchStoreByText(text: "Recommend")
+            }
+        }
+        
     }
 }
