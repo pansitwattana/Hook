@@ -5,22 +5,30 @@
 //  Created by Pansit Wattana on 2/18/17.
 //  Copyright © 2017 Pansit Wattana. All rights reserved.
 //
-
+import SwiftyJSON
 import UIKit
 
 class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate {
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var recommendCollectoinView: UICollectionView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    @IBOutlet weak var fastestCollectionView: UICollectionView!
     var textToSearch = ""
     
     var searchType = SearchType.Text
     
     var recommendStores = NSMutableArray()
+    
+    var popularStores = NSMutableArray()
+    
+    var fastestStores = NSMutableArray()
+
     
     @IBAction func backButtonClick(_ sender: Any) {
         performSegue(withIdentifier: "logoutSegue", sender: self)
@@ -32,7 +40,17 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionVie
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        recommendStores.add(Store(name: "test"))
+
+        Request.Home({
+            (error, json) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+//                HookAPI.parseHome(json: json!, storesList: stores)
+                self.splitStoresList(json: json!)
+            }
+        })
         // Do any additional setup after loading the view.
     }
     
@@ -41,6 +59,30 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionVie
         textToSearch = ""        
     }
     
+    func splitStoresList(json: JSON) {
+        let jsonData = json
+        if jsonData != JSON.null {
+            for (type, storeListJson) : (String, JSON) in jsonData {
+                let stores = NSMutableArray()
+                print(type + " is loading")
+                HookAPI.parseStores(json: storeListJson, stores: stores)
+                switch type {
+                case "Popular":
+                    popularStores = stores
+                    popularCollectionView.reloadData()
+                case "Recommend":
+                    recommendStores = stores
+                    recommendCollectoinView.reloadData()
+                case "Fast":
+                    fastestStores = stores
+                    fastestCollectionView.reloadData()
+                default:
+                    print("There is no \(type)")
+                }
+            }
+        }
+    }
+        
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let keyword = searchBar.text! as String? {
             textToSearch = keyword
@@ -87,21 +129,62 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommendStores.count
+        switch collectionView {
+        case popularCollectionView:
+            return popularStores.count
+        case recommendCollectoinView:
+            return recommendStores.count
+        case fastestCollectionView:
+            return fastestStores.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell",
-                                                      for: indexPath) as! StoreCollectionViewCell
         
-        print(indexPath)
-        if indexPath.row < recommendStores.count {
-            if let store = recommendStores[indexPath.row] as? Store {
-                
+        switch collectionView {
+        case popularCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "popularCell",
+                                                          for: indexPath) as! StoreCollectionViewCell
+            
+            print(indexPath)
+            if indexPath.row < popularStores.count {
+                if let store = popularStores[indexPath.row] as? Store {
+                    cell.storeName.text = store.name
+                }
             }
+            print("load popular")
+            return cell
+            
+        case recommendCollectoinView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell",
+                                                          for: indexPath) as! StoreCollectionViewCell
+            
+            print(indexPath)
+            if indexPath.row < recommendStores.count {
+                if let store = recommendStores[indexPath.row] as? Store {
+                    cell.storeName.text = store.name
+                }
+            }
+            print("load recommend")
+            return cell
+        case fastestCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fastestCell",
+                                                          for: indexPath) as! StoreCollectionViewCell
+            
+            print(indexPath)
+            if indexPath.row < fastestStores.count {
+                if let store = fastestStores[indexPath.row] as? Store {
+                    cell.storeName.text = store.name
+                }
+            }
+            print("load fastest")
+            return cell
+        default:
+            print("error")
+            return collectionView.visibleCells[0]
         }
-        
-        return cell
     }
     
 }

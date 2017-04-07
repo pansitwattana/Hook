@@ -30,6 +30,19 @@ class HookAPI {
         }
     }
     
+    static func parseHome(json: JSON, storesList: NSMutableDictionary) {
+        storesList.removeAllObjects()
+        let jsonData = json
+        if jsonData != JSON.null {
+            for (type, storeListJson) : (String, JSON) in jsonData {
+                let stores = NSMutableArray()
+                print(type + " is loading")
+                parseStores(json: storeListJson, stores: stores)
+                storesList.addEntries(from: [type: stores])
+            }
+        }
+    }
+    
     static func parseMenus(json : JSON, menus: NSMutableArray) {
         menus.removeAllObjects()
         let jsonData = json

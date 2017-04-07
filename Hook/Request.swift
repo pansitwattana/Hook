@@ -12,6 +12,17 @@ import Alamofire
 
 class Request {
     
+    static func Home( _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+        Alamofire.request(HookAPI.URL + "homepage").validate().responseJSON { (response) in
+            do {
+                let json = JSON(data: response.data!)
+                let error = response.error
+                completion(error as NSError?, json)
+            }
+        }
+    }
+
+    
     static func Login(user: String, password: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
         
 //        Alamofire.request(HookAPI.URL + "/login/").validate().responseJSON { (response) in
@@ -70,13 +81,22 @@ class Request {
     }
     
     static func getSearchJson(keyword: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-//        let lowercaseKeyword = keyword.lowercased()
-        Alamofire.request(HookAPI.URL + "search/\(keyword)").validate().responseJSON { (response) in
-            do {
-                let searchJson = JSON(data: response.data!)
-                let error = response.error
-                completion(error as NSError?, searchJson)
+        
+        let url = HookAPI.URL + "search/\(keyword)"
+        
+        let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        if urlString != nil {
+            Alamofire.request(urlString!).validate().responseJSON { (response) in
+                do {
+                    let searchJson = JSON(data: response.data!)
+                    let error = response.error
+                    completion(error as NSError?, searchJson)
+                }
             }
+        }
+        else {
+            print(url + " is not valid")
         }
     }
     
