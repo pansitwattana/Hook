@@ -11,8 +11,9 @@ import SwiftyJSON
 import CoreLocation
 import NVActivityIndicatorView
 
-class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +30,17 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print("response to search")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        searchBar.text = ""
+        searchBar.becomeFirstResponder()
     }
 
     func CheckLocationServices() -> Bool {
@@ -62,6 +74,14 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         }
         else {
             print("error cant set coordinate")
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let keyword = searchBar.text! as String? {
+            view.endEditing(true)
+            textToSearch = keyword
+            SetSearchText(keyword: textToSearch)
         }
     }
     

@@ -8,18 +8,17 @@
 import SwiftyJSON
 import UIKit
 
-class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate {
+class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var recommendCollectoinView: UICollectionView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
     @IBOutlet weak var fastestCollectionView: UICollectionView!
-    var textToSearch = ""
     
     var searchType = SearchType.Text
     
@@ -29,34 +28,46 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionVie
     
     var fastestStores = NSMutableArray()
 
-    
-    @IBAction func backButtonClick(_ sender: Any) {
-        performSegue(withIdentifier: "logoutSegue", sender: self)
-    }
+//    
+//    @IBAction func backButtonClick(_ sender: Any) {
+//        performSegue(withIdentifier: "logoutSegue", sender: self)
+//    }
     
     @IBAction func nearbyButtonClick(_ sender: Any) {
         self.searchType = SearchType.Location
         self.performSegue(withIdentifier: "segueSearch", sender: self)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         Request.Home({
             (error, json) in
             if error != nil {
                 print(error!)
             }
             else {
-//                HookAPI.parseHome(json: json!, storesList: stores)
                 self.splitStoresList(json: json!)
             }
         })
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        textToSearch = ""        
+        super.viewDidAppear(animated)
+        
+        
+        print("home did appear called")
+//        textToSearch = ""        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("home called")
+    }
+    
+    func actionButtonPress() {
+        print("action pressed")
     }
     
     func splitStoresList(json: JSON) {
@@ -83,32 +94,32 @@ class HomeViewController: UIViewController, UISearchBarDelegate, UICollectionVie
         }
     }
         
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let keyword = searchBar.text! as String? {
-            textToSearch = keyword
-            self.searchType = SearchType.Text
-            self.performSegue(withIdentifier: "segueSearch", sender: self)
-        }
-    }
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        if let keyword = searchBar.text! as String? {
+//            textToSearch = keyword
+//            self.searchType = SearchType.Text
+//            self.performSegue(withIdentifier: "segueSearch", sender: self)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueSearch" {
-            if let destination = segue.destination as? SearchStoreViewController {
-                switch self.searchType {
-                case .Text:
-                    destination.SetSearchText(keyword: textToSearch)
-                case .Location:
-                    destination.SearchByLocation()
-                case .Popular:
-                    destination.SetSearchText(keyword: textToSearch)
-                }
-            }
-        }
-        else if segue.identifier == "logoutSegue" {
-            if let destination = segue.destination as? LoginViewController {
-                destination.logout()
-            }
-        }
+//        if segue.identifier == "segueSearch" {
+//            if let destination = segue.destination as? SearchStoreViewController {
+//                switch self.searchType {
+//                case .Text:
+//                    destination.SetSearchText(keyword: textToSearch)
+//                case .Location:
+//                    destination.SearchByLocation()
+//                case .Popular:
+//                    destination.SetSearchText(keyword: textToSearch)
+//                }
+//            }
+//        }
+//        else if segue.identifier == "logoutSegue" {
+//            if let destination = segue.destination as? LoginViewController {
+//                destination.logout()
+//            }
+//        }
     }
 }
 
