@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate {
     
-    
+    var tabViewController: UIViewController!
     
     @IBOutlet weak var nameLabel: UILabel!
 
@@ -19,8 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
 //    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var recommendCollectoinView: UICollectionView!
-    @IBOutlet weak var backButton: UIBarButtonItem!
-    
+
     @IBOutlet weak var fastestCollectionView: UICollectionView!
     
     var searchType = SearchType.Text
@@ -37,7 +36,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
 //    }
     
     @IBAction func nearbyButtonClick(_ sender: Any) {
-        self.searchType = SearchType.Location
+        print("nearbyClick")
+        if let tab = tabViewController as? TabViewController {
+            tab.ActionToStore(type: .Location)
+        }
+        else {
+            print("nearby clicked error")
+        }
     }
     
     override func viewDidLoad() {
@@ -51,6 +56,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
                 self.splitStoresList(json: json!)
             }
         })
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        tabViewController = storyboard.instantiateViewController(withIdentifier: "TabViewController")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,12 +74,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("home called")
     }
     
     func actionButtonPress() {
-        print("action pressed")
+        print("called search")
     }
     
     func splitStoresList(json: JSON) {
@@ -77,7 +85,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         if jsonData != JSON.null {
             for (type, storeListJson) : (String, JSON) in jsonData {
                 let stores = NSMutableArray()
-                print(type + " is loading")
                 HookAPI.parseStores(json: storeListJson, stores: stores)
                 switch type {
                 case "Popular":
@@ -160,42 +167,36 @@ extension HomeViewController: UICollectionViewDataSource {
         case popularCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "popularCell",
                                                           for: indexPath) as! StoreCollectionViewCell
-            
-            print(indexPath)
+
             if indexPath.row < popularStores.count {
                 if let store = popularStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
                 }
             }
-            print("load popular")
             return cell
             
         case recommendCollectoinView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell",
                                                           for: indexPath) as! StoreCollectionViewCell
-            
-            print(indexPath)
+
             if indexPath.row < recommendStores.count {
                 if let store = recommendStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
                 }
             }
-            print("load recommend")
             return cell
         case fastestCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fastestCell",
                                                           for: indexPath) as! StoreCollectionViewCell
-            
-            print(indexPath)
+
             if indexPath.row < fastestStores.count {
                 if let store = fastestStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
                 }
             }
-            print("load fastest")
             return cell
         default:
-            print("error")
+            print("error cannot set to collectionview (HomeViewController)")
             return collectionView.visibleCells[0]
         }
     }

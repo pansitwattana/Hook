@@ -402,9 +402,6 @@
                                                 <state key="normal" backgroundImage="main_favorite">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="nearbyButtonClick:" destination="xGe-6q-jvc" eventType="touchUpInside" id="f3d-gu-9Km"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLD-yS-TbW">
                                                 <rect key="frame" x="133" y="56" width="43" height="13"/>
@@ -419,9 +416,6 @@
                                                 <state key="normal" backgroundImage="main_history">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="nearbyButtonClick:" destination="xGe-6q-jvc" eventType="touchUpInside" id="Ef5-LD-Hdg"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-zC-3Mv">
                                                 <rect key="frame" x="237" y="57" width="42" height="13"/>
@@ -920,27 +914,18 @@
                         <outlet property="popularCollectionView" destination="8Xf-hn-Mcs" id="qDq-vk-9a5"/>
                         <outlet property="recommendCollectoinView" destination="er5-aU-Ieh" id="bpJ-5h-QAJ"/>
                         <outlet property="scrollView" destination="9JR-Nr-v2p" id="psr-w9-MY8"/>
-                        <outlet property="searchDisplayController" destination="BiE-xh-Egw" id="6FM-Xd-Gkl"/>
                         <segue destination="1wV-gZ-NgU" kind="show" identifier="segueSearch" id="jNS-23-mkm"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="logoutSegue" id="d8p-za-c9i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZT-oK-FhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="BiE-xh-Egw">
-                    <connections>
-                        <outlet property="delegate" destination="xGe-6q-jvc" id="KyB-Wk-0Z7"/>
-                        <outlet property="searchContentsController" destination="xGe-6q-jvc" id="axy-pa-m46"/>
-                        <outlet property="searchResultsDataSource" destination="xGe-6q-jvc" id="c6Y-2K-ZQ5"/>
-                        <outlet property="searchResultsDelegate" destination="xGe-6q-jvc" id="tuf-aY-6hU"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="294.375" y="-397.71126760563379"/>
         </scene>
         <!--Search Store View Controller-->
         <scene sceneID="TWU-5b-QK8">
             <objects>
-                <viewController storyboardIdentifier="SearchViewContrller" id="1wV-gZ-NgU" customClass="SearchStoreViewController" customModule="Hook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchStoreViewController" id="1wV-gZ-NgU" customClass="SearchStoreViewController" customModule="Hook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pxf-AL-O2u"/>
                         <viewControllerLayoutGuide type="bottom" id="PpF-r5-5Ah"/>
@@ -1093,11 +1078,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Profile" id="oLr-KG-NVY">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="JEx-je-Pkx">
-                                            <connections>
-                                                <action selector="backButtonClick:" destination="xGe-6q-jvc" id="MNz-D5-6XN"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="JEx-je-Pkx"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1716,6 +1697,6 @@
         <image name="status_online" width="74" height="74"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lYs-aO-yCc"/>
+        <segue reference="5N1-67-Sbu"/>
     </inferredMetricsTieBreakers>
 </document>

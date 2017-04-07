@@ -14,6 +14,7 @@ class TabViewController: UIViewController {
     
     var homeViewController: UIViewController!
     var notificationViewController: UIViewController!
+    
     var searchStoreViewController: UIViewController!
     
     
@@ -37,7 +38,9 @@ class TabViewController: UIViewController {
         
         notificationViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         
-        searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewContrller")
+        searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
+        
+        print("Load Tab View \(searchStoreViewController.description)")
         
         viewControllers = [homeViewController, notificationViewController, searchStoreViewController]
         
@@ -114,7 +117,10 @@ class TabViewController: UIViewController {
     }
     
     public func ActionToStore(type: SearchType) {
-        if let store = searchStoreViewController as? SearchStoreViewController {
+        print("Action To Store")
+        
+//        let store = searchStoreViewController as! SearchStoreViewController
+        if let store = searchStoreViewController  as? SearchStoreViewController{
             switch type {
             case .Location:
                 store.SearchByLocation()
@@ -123,7 +129,10 @@ class TabViewController: UIViewController {
             default:
                 store.SearchStoreByText(text: "Recommend")
             }
+            showView(index: 2)
         }
-        
+        else {
+            print("error")
+        }
     }
 }
