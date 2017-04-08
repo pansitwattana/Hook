@@ -17,6 +17,8 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var tabViewController: TabViewController!
+    
     var locationManager: CLLocationManager = CLLocationManager()
     var userLocation:(Double, Double)!
     
@@ -27,6 +29,10 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     var storeCount = 0
     
     var textToSearch = ""
+    
+    public func setMain(tabView: TabViewController) {
+        self.tabViewController = tabView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,10 +147,6 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
     }
-    
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.storeCount
@@ -190,18 +192,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         index = indexPath.row
-        print("Start perform")
-//        self.performSegue(withIdentifier: "segueOrder", sender: self)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let store = self.stores[self.index] as? Store {
-//            print("Selected \(store.name)")
-//            if segue.identifier == "segueOrder" {
-//                if let destination = segue.destination as? MenuOrderViewController{
-//                    destination.SetStore(store: store)
-//                }
-//            }
-//        }
+        if let store = self.stores[index] as? Store {
+            tabViewController.ActionToMenuOrder(store: store)
+        }
+        else {
+            print("did Select Store Error")
+        }
     }
 }

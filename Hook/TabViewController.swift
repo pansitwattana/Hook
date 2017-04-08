@@ -13,14 +13,20 @@ class TabViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton!
     
     var homeViewController: UIViewController!
-    var notificationViewController: UIViewController!
+    var loginViewController: UIViewController!
     
     var searchStoreViewController: UIViewController!
     var menuOrderViewController: UIViewController!
+    var summaryViewController: UIViewController!
+    var waitViewController: UIViewController!
     
     var viewControllers: [UIViewController]!
     
     var selectedIndex: Int = 0
+    
+    var previousIndex: Int = -1
+    
+    var isOrdering = false
     
     @IBOutlet weak var contentView: UIView!
     
@@ -40,18 +46,37 @@ class TabViewController: UIViewController {
             homeView.setMain(tabView: self)
         }
         else {
-            print("error")
+            print("set main in home view error")
         }
         
-        notificationViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        
+        if let loginView = loginViewController as? LoginViewController {
+            loginView.setMain(tabView: self)
+        }
         
         searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
         
+        if let searchStore = searchStoreViewController as? SearchStoreViewController {
+            searchStore.setMain(tabView: self)
+        }
+        else {
+            print("set main in search store error")
+        }
+        
         menuOrderViewController = storyboard.instantiateViewController(withIdentifier: "MenuOrderViewController")
+        
+        summaryViewController = storyboard.instantiateViewController(withIdentifier: "SummaryViewController")
+        
+        if let summary = summaryViewController as? SummaryViewController {
+            summary.setMain(tabView: self)
+        }
+        
+        waitViewController = storyboard.instantiateViewController(withIdentifier: "WaitViewController")
         
         print("Load Tab View \(searchStoreViewController.description)")
         
-        viewControllers = [homeViewController, notificationViewController, searchStoreViewController, menuOrderViewController]
+        viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController]
         
         buttons[selectedIndex].isSelected = true
         
@@ -66,7 +91,7 @@ class TabViewController: UIViewController {
     
     @IBAction func didPressTab(_ sender: UIButton) {
         
-        let previousIndex = selectedIndex
+        self.previousIndex = selectedIndex
         
         showView(index: sender.tag)
         
@@ -85,7 +110,7 @@ class TabViewController: UIViewController {
     
     func showView(index: Int) {
         
-        let previousIndex = selectedIndex
+        self.previousIndex = selectedIndex
         
         selectedIndex = index
         
@@ -111,17 +136,52 @@ class TabViewController: UIViewController {
     @IBAction func didPressAction(_ sender: UIButton) {
         switch viewControllers[selectedIndex] {
         case homeViewController:
-            if let home = homeViewController as? HomeViewController {
-                home.actionButtonPress()
-                showView(index: 2)
+            if !isOrdering {
+                if let home = homeViewController as? HomeViewController {
+                    home.actionButtonPress()
+                    showView(index: 2)
+                }
             }
-//        case searchStoreViewController:
-//            if let search = searchStoreViewController as? SearchStoreViewController {
-//                print("show advance search")
-//            }
-            
+            else {
+                showView(index: 5)
+            }
+        case searchStoreViewController:
+            if let search = searchStoreViewController as? SearchStoreViewController {
+                print("show advance search")
+            }
+        case menuOrderViewController:
+            if let menuOrder = menuOrderViewController as? MenuOrderViewController {
+                if let summary = summaryViewController as? SummaryViewController {
+                    summary.SetStore(store: menuOrder.store)
+                    summary.SetOrder(order: menuOrder.order)
+                    showView(index: 4)
+                }
+                else {
+                    print("Cant Get Summary View Controlle")
+                }
+            }
+        case summaryViewController:
+            if let summary = summaryViewController as? SummaryViewController {
+                summary.submit(sender)
+            }
+        case waitViewController:
+            if let waitView = waitViewController as? WaitViewController {
+                if waitView.isDone {
+                    showView(index: 0)
+                    self.isOrdering = false
+                }
+            }   
         default:
             print("did Press in Tab is not work")
+        }
+    }
+    
+    public func ActionLogin () {
+        if previousIndex >= 0 {
+            showView(index: previousIndex)
+        }
+        else {
+            showView(index: 0)
         }
     }
     
@@ -151,6 +211,14 @@ class TabViewController: UIViewController {
         }
         else {
             print("action to menu order error")
+        }
+    }
+    
+    public func ActionToWaitView(order: Order) {
+        if let waitView = waitViewController as? WaitViewController {
+            waitView.SetOrder(order: order)
+            self.isOrdering = true
+            showView(index: 5)
         }
     }
 }

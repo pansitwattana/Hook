@@ -17,7 +17,9 @@ class User {
     var id: String = "HSjRqk2ClfbaKpQSGzpUgiI1gV52"
     var email: String = "unknown@hook.com"
     var lastName: String = "Unknown"
-    var type: String = "Guest"
+    var type: Int = -1
+    
+    
     
     init() {
         self.name = "Guest"
@@ -52,7 +54,7 @@ class User {
                     print ("Cant parse lastname")
                 }
                 
-                if let type = json["Type"].string {
+                if let type = json["Type"].int {
                     self.type = type
                 }
                 else {
@@ -62,5 +64,9 @@ class User {
         else {
             print("JSON can't parse")
         }
+    }
+    
+    public func isLogin() -> Bool {
+        return name != "Guest" && email != "unknown@hook.com"
     }
 }

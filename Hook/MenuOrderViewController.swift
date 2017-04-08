@@ -48,18 +48,12 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         self.order.setUser(customerUser: User.current, storeId: store.id)
     }
 
-    @IBAction func orderSubmit(_ sender: Any) {
-        if order.menus.count > 0 {
-            performSegue(withIdentifier: "orderSegue", sender: self)
-        }
-    }
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         print("Start loading Menu from \(store.name)")
         Request.getMenuJson(store: store.name, {
             (error, json) in

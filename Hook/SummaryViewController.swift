@@ -14,6 +14,8 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var totalLabel: UILabel!
     
+    var tabView: TabViewController!
+    
     var order = Order()
     
     var store = Store(name: "-")
@@ -30,21 +32,30 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    public func setMain(tabView: TabViewController) {
+        self.tabView = tabView
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         totalLabel.text = "Total " + String(order.GetSumPrice())  + " Baht"
         tableView.reloadData()
         // Do any additional setup after loading the view.
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    @IBAction func submit(_ sender: Any) {
+    @IBAction func submit(_ sender: UIButton) {
         if (!checkSubmit) {
-            if (order.customerId != "" || order.customerId != "Guest") {
+            if (User.current.isLogin()) {
                 checkSubmit = true
                 print("Submit Order \(order.GetParam())")
                 Request.postOrderJson(order: order.GetParam(), {
@@ -55,7 +66,8 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     else {
                         print(queueJson!)
                         self.order.SetQueue(json: queueJson!)
-                        self.performSegue(withIdentifier: "summarySegue", sender: self)
+                        self.tabView.ActionToWaitView(order: self.order)
+//                        self.performSegue(withIdentifier: "summarySegue", sender: self)
                     }
                     self.checkSubmit = false
                 })
@@ -73,10 +85,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return order.menus.count
     }

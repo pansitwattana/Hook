@@ -17,8 +17,7 @@ class WaitViewController: UIViewController{
     var timer = Timer()
     
     var checkOrderSubmit = false
-    
-    @IBOutlet weak var submitButton: UIButton!
+
     var hookImageNameSet = [#imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_right"), #imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_left")]
 
     var okImage = #imageLiteral(resourceName: "btn_ok")
@@ -26,6 +25,8 @@ class WaitViewController: UIViewController{
     var index = 0
     
     var isDone = false
+    
+    var alreadySetAnimated = false
     
     @IBOutlet weak var waitLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -39,17 +40,23 @@ class WaitViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(WaitViewController.animate), userInfo: nil, repeats: true)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !alreadySetAnimated {
+            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(WaitViewController.animate), userInfo: nil, repeats: true)
+            alreadySetAnimated = true
+        }
+        
         // Do any additional setup after loading the view.
         
         updateQueue(order: self.order)
-        
         waitOrderDone()
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
                 (granted,error) in
-                    self.isGrantedNotificationAccess = granted
-            
+                self.isGrantedNotificationAccess = granted
                 }
             )
         }
@@ -86,7 +93,6 @@ class WaitViewController: UIViewController{
         isDone = true
         waitLabel.text = "Your order is now complete"
         timeLabel.text = ""
-        submitButton.setImage(okImage.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
     func pushNotification() {

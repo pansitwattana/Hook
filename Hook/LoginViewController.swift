@@ -19,21 +19,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     var isLoginClick = false
     
+    var tabViewController: TabViewController!
     
     
     @IBOutlet weak var login: UIButton!
-    @IBAction func submit(_ sender: Any) {
-        let user = userLabel.text!
-        if user == "jjinwinw" {
-            performSegue(withIdentifier: "loginSegue", sender: self)
-        }
-        else {
-            loginRequest()
-        }
-        
+    
+    public func setMain(tabView: TabViewController) {
+        self.tabViewController = tabView
     }
     
-    @IBAction func login(_ sender: Any) {
+    @IBAction func submit(_ sender: Any) {
+        loginRequest()
+    }
+    
+    @IBAction func login(_ sender: UIButton) {
         loginRequest()
     }
 
@@ -69,7 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                     print(userJson!)
                     if (User.current.name != "Guest") {
                         print("Log on as \(User.current.name)")
-                        self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        self.tabViewController.ActionLogin()
                     }
                     else {
                         print("Cannot login by user: \(user)")
