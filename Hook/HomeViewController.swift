@@ -10,13 +10,12 @@ import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate {
     
-    var tabViewController: UIViewController!
+    var tabViewController: TabViewController!
     
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
-//    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var recommendCollectoinView: UICollectionView!
 
@@ -37,12 +36,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     @IBAction func nearbyButtonClick(_ sender: Any) {
         print("nearbyClick")
-        if let tab = tabViewController as? TabViewController {
-            tab.ActionToStore(type: .Location)
-        }
-        else {
-            print("nearby clicked error")
-        }
+        
+        tabViewController.ActionToStore(type: .Location)
+    }
+    
+    public func setMain(tabView: TabViewController) {
+        self.tabViewController = tabView
     }
     
     override func viewDidLoad() {
@@ -56,11 +55,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
                 self.splitStoresList(json: json!)
             }
         })
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        tabViewController = storyboard.instantiateViewController(withIdentifier: "TabViewController")
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

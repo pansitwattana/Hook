@@ -36,6 +36,13 @@ class TabViewController: UIViewController {
         
         homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         
+        if let homeView = homeViewController as? HomeViewController {
+            homeView.setMain(tabView: self)
+        }
+        else {
+            print("error")
+        }
+        
         notificationViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         
         searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
@@ -118,7 +125,6 @@ class TabViewController: UIViewController {
     
     public func ActionToStore(type: SearchType) {
         print("Action To Store")
-        
 //        let store = searchStoreViewController as! SearchStoreViewController
         if let store = searchStoreViewController  as? SearchStoreViewController{
             switch type {
@@ -134,5 +140,7 @@ class TabViewController: UIViewController {
         else {
             print("error")
         }
+        
+        
     }
 }
