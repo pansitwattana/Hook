@@ -8,6 +8,17 @@
 
 import UIKit
 
+public enum Tab {
+    case home
+    case login
+    case search
+    case order
+    case summary
+    case wait
+    case register
+}
+
+
 class TabViewController: UIViewController {
 
     @IBOutlet weak var actionButton: UIButton!
@@ -19,6 +30,7 @@ class TabViewController: UIViewController {
     var menuOrderViewController: UIViewController!
     var summaryViewController: UIViewController!
     var waitViewController: UIViewController!
+    var registerViewController: UIViewController!
     
     var viewControllers: [UIViewController]!
     
@@ -28,14 +40,13 @@ class TabViewController: UIViewController {
     
     var isOrdering = false
     
+    var stackIndexes: [Int] = [0]
+    
     @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        buttons[0].setImage(#imageLiteral(resourceName: "main_home_clicked"), for: .selected)
-        
-        buttons[1].setImage(#imageLiteral(resourceName: "main_notification_clicked"), for: .selected)
+
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -53,6 +64,12 @@ class TabViewController: UIViewController {
         
         if let loginView = loginViewController as? LoginViewController {
             loginView.setMain(tabView: self)
+        }
+        
+        registerViewController = storyboard.instantiateViewController(withIdentifier: "RegisterViewController")
+        
+        if let registerView = registerViewController as? RegisterViewController {
+            registerView.setMain(tabView: self)
         }
         
         searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
@@ -76,7 +93,7 @@ class TabViewController: UIViewController {
         
         print("Load Tab View \(searchStoreViewController.description)")
         
-        viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController]
+        viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, registerViewController]
         
         buttons[selectedIndex].isSelected = true
         
@@ -97,40 +114,52 @@ class TabViewController: UIViewController {
         
         if previousIndex < buttons.count {
             
-            buttons[previousIndex].isSelected = false
+//            buttons[previousIndex].isSelected = false
             
         }
         
-        sender.isSelected = true
+//        sender.isSelected = true
         
         
         
         
     }
     
+    func showView(tab: Tab) {
+        let index = tab.hashValue
+        print("show view of \(String(describing: tab))")
+        showView(index: index)
+    }
+    
     func showView(index: Int) {
         
-        self.previousIndex = selectedIndex
-        
-        selectedIndex = index
-        
-        let previousVC = viewControllers[previousIndex]
-        
-        previousVC.willMove(toParentViewController: nil)
-        
-        previousVC.view.removeFromSuperview()
-        
-        previousVC.removeFromParentViewController()
-        
-        let vc = viewControllers[selectedIndex]
-        
-        addChildViewController(vc)
-        
-        vc.view.frame = contentView.bounds
-        
-        contentView.addSubview(vc.view)
-        
-        vc.didMove(toParentViewController: self)
+        if self.previousIndex != index {
+            
+            self.previousIndex = selectedIndex
+            
+            stackIndexes.append(previousIndex)
+            
+            selectedIndex = index
+            
+            let previousVC = viewControllers[previousIndex]
+            
+            previousVC.willMove(toParentViewController: nil)
+            
+            previousVC.view.removeFromSuperview()
+            
+            previousVC.removeFromParentViewController()
+            
+            let vc = viewControllers[selectedIndex]
+            
+            addChildViewController(vc)
+            
+            vc.view.frame = contentView.bounds
+            
+            contentView.addSubview(vc.view)
+            
+            vc.didMove(toParentViewController: self)
+            
+        }
     }
     
     @IBAction func didPressAction(_ sender: UIButton) {
@@ -176,13 +205,40 @@ class TabViewController: UIViewController {
         }
     }
     
-    public func ActionLogin () {
-        if previousIndex >= 0 {
+    @IBAction func backPressed(_ sender: UIBarButtonItem) {
+        BackAction()
+    }
+    public func BackAction() {
+        print(stackIndexes)
+        let index = stackIndexes.popLast()
+        if index != nil {
+            if selectedIndex != index {
+                showView(index: index!)
+                stackIndexes.removeLast()
+                print(stackIndexes)
+            }
+        }
+    }
+    
+    public func ActionFromLoginSubmit () {
+        if previousIndex >= 0 && previousIndex != 6{
             showView(index: previousIndex)
         }
         else {
             showView(index: 0)
         }
+    }
+    
+    public func ActionGoToLogin() {
+        showView(tab: .login)
+    }
+    
+    public func ActionFromRegisterSubmit () {
+        ActionGoToLogin()
+    }
+    
+    public func ActionGoToRegister() {
+        showView(tab: .register)
     }
     
     public func ActionToStore(type: SearchType) {
@@ -220,5 +276,39 @@ class TabViewController: UIViewController {
             self.isOrdering = true
             showView(index: 5)
         }
+    }
+    
+    public func ActionToHome() {
+        showView(tab: .home)
+    }
+
+    public func showAlert(title: String, text: String) {
+        let alert =  UIAlertController(title: title, message: text, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (action) in
+            
+            alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension UIViewController
+{
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)  
+    }
+    
+    func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
 }

@@ -6,11 +6,13 @@
 //  Copyright © 2017 Pansit Wattana. All rights reserved.
 //
 import Alamofire
+import SwiftyJSON
 import UIKit
 
 class RegisterViewController: UIViewController {
 
     var checkSubmit = false
+    var tabViewController: TabViewController!
     
     @IBOutlet weak var lastNameText: UITextField!
     @IBOutlet weak var userText: UITextField!
@@ -19,11 +21,15 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmPasswordText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.hideKeyboard()
     }
+    
+    public func setMain(tabView: TabViewController) {
+        self.tabViewController = tabView
+    }
+    
     @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.tabViewController.BackAction()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +45,7 @@ class RegisterViewController: UIViewController {
         let password = passwordText.text
         let confirmPass = confirmPasswordText.text
         
-        if email != nil && firstname != nil && password != nil && lastname != nil && confirmPass != nil {
+        if email != "" && firstname != "" && password != "" && lastname != "" && confirmPass != "" {
             if password == confirmPass {
                 let userParam: Parameters = [
                     "Email" : email!,
@@ -51,28 +57,30 @@ class RegisterViewController: UIViewController {
                 SubmitToServer(userParam: userParam)
             }
             else {
-                print("Password is not match")
+                self.tabViewController.showAlert(title: "Failed to register", text: "Passwords are not match")
                 //popup password is not match
             }
         }
         else {
-            print("Please fill al the blank")
-            //popup plz fill the blank
+            self.tabViewController.showAlert(title: "Failed to register", text: "Please fill the blanks")
         }
     }
     
     func SubmitToServer(userParam: Parameters) {
         if !checkSubmit {
+            checkSubmit = true
             Request.Register(userParam: userParam, {
                 (error, responseJson) in
-                self.checkSubmit = true
+                self.checkSubmit = false
                 if error != nil {
                     print(error!)
-                    //popup fail to connect server
+                    self.tabViewController.showAlert(title: "Connection Error", text: "code: 404")
                 }
                 else {
                     print(responseJson!)
-                    self.performSegue(withIdentifier: "registerSegue", sender: self)
+                    if self.validateRegister(json: responseJson!) {
+                        self.tabViewController.ActionFromRegisterSubmit()
+                    }
                 }
             })
         }
@@ -80,4 +88,22 @@ class RegisterViewController: UIViewController {
             //plz wait
         }
     }
+    
+    func validateRegister(json: JSON) -> Bool {
+        if let response = json["response"].string {
+            if response == "success" {
+                return true
+            }
+            else {
+                self.tabViewController.showAlert(title: "Failed to register", text: response)
+                return false
+            }
+        }
+        else {
+            print("cant parse json")
+            return false
+        }
+    }
 }
+
+

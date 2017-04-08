@@ -61,35 +61,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 self.hideLoadingProgress()
                 if (error != nil) {
                     print(error!)
-                    self.showAlert(title: "Connection Error", text: "Internet is unstable!")
+                    self.tabViewController.showAlert(title: "Connection Error", text: "Internet is unstable!")
                 }
                 else {
                     User.current = User(userJson: userJson!)
                     print(userJson!)
                     if (User.current.name != "Guest") {
                         print("Log on as \(User.current.name)")
-                        self.tabViewController.ActionLogin()
+                        self.tabViewController.ActionFromLoginSubmit()
                     }
                     else {
                         print("Cannot login by user: \(user)")
-                        self.showAlert(title: "Login Error", text: "User is incorrect")
+                        self.tabViewController.showAlert(title: "Login Error", text: "User is incorrect")
                     }
                 }
             })
         }
-    }
-    
-    func showAlert(title: String, text: String) {
-        let alert =  UIAlertController(title: title, message: text, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-            (action) in
-            
-            alert.dismiss(animated: true, completion: nil)
-            
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     func hideLoadingProgress() {
@@ -105,7 +92,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func signup(_ sender: Any) {
-        performSegue(withIdentifier: "registerSegue", sender: self)
+//        performSegue(withIdentifier: "registerSegue", sender: self)
+        self.tabViewController.ActionGoToRegister()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,19 +106,3 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
 }
 
-extension UIViewController
-{
-    func hideKeyboard()
-    {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(UIViewController.dismissKeyboard))
-        
-        view.addGestureRecognizer(tap)
-    }
-    
-    func dismissKeyboard()
-    {
-        view.endEditing(true)
-    }
-}

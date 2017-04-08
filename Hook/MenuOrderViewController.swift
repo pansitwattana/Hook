@@ -44,6 +44,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     //do not have user -> default customer id = 1
     func SetStore(store: Store) {
+        self.order = Order()
         self.store = store
         self.order.setUser(customerUser: User.current, storeId: store.id)
     }

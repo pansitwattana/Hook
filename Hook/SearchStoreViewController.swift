@@ -154,7 +154,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! StoreTableViewCell
-
+        
         if let store = stores[indexPath.row] as? Store {
             cell.name.text = store.name
             cell.distanceLabel.text = "< " + String(store.getDistance()) + " km"
@@ -170,6 +170,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             let url = URL(string: store.imgUrl)
             
             print("cell change \(store.name) \(indexPath.row)")
+            view.endEditing(true)
             if store.doneLoadImg {
                 cell.mainImage.image = store.imageView
             }

@@ -12,6 +12,8 @@ class WaitViewController: UIViewController{
 
     @IBOutlet weak var hookWaitImage: UIImageView!
     
+    var tabViewController: TabViewController!
+    
     var order = Order()
     
     var timer = Timer()
@@ -41,6 +43,10 @@ class WaitViewController: UIViewController{
         super.viewDidLoad()
         
         
+    }
+    
+    public func setMain(tabView: TabViewController) {
+        self.tabViewController = tabView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,9 +141,10 @@ class WaitViewController: UIViewController{
         timeLabel.text = "Estimate wait time \(order.time) minutes"
     }
     
-    @IBAction func cancelOrder(_ sender: Any) {
+    @IBAction func cancelOrder(_ sender: UIButton) {
         if (isDone) {
-            self.performSegue(withIdentifier: "finishSegue", sender: self)
+//            self.performSegue(withIdentifier: "finishSegue", sender: self)
+            self.tabViewController.ActionToHome()
         }
         else {
             if (!checkOrderSubmit) {
@@ -153,7 +160,9 @@ class WaitViewController: UIViewController{
                     }
                     else {
                         print(response!)
-                        self.performSegue(withIdentifier: "finishSegue", sender: self)
+//                        self.performSegue(withIdentifier: "finishSegue", sender: self)
+                        //popup
+                        self.tabViewController.ActionToHome()
                     }
                 })
             }

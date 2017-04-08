@@ -73,7 +73,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 })
             }
             else {
-                print("Please Login Before Sent Order")
+                self.tabView.showAlert(title: "Please Login", text: "You have to login before submit the order")
             }
         }
     }
