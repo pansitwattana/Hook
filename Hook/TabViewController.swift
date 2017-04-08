@@ -16,7 +16,7 @@ class TabViewController: UIViewController {
     var notificationViewController: UIViewController!
     
     var searchStoreViewController: UIViewController!
-    
+    var menuOrderViewController: UIViewController!
     
     var viewControllers: [UIViewController]!
     
@@ -47,9 +47,11 @@ class TabViewController: UIViewController {
         
         searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
         
+        menuOrderViewController = storyboard.instantiateViewController(withIdentifier: "MenuOrderViewController")
+        
         print("Load Tab View \(searchStoreViewController.description)")
         
-        viewControllers = [homeViewController, notificationViewController, searchStoreViewController]
+        viewControllers = [homeViewController, notificationViewController, searchStoreViewController, menuOrderViewController]
         
         buttons[selectedIndex].isSelected = true
         
@@ -140,7 +142,15 @@ class TabViewController: UIViewController {
         else {
             print("error")
         }
-        
-        
+    }
+    
+    public func ActionToMenuOrder(store: Store) {
+        if let menuOrderView = menuOrderViewController as? MenuOrderViewController {
+            menuOrderView.SetStore(store: store)
+            showView(index: 3)
+        }
+        else {
+            print("action to menu order error")
+        }
     }
 }

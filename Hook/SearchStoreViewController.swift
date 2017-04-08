@@ -191,17 +191,17 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         index = indexPath.row
         print("Start perform")
-        self.performSegue(withIdentifier: "segueOrder", sender: self)
+//        self.performSegue(withIdentifier: "segueOrder", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let store = self.stores[self.index] as? Store {
-            print("Selected \(store.name)")
-            if segue.identifier == "segueOrder" {
-                if let destination = segue.destination as? MenuOrderViewController{
-                    destination.SetStore(store: store)
-                }
-            }
-        }
+//        if let store = self.stores[self.index] as? Store {
+//            print("Selected \(store.name)")
+//            if segue.identifier == "segueOrder" {
+//                if let destination = segue.destination as? MenuOrderViewController{
+//                    destination.SetStore(store: store)
+//                }
+//            }
+//        }
     }
 }

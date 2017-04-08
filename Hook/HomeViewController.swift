@@ -60,9 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
         print("home did appear called")
-//        textToSearch = ""        
     }
     
     
@@ -135,11 +133,24 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
-        print("selected \(index)")
-//        if let menu = menus[index] as? Menu {
-//            print(menu.name + " is selected")
-//            order.AddMenu(menu: menu)
-//        }
+        
+        switch collectionView
+        {
+        case popularCollectionView:
+            if let store = popularStores[index] as? Store {
+                tabViewController.ActionToMenuOrder(store: store)
+            }
+        case recommendCollectoinView:
+            if let store  = recommendStores[index] as? Store {
+                tabViewController.ActionToMenuOrder(store: store)
+            }
+        case fastestCollectionView:
+            if let store = fastestStores[index] as? Store {
+                tabViewController.ActionToMenuOrder(store: store)
+            }
+        default:
+            print("error on click collection view")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
