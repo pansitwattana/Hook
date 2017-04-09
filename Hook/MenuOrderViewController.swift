@@ -105,6 +105,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                 else {
                     let url = URL(string: menu.imgUrl)
                     print("loading : " + menu.imgUrl)
+                    cell.storeImg.image = #imageLiteral(resourceName: "logo_mini_hook")
                     DispatchQueue.global().async {
                         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {
@@ -146,13 +147,13 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tableView.reloadData()
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "orderSegue" {
-            if let destination = segue.destination as? SummaryViewController{
-                destination.SetOrder(order: self.order)
-                destination.SetStore(store: self.store)
-            }
-        }
-    }
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "orderSegue" {
+//            if let destination = segue.destination as? SummaryViewController{
+//                destination.SetOrder(order: self.order)
+//                destination.SetStore(store: self.store)
+//            }
+//        }
+//    }
 }

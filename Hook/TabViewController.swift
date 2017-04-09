@@ -34,13 +34,13 @@ class TabViewController: UIViewController {
     
     var viewControllers: [UIViewController]!
     
-    var selectedIndex: Int = 0
+    var selectedIndex: Int = -1
     
     var previousIndex: Int = -1
     
     var isOrdering = false
     
-    var stackIndexes: [Int] = [0]
+    var stackIndexes: [Int] = []
     
     @IBOutlet weak var contentView: UIView!
     
@@ -91,15 +91,9 @@ class TabViewController: UIViewController {
         
         waitViewController = storyboard.instantiateViewController(withIdentifier: "WaitViewController")
         
-        print("Load Tab View \(searchStoreViewController.description)")
-        
         viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, registerViewController]
         
-        buttons[selectedIndex].isSelected = true
-        
-        didPressTab(buttons[selectedIndex])
-        
-        
+        showView(tab: .home)
         
         // Do any additional setup after loading the view.
     }
@@ -133,13 +127,17 @@ class TabViewController: UIViewController {
     
     func showView(index: Int) {
         
-        if self.previousIndex != index {
+        if selectedIndex != index {
             
             self.previousIndex = selectedIndex
             
             stackIndexes.append(previousIndex)
             
             selectedIndex = index
+            
+            if previousIndex < 0 {
+                previousIndex = 0
+            }
             
             let previousVC = viewControllers[previousIndex]
             
@@ -148,6 +146,10 @@ class TabViewController: UIViewController {
             previousVC.view.removeFromSuperview()
             
             previousVC.removeFromParentViewController()
+            
+            if selectedIndex < 0 {
+                selectedIndex = 0
+            }
             
             let vc = viewControllers[selectedIndex]
             
@@ -158,7 +160,6 @@ class TabViewController: UIViewController {
             contentView.addSubview(vc.view)
             
             vc.didMove(toParentViewController: self)
-            
         }
     }
     
@@ -210,12 +211,12 @@ class TabViewController: UIViewController {
     }
     public func BackAction() {
         print(stackIndexes)
-        let index = stackIndexes.popLast()
-        if index != nil {
-            if selectedIndex != index {
+        if stackIndexes.count > 0 {
+            let index = stackIndexes.popLast()
+            if index != nil && selectedIndex != index {
                 showView(index: index!)
                 stackIndexes.removeLast()
-                print(stackIndexes)
+                print(index!)
             }
         }
     }
