@@ -57,6 +57,10 @@ class Order {
         }
     }
     
+    func containMenu() -> Bool {
+        return menus.count > 0
+    }
+    
     func RemoveMenu(menu: Menu) {
         
         let index = self.menus.index{ item in

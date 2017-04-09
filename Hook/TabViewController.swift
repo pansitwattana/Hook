@@ -199,13 +199,18 @@ class TabViewController: UIViewController {
             }
         case menuOrderViewController:
             if let menuOrder = menuOrderViewController as? MenuOrderViewController {
-                if let summary = summaryViewController as? SummaryViewController {
-                    summary.SetStore(store: menuOrder.store)
-                    summary.SetOrder(order: menuOrder.order)
-                    showView(index: 4)
+                if menuOrder.order.containMenu() {
+                    if let summary = summaryViewController as? SummaryViewController {
+                        summary.SetStore(store: menuOrder.store)
+                        summary.SetOrder(order: menuOrder.order)
+                        showView(index: 4)
+                    }
+                    else {
+                        print("Cant Get Summary View Controlle")
+                    }
                 }
                 else {
-                    print("Cant Get Summary View Controlle")
+                    showAlert(title: "Can not order!", text: "You did not select a menu")
                 }
             }
         case summaryViewController:
@@ -229,13 +234,11 @@ class TabViewController: UIViewController {
     }
     
     public func BackAction() {
-        print(stackIndexes)
         if stackIndexes.count > 0 {
             let index = stackIndexes.popLast()
             if index != nil && selectedIndex != index {
                 showView(index: index!)
                 stackIndexes.removeLast()
-                print(index!)
             }
         }
     }
