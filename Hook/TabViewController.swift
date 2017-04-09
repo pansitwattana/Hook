@@ -16,6 +16,7 @@ public enum Tab {
     case summary
     case wait
     case register
+    case profile
 }
 
 
@@ -31,6 +32,8 @@ class TabViewController: UIViewController {
     var summaryViewController: UIViewController!
     var waitViewController: UIViewController!
     var registerViewController: UIViewController!
+    var profileViewController: UIViewController!
+    
     
     var viewControllers: [UIViewController]!
     
@@ -46,7 +49,7 @@ class TabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        User.current = User()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -91,7 +94,9 @@ class TabViewController: UIViewController {
         
         waitViewController = storyboard.instantiateViewController(withIdentifier: "WaitViewController")
         
-        viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, registerViewController]
+        profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        
+        viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, registerViewController, profileViewController]
         
         showView(tab: .home)
         
@@ -104,7 +109,20 @@ class TabViewController: UIViewController {
         
         self.previousIndex = selectedIndex
         
-        showView(index: sender.tag)
+        
+        if sender.tag == 1 {
+            print(User.current.name)
+            if (User.current.isLogin()) {
+                showView(tab: .profile)
+            }
+            else {
+                showView(index: sender.tag)
+            }
+        }
+        else {
+            showView(index: sender.tag)
+        }
+        
         
         if previousIndex < buttons.count {
             

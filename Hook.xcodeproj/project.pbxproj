@@ -10,6 +10,7 @@
 		E601D5541E7198E400B906CD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601D5531E7198E400B906CD /* Store.swift */; };
 		E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */; };
 		E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */; };
+		E606D94F1E9A2FF900147CC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */; };
 		E607C2961E93D99600FD4454 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607C2951E93D99600FD4454 /* RegisterViewController.swift */; };
 		E62B87291E972C5E002E7003 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62B87281E972C5E002E7003 /* TabViewController.swift */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
@@ -81,6 +82,7 @@
 		E602B1A51E7E93B100F084BC /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderTableViewCell.swift; sourceTree = "<group>"; };
 		E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
+		E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E607C2951E93D99600FD4454 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bangnampueng.ttf; sourceTree = "<group>"; };
 		E62B87281E972C5E002E7003 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				E62B87281E972C5E002E7003 /* TabViewController.swift */,
 				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
+				E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */,
 				E607C2951E93D99600FD4454 /* RegisterViewController.swift */,
 				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
 				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
@@ -358,6 +361,7 @@
 				E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */,
 				E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */,
 				E6B5E4701E76619A0048F75B /* HookAPI.swift in Sources */,
+				E606D94F1E9A2FF900147CC2 /* ProfileViewController.swift in Sources */,
 				E6ADE7801E85531700389E5D /* SummaryViewController.swift in Sources */,
 				E6F234B61E8CD19D00396261 /* StoreTableViewCell.swift in Sources */,
 			);

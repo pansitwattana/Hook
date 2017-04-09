@@ -69,4 +69,8 @@ class User {
     public func isLogin() -> Bool {
         return name != "Guest" && email != "unknown@hook.com"
     }
+    
+    public func getFullName() -> String {
+        return "\(name) \(lastName)"
+    }
 }
