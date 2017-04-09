@@ -1,19 +1,10 @@
 {
+  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
   "commitish" : "1.3.2",
   "iOS" : [
     {
-      "hash" : "3b0681a8b11b8ed4194f6d0665b12b97eadaae3a4f89ee5d65e809f8362acac3",
+      "hash" : "d1c7c475319332467e15bd2cc12805aa85e0e191c865b88ade2e3ef45116b789",
       "name" : "TextFieldEffects"
     }
-  ],
-  "xcodeVersion" : "Xcode 8.2\nBuild version 8C38",
-  "watchOS" : [
-
-  ],
-  "tvOS" : [
-
-  ],
-  "Mac" : [
-
   ]
 }

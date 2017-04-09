@@ -155,6 +155,8 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! StoreTableViewCell
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         if let store = stores[indexPath.row] as? Store {
             cell.name.text = store.name
             cell.distanceLabel.text = "< " + String(store.getDistance()) + " km"
@@ -175,6 +177,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.mainImage.image = store.imageView
             }
             else {
+                cell.mainImage.image = #imageLiteral(resourceName: "logo_hook")
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {

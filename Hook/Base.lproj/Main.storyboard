@@ -1378,7 +1378,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYs-L9-EDg">
-                                                    <rect key="frame" x="285" y="33" width="19" height="35"/>
+                                                    <rect key="frame" x="281.5" y="33" width="22.5" height="35"/>
                                                     <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="40"/>
                                                     <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
