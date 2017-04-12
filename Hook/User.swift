@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 class User {
     static var current = User(name: "Guest")
@@ -36,6 +37,10 @@ class User {
             print("Login as Guest")
             User.current = User()
         }
+    }
+    
+    init(params: Parameters) {
+        
     }
     
     init() {

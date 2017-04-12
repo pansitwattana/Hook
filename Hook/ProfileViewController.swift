@@ -23,9 +23,8 @@ class ProfileViewController: UIViewController {
         nameLabel.text = User.current.getFullName()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+        print("profile do action")
     }
-
+    
 }

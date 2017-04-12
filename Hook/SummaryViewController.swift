@@ -52,8 +52,8 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func submit(_ sender: UIButton) {
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+        print("summary do action")
         if (!checkSubmit) {
             if (User.current.isLogin()) {
                 checkSubmit = true

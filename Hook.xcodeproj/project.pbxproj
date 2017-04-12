@@ -37,7 +37,6 @@
 		E6F0C0E81E417ECE00C3B990 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F0C0E61E417ECE00C3B990 /* LaunchScreen.storyboard */; };
 		E6F0C0F81E4183BC00C3B990 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */; };
 		E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */; };
-		E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F0C0FF1E41847800C3B990 /* MainViewController.swift */; };
 		E6F234B61E8CD19D00396261 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */; };
 		E6F234B81E8CD35500396261 /* SearchStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */; };
 		E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */; };
@@ -108,7 +107,6 @@
 		E6F0C0E91E417ECE00C3B990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitViewController.swift; sourceTree = "<group>"; };
-		E6F0C0FF1E41847800C3B990 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStoreViewController.swift; sourceTree = "<group>"; };
 		E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -156,18 +154,18 @@
 			isa = PBXGroup;
 			children = (
 				E62B87281E972C5E002E7003 /* TabViewController.swift */,
-				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
-				E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */,
-				E607C2951E93D99600FD4454 /* RegisterViewController.swift */,
 				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
-				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
-				E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */,
+				E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */,
 				E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */,
 				E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */,
 				E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */,
+				E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */,
+				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
 				E6ADE77F1E85531700389E5D /* SummaryViewController.swift */,
 				E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */,
 				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,
+				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
+				E607C2951E93D99600FD4454 /* RegisterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -217,7 +215,6 @@
 				E6262FF51E8362020022EB25 /* Controller */,
 				E6262FF41E8361F80022EB25 /* Model */,
 				E6F0C0DD1E417ECE00C3B990 /* AppDelegate.swift */,
-				E6F0C0FF1E41847800C3B990 /* MainViewController.swift */,
 				E6F0C0E11E417ECE00C3B990 /* Main.storyboard */,
 				E6F0C0E61E417ECE00C3B990 /* LaunchScreen.storyboard */,
 				E6F0C0E41E417ECE00C3B990 /* Assets.xcassets */,
@@ -360,7 +357,6 @@
 				E65E01EA1E7FDADD0045562F /* Request.swift in Sources */,
 				E607C2961E93D99600FD4454 /* RegisterViewController.swift in Sources */,
 				E6FDE6DB1E822B4C00B55059 /* Order.swift in Sources */,
-				E6F0C1001E41847800C3B990 /* MainViewController.swift in Sources */,
 				E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */,
 				E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */,
 				E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */,

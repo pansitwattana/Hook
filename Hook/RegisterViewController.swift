@@ -69,8 +69,9 @@ class RegisterViewController: UIViewController {
                 else {
                     print(responseJson!)
                     if self.validateRegister(json: responseJson!) {
-//                        self.tabViewController.ActionFromRegisterSubmit()
-                        self.performSegue(withIdentifier: "homeSegue", sender: self)
+                        User.current = User(params: userParam)
+                        self.dismiss(animated: true, completion: nil)
+                        //self.performSegue(withIdentifier: "homeSegue", sender: self)
                     }
                 }
             })

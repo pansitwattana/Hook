@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
     @IBOutlet weak var recommendCollectoinView: UICollectionView!
@@ -28,18 +29,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     var popularStores = NSMutableArray()
     
     var fastestStores = NSMutableArray()
-
-//    
-//    @IBAction func backButtonClick(_ sender: Any) {
-//        performSegue(withIdentifier: "logoutSegue", sender: self)
-//    }
     
     @IBAction func nearbyButtonClick(_ sender: Any) {
         print("nearbyClick")
         
         tabViewController.ActionToStore(type: .Location)
     }
-    
+
     public func setMain(tabView: TabViewController) {
         self.tabViewController = tabView
     }
@@ -63,15 +59,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         print("home did appear called")
     }
     
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+        if !User.current.isOrdering {
+            self.tabViewController.showView(tab: .search)
+        }
+        else {
+            self.tabViewController.showView(tab: .wait)
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    func actionButtonPress() {
-        print("called search")
-    }
-    
+
     func splitStoresList(json: JSON) {
         let jsonData = json
         if jsonData != JSON.null {

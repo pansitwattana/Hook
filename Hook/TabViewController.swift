@@ -97,9 +97,9 @@ class TabViewController: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     
     func profileTabPressed() {
-        actionButton.setBackgroundImage(imageButtons[0], for: .normal)
         print(User.current.name)
         if (User.current.isLogin()) {
+            actionButton.setBackgroundImage(imageButtons[0], for: .normal)
             showView(tab: .profile)
         }
         else {
@@ -127,35 +127,28 @@ class TabViewController: UIViewController {
     @IBAction func didPressAction(_ sender: UIButton) {
         switch viewControllers[selectedIndex] {
         case homeViewController:
-            if !User.current.isOrdering {
-                if let home = homeViewController as? HomeViewController {
-                    home.actionButtonPress()
-                    showView(tab: .search)
-                }
+            if let home = homeViewController as? HomeViewController {
+                home.actionButtonPressed(sender)
             }
-            else {
-                showView(tab: .wait)
+        case profileViewController:
+            if let profile = profileViewController as? ProfileViewController {
+                profile.actionButtonPressed(sender)
             }
         case searchStoreViewController:
             if let search = searchStoreViewController as? SearchStoreViewController {
-                print("show advance search")
+                search.actionButtonPressed(sender)
             }
         case menuOrderViewController:
             if let menuOrder = menuOrderViewController as? MenuOrderViewController {
-                menuOrder.submit(sender)
+                menuOrder.actionButtonPressed(sender)
             }
         case summaryViewController:
             if let summary = summaryViewController as? SummaryViewController {
-                summary.submit(sender)
+                summary.actionButtonPressed(sender)
             }
         case waitViewController:
             if let waitView = waitViewController as? WaitViewController {
-                if waitView.checkDone() {
-                    showView(tab: .home)
-                }
-                else {
-                    print("Toggle Hook Button")
-                }
+                waitView.actionButtonPressed(sender)
             }   
         default:
             print("did Press in Tab is not work")

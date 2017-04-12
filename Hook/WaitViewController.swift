@@ -49,6 +49,16 @@ class WaitViewController: UIViewController{
         self.tabViewController = tabView
     }
     
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+        print("Wait do action")
+        if checkDone() {
+            tabViewController.showView(tab: .home)
+        }
+        else {
+            print("Toggle Hook Button")
+        }
+    }
+    
     func startAnimate() {
         if timer == nil {
             timer = Timer.scheduledTimer(

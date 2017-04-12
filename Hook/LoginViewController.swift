@@ -108,6 +108,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("will did appear")
+        if User.current.isLogin() {
+            dismiss(animated: true, completion: nil)
+        }
+        else {
+            print("no user login")
+        }
+        
+    }
+    
     @IBAction func backPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

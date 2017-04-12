@@ -154,7 +154,8 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-     @IBAction func submit(_ sender: UIButton) {
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+        print("menu order do action")
         if User.current.isLogin() {
             if order.containMenu() {
                 tabViewController.ActionFromOrderSubmit(store: store,order: order)
@@ -167,13 +168,4 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             tabViewController.showAlert(title: "Please Login", text: "You have to login before submit the order")
         }
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "orderSegue" {
-//            if let destination = segue.destination as? SummaryViewController{
-//                destination.SetOrder(order: self.order)
-//                destination.SetStore(store: self.store)
-//            }
-//        }
-//    }
 }

@@ -48,7 +48,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         searchBar.text = ""
         searchBar.becomeFirstResponder()
     }
-
+    
+    @IBAction func actionButtonPressed(_ sender: UIButton) {
+        print("Search do action")
+    }
+    
     func CheckLocationServices() -> Bool {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
