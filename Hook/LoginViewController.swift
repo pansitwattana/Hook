@@ -19,16 +19,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var passLabel: UITextField!
     
     var isLoginClick = false
-    
-    var tabViewController: TabViewController!
-    
-    
+
     @IBOutlet weak var login: UIButton!
-    
-    public func setMain(tabView: TabViewController) {
-        self.tabViewController = tabView
-    }
-    
+
     @IBAction func submit(_ sender: Any) {
         loginRequest()
     }
@@ -62,12 +55,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                 self.hideLoadingProgress()
                 if (error != nil) {
                     print(error!)
-                    self.tabViewController.showAlert(title: "Connection Error", text: "Internet is unstable!")
+                    self.showAlert(title: "Connection Error", text: "Internet is unstable!")
                 }
                 else {
                     if self.isUserValidate(json: userJson!) {
                         User.Save()
-                        self.tabViewController.ActionFromLoginSubmit()
+                        self.dismiss(animated: true, completion: nil)
+                        print("go to home")
                     }
                     else {
                         self.showError(json: userJson!)
@@ -89,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func showError(json: JSON?) {
-        self.tabViewController.showAlert(title: "Login Error", text: "User is incorrect")
+        self.showAlert(title: "Login Error", text: "User is incorrect")
     }
     
     func hideLoadingProgress() {
@@ -99,14 +93,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     func showLoadingProgress() {
         loadingView.startAnimating()
     }
-    
-    func logout() {
-        User.current = User()
-    }
-    
+
     @IBAction func signup(_ sender: Any) {
-//        performSegue(withIdentifier: "registerSegue", sender: self)
-        self.tabViewController.ActionGoToRegister()
+        performSegue(withIdentifier: "registerSegue", sender: self)
+//        self.tabViewController.ActionGoToRegister()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +108,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func backPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    public func showAlert(title: String, text: String) {
+        let alert =  UIAlertController(title: title, message: text, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (action) in
+            
+            alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 

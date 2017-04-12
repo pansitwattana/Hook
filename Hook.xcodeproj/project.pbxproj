@@ -12,6 +12,7 @@
 		E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */; };
 		E606D94F1E9A2FF900147CC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */; };
 		E607C2961E93D99600FD4454 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607C2951E93D99600FD4454 /* RegisterViewController.swift */; };
+		E60C45961E9E778300AF3610 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C45951E9E778300AF3610 /* Router.swift */; };
 		E62B87291E972C5E002E7003 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62B87281E972C5E002E7003 /* TabViewController.swift */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
@@ -84,6 +85,7 @@
 		E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E607C2951E93D99600FD4454 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E60C45951E9E778300AF3610 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bangnampueng.ttf; sourceTree = "<group>"; };
 		E62B87281E972C5E002E7003 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				E650C94D1E8100E9002CF5D7 /* Menu.swift */,
 				E6FDE6DA1E822B4C00B55059 /* Order.swift */,
 				E6ADE7811E8558BB00389E5D /* User.swift */,
+				E60C45951E9E778300AF3610 /* Router.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E60C45961E9E778300AF3610 /* Router.swift in Sources */,
 				E60327DF1E8807DD00991DE1 /* MenuOrderViewController.swift in Sources */,
 				E6F0C0F81E4183BC00C3B990 /* LoginViewController.swift in Sources */,
 				E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */,

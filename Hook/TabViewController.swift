@@ -10,13 +10,11 @@ import UIKit
 
 public enum Tab : Int {
     case home
-    case login
+    case profile
     case search
     case order
     case summary
     case wait
-    case register
-    case profile
 }
 
 
@@ -63,19 +61,7 @@ class TabViewController: UIViewController {
         else {
             print("set main in home view error")
         }
-        
-        loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        
-        if let loginView = loginViewController as? LoginViewController {
-            loginView.setMain(tabView: self)
-        }
-        
-        registerViewController = storyboard.instantiateViewController(withIdentifier: "RegisterViewController")
-        
-        if let registerView = registerViewController as? RegisterViewController {
-            registerView.setMain(tabView: self)
-        }
-        
+
         searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
         
         if let searchStore = searchStoreViewController as? SearchStoreViewController {
@@ -101,7 +87,7 @@ class TabViewController: UIViewController {
         
         profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
         
-        viewControllers = [homeViewController, loginViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, registerViewController, profileViewController]
+        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController]
         
         showView(tab: .home)
         
@@ -110,96 +96,45 @@ class TabViewController: UIViewController {
     
     @IBOutlet var buttons: [UIButton]!
     
-    @IBAction func didPressTab(_ sender: UIButton) {
-        
-        self.previousIndex = selectedIndex
-        
-        
-        if sender.tag == 1 {
-            actionButton.setBackgroundImage(imageButtons[0], for: .normal)
-            print(User.current.name)
-            if (User.current.isLogin()) {
-                showView(tab: .profile)
-            }
-            else {
-                showView(index: sender.tag)
-            }
+    func profileTabPressed() {
+        actionButton.setBackgroundImage(imageButtons[0], for: .normal)
+        print(User.current.name)
+        if (User.current.isLogin()) {
+            showView(tab: .profile)
         }
         else {
-            
-            actionButton.setBackgroundImage(imageButtons[1], for: .normal)
-            
-            showView(index: sender.tag)
-        }
-        
-        
-        if previousIndex < buttons.count {
-            
-//            buttons[previousIndex].isSelected = false
-            
-        }
-        
-//        sender.isSelected = true
-        
-    }
-    
-    func showView(tab: Tab) {
-        let index = tab.hashValue
-        
-        showView(index: index)
-    }
-    
-    func showView(index: Int) {
-        
-        if selectedIndex != index {
-            
-            print("Go To \(Tab(rawValue: index).debugDescription)")
-            
-            self.previousIndex = selectedIndex
-            
-            stackIndexes.append(previousIndex)
-            
-            selectedIndex = index
-            
-            if previousIndex < 0 {
-                previousIndex = 0
-            }
-            
-            let previousVC = viewControllers[previousIndex]
-            
-            previousVC.willMove(toParentViewController: nil)
-            
-            previousVC.view.removeFromSuperview()
-            
-            previousVC.removeFromParentViewController()
-            
-            if selectedIndex < 0 {
-                selectedIndex = 0
-            }
-            
-            let vc = viewControllers[selectedIndex]
-            
-            addChildViewController(vc)
-            
-            vc.view.frame = contentView.bounds
-            
-            contentView.addSubview(vc.view)
-            
-            vc.didMove(toParentViewController: self)
+            performSegue(withIdentifier: "loginSegue", sender: self)
+//            showView(tab: .login)
         }
     }
     
+    func homeTabPressed() {
+        actionButton.setBackgroundImage(imageButtons[1], for: .normal)
+        
+        showView(tab: .home)
+    }
+    
+    @IBAction func didPressTab(_ sender: UIButton) {
+        self.previousIndex = selectedIndex
+        if sender.tag == 1 {
+            profileTabPressed()
+        }
+        else {
+            homeTabPressed()
+        }
+    }
+
     @IBAction func didPressAction(_ sender: UIButton) {
         switch viewControllers[selectedIndex] {
         case homeViewController:
             if !User.current.isOrdering {
                 if let home = homeViewController as? HomeViewController {
                     home.actionButtonPress()
-                    showView(index: 2)
+                    showView(tab: .search)
                 }
             }
             else {
-                showView(index: 5)
+                showView(tab: .wait)
             }
         case searchStoreViewController:
             if let search = searchStoreViewController as? SearchStoreViewController {
@@ -216,7 +151,7 @@ class TabViewController: UIViewController {
         case waitViewController:
             if let waitView = waitViewController as? WaitViewController {
                 if waitView.checkDone() {
-                    showView(index: 0)
+                    showView(tab: .home)
                 }
                 else {
                     print("Toggle Hook Button")
@@ -241,27 +176,27 @@ class TabViewController: UIViewController {
         }
     }
     
-    public func ActionFromLoginSubmit () {
-        if previousIndex >= 0 && previousIndex != 6{
-            showView(index: previousIndex)
-        }
-        else {
-            showView(tab: .home)
-        }
-    }
-    
-    public func ActionGoToLogin() {
-        showView(tab: .login)
-    }
-    
-    public func ActionFromRegisterSubmit () {
-        ActionGoToLogin()
-    }
-    
-    public func ActionGoToRegister() {
-        showView(tab: .register)
-    }
-    
+//    public func ActionFromLoginSubmit () {
+//        if previousIndex >= 0 && previousIndex != 6{
+//            showView(index: previousIndex)
+//        }
+//        else {
+//            showView(tab: .home)
+//        }
+//    }
+//    
+//    public func ActionGoToLogin() {
+//        showView(tab: .login)
+//    }
+//    
+//    public func ActionFromRegisterSubmit () {
+//        ActionGoToLogin()
+//    }
+//    
+//    public func ActionGoToRegister() {
+//        showView(tab: .register)
+//    }
+//    
     public func ActionToStore(type: SearchType) {
         print("Action To Store")
 //        let store = searchStoreViewController as! SearchStoreViewController
@@ -324,6 +259,53 @@ class TabViewController: UIViewController {
         }))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func showView(tab: Tab) {
+        let index = tab.hashValue
+        
+        showView(index: index)
+    }
+    
+    func showView(index: Int) {
+        
+        if selectedIndex != index {
+            
+            print("Go To \(Tab(rawValue: index).debugDescription)")
+            
+            self.previousIndex = selectedIndex
+            
+            stackIndexes.append(previousIndex)
+            
+            selectedIndex = index
+            
+            if previousIndex < 0 {
+                previousIndex = 0
+            }
+            
+            let previousVC = viewControllers[previousIndex]
+            
+            previousVC.willMove(toParentViewController: nil)
+            
+            previousVC.view.removeFromSuperview()
+            
+            previousVC.removeFromParentViewController()
+            
+            if selectedIndex < 0 {
+                selectedIndex = 0
+            }
+            
+            let vc = viewControllers[selectedIndex]
+            
+            addChildViewController(vc)
+            
+            vc.view.frame = contentView.bounds
+            
+            contentView.addSubview(vc.view)
+            
+            vc.didMove(toParentViewController: self)
+        }
     }
 }
 

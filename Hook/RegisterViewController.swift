@@ -12,8 +12,6 @@ import UIKit
 class RegisterViewController: UIViewController {
 
     var checkSubmit = false
-    var tabViewController: TabViewController!
-    
     @IBOutlet weak var lastNameText: UITextField!
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -22,14 +20,6 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-    }
-    
-    public func setMain(tabView: TabViewController) {
-        self.tabViewController = tabView
-    }
-    
-    @IBAction func back(_ sender: Any) {
-        self.tabViewController.BackAction()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,12 +47,12 @@ class RegisterViewController: UIViewController {
                 SubmitToServer(userParam: userParam)
             }
             else {
-                self.tabViewController.showAlert(title: "Failed to register", text: "Passwords are not match")
+                showAlert(title: "Failed to register", text: "Passwords are not match")
                 //popup password is not match
             }
         }
         else {
-            self.tabViewController.showAlert(title: "Failed to register", text: "Please fill the blanks")
+            showAlert(title: "Failed to register", text: "Please fill the blanks")
         }
     }
     
@@ -74,12 +64,13 @@ class RegisterViewController: UIViewController {
                 self.checkSubmit = false
                 if error != nil {
                     print(error!)
-                    self.tabViewController.showAlert(title: "Connection Error", text: "code: 404")
+                    self.showAlert(title: "Connection Error", text: "code: 404")
                 }
                 else {
                     print(responseJson!)
                     if self.validateRegister(json: responseJson!) {
-                        self.tabViewController.ActionFromRegisterSubmit()
+//                        self.tabViewController.ActionFromRegisterSubmit()
+                        self.performSegue(withIdentifier: "homeSegue", sender: self)
                     }
                 }
             })
@@ -88,6 +79,9 @@ class RegisterViewController: UIViewController {
             //plz wait
         }
     }
+    @IBAction func backPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func validateRegister(json: JSON) -> Bool {
         if let response = json["response"].string {
@@ -95,7 +89,7 @@ class RegisterViewController: UIViewController {
                 return true
             }
             else {
-                self.tabViewController.showAlert(title: "Failed to register", text: response)
+                showAlert(title: "Failed to register", text: response)
                 return false
             }
         }
@@ -103,6 +97,19 @@ class RegisterViewController: UIViewController {
             print("cant parse json")
             return false
         }
+    }
+    
+    public func showAlert(title: String, text: String) {
+        let alert =  UIAlertController(title: title, message: text, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (action) in
+            
+            alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
