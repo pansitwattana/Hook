@@ -15,6 +15,8 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var thirdCat: UIButton!
     @IBOutlet weak var forthCat: UIButton!
     
+    var tabViewController: TabViewController!
+    
     var store = Store(name: "not assigned")
     
     var order = Order()
@@ -49,6 +51,10 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         self.order.setUser(customerUser: User.current, storeId: store.id)
     }
 
+    public func setMain(tabView: TabViewController) {
+        self.tabViewController = tabView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -147,7 +153,21 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tableView.reloadData()
         }
     }
-//    
+    
+     @IBAction func submit(_ sender: UIButton) {
+        if User.current.isLogin() {
+            if order.containMenu() {
+                tabViewController.ActionFromOrderSubmit(store: store,order: order)
+            }
+            else {
+                tabViewController.showAlert(title: "Can not order!", text: "You did not select a menu")
+            }
+        }
+        else {
+            tabViewController.showAlert(title: "Please Login", text: "You have to login before submit the order")
+        }
+    }
+//
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "orderSegue" {
 //            if let destination = segue.destination as? SummaryViewController{

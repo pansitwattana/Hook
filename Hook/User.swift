@@ -18,8 +18,25 @@ class User {
     var email: String = "unknown@hook.com"
     var lastName: String = "Unknown"
     var type: Int = -1
+    var isOrdering: Bool = false
     
+    public static func Save() {
+        //UserDefaults.standard.setValue(User.current, forKey: "user_auth_token")
+        //print("\(UserDefaults.standard.value(forKey: "user_auth_token")!)")
+        print("User Saved")
+    }
     
+    public static func Load() {
+        if let user = UserDefaults.standard.value(forKey: "user_auth_token") as? User {
+            User.current = user
+            print("User Loaded")
+        }
+        else {
+            print(UserDefaults.standard.value(forKey: "user_auth_token") ?? "cant get User")
+            print("Login as Guest")
+            User.current = User()
+        }
+    }
     
     init() {
         self.name = "Guest"

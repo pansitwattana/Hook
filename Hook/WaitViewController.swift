@@ -16,7 +16,7 @@ class WaitViewController: UIViewController{
     
     var order = Order()
     
-    var timer = Timer()
+    var timer : Timer?
     
     var checkOrderSubmit = false
 
@@ -49,14 +49,33 @@ class WaitViewController: UIViewController{
         self.tabViewController = tabView
     }
     
+    func startAnimate() {
+        if timer == nil {
+            timer = Timer.scheduledTimer(
+                timeInterval: 0.3,
+                target: self,
+                selector: #selector(WaitViewController.animate),
+                userInfo: nil,
+                repeats: true)
+            
+        }
+    }
+    
+    func stopAnimate() {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         if !alreadySetAnimated {
-            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(WaitViewController.animate), userInfo: nil, repeats: true)
+            hookWaitImage.image = hookImageNameSet[0]
+            startAnimate()
             alreadySetAnimated = true
         }
         
-        // Do any additional setup after loading the view.
-        
+        isDone = false
         updateQueue(order: self.order)
         waitOrderDone()
         if #available(iOS 10.0, *) {
@@ -74,7 +93,7 @@ class WaitViewController: UIViewController{
             Request.getOrder(orderID: self.order.id, {
                 (error, response) in
                 if error != nil {
-                    print(error!)
+                    print(error!.code)
                     self.waitOrderDone()
                 }
                 else {
@@ -96,6 +115,9 @@ class WaitViewController: UIViewController{
     
     func showDone(order: Order) {
         pushNotification()
+        stopAnimate()
+        alreadySetAnimated = false
+        hookWaitImage.image = #imageLiteral(resourceName: "hook_complete")
         isDone = true
         waitLabel.text = "Your order is now complete"
         timeLabel.text = ""
@@ -131,10 +153,17 @@ class WaitViewController: UIViewController{
                 UNUserNotificationCenter.current().add(
                     request, withCompletionHandler: nil)
             }
+            else {
+                print("notification is not allow")
+            }
         }
 
     }
-
+    
+    public func checkDone() -> Bool {
+        User.current.isOrdering = !isDone
+        return isDone
+    }
     
     func updateQueue(order: Order) {
         waitLabel.text = "Wait \(order.queue) Queues."

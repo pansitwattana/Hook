@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum Tab {
+public enum Tab : Int {
     case home
     case login
     case search
@@ -34,14 +34,14 @@ class TabViewController: UIViewController {
     var registerViewController: UIViewController!
     var profileViewController: UIViewController!
     
+    var imageButtons = [#imageLiteral(resourceName: "home_hook_logo"), #imageLiteral(resourceName: "home_hook_search")]
     
     var viewControllers: [UIViewController]!
     
     var selectedIndex: Int = -1
     
     var previousIndex: Int = -1
-    
-    var isOrdering = false
+
     
     var stackIndexes: [Int] = []
     
@@ -49,7 +49,8 @@ class TabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        User.current = User()
+        
+        User.Load()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -86,6 +87,10 @@ class TabViewController: UIViewController {
         
         menuOrderViewController = storyboard.instantiateViewController(withIdentifier: "MenuOrderViewController")
         
+        if let menuOrder = menuOrderViewController as? MenuOrderViewController {
+            menuOrder.setMain(tabView: self)
+        }
+        
         summaryViewController = storyboard.instantiateViewController(withIdentifier: "SummaryViewController")
         
         if let summary = summaryViewController as? SummaryViewController {
@@ -111,6 +116,7 @@ class TabViewController: UIViewController {
         
         
         if sender.tag == 1 {
+            actionButton.setBackgroundImage(imageButtons[0], for: .normal)
             print(User.current.name)
             if (User.current.isLogin()) {
                 showView(tab: .profile)
@@ -120,6 +126,9 @@ class TabViewController: UIViewController {
             }
         }
         else {
+            
+            actionButton.setBackgroundImage(imageButtons[1], for: .normal)
+            
             showView(index: sender.tag)
         }
         
@@ -132,20 +141,19 @@ class TabViewController: UIViewController {
         
 //        sender.isSelected = true
         
-        
-        
-        
     }
     
     func showView(tab: Tab) {
         let index = tab.hashValue
-        print("show view of \(String(describing: tab))")
+        
         showView(index: index)
     }
     
     func showView(index: Int) {
         
         if selectedIndex != index {
+            
+            print("Go To \(Tab(rawValue: index).debugDescription)")
             
             self.previousIndex = selectedIndex
             
@@ -184,7 +192,7 @@ class TabViewController: UIViewController {
     @IBAction func didPressAction(_ sender: UIButton) {
         switch viewControllers[selectedIndex] {
         case homeViewController:
-            if !isOrdering {
+            if !User.current.isOrdering {
                 if let home = homeViewController as? HomeViewController {
                     home.actionButtonPress()
                     showView(index: 2)
@@ -199,19 +207,7 @@ class TabViewController: UIViewController {
             }
         case menuOrderViewController:
             if let menuOrder = menuOrderViewController as? MenuOrderViewController {
-                if menuOrder.order.containMenu() {
-                    if let summary = summaryViewController as? SummaryViewController {
-                        summary.SetStore(store: menuOrder.store)
-                        summary.SetOrder(order: menuOrder.order)
-                        showView(index: 4)
-                    }
-                    else {
-                        print("Cant Get Summary View Controlle")
-                    }
-                }
-                else {
-                    showAlert(title: "Can not order!", text: "You did not select a menu")
-                }
+                menuOrder.submit(sender)
             }
         case summaryViewController:
             if let summary = summaryViewController as? SummaryViewController {
@@ -219,9 +215,11 @@ class TabViewController: UIViewController {
             }
         case waitViewController:
             if let waitView = waitViewController as? WaitViewController {
-                if waitView.isDone {
+                if waitView.checkDone() {
                     showView(index: 0)
-                    self.isOrdering = false
+                }
+                else {
+                    print("Toggle Hook Button")
                 }
             }   
         default:
@@ -248,7 +246,7 @@ class TabViewController: UIViewController {
             showView(index: previousIndex)
         }
         else {
-            showView(index: 0)
+            showView(tab: .home)
         }
     }
     
@@ -276,7 +274,7 @@ class TabViewController: UIViewController {
             default:
                 store.SearchStoreByText(text: "Recommend")
             }
-            showView(index: 2)
+            showView(tab: .search)
         }
         else {
             print("error")
@@ -286,18 +284,28 @@ class TabViewController: UIViewController {
     public func ActionToMenuOrder(store: Store) {
         if let menuOrderView = menuOrderViewController as? MenuOrderViewController {
             menuOrderView.SetStore(store: store)
-            showView(index: 3)
+            showView(tab: .order)
         }
         else {
             print("action to menu order error")
         }
     }
     
+    public func ActionFromOrderSubmit(store: Store, order: Order){
+        if let summary = summaryViewController as? SummaryViewController {
+            summary.SetStore(store: store)
+            summary.SetOrder(order: order)
+            showView(tab: .summary)
+        }
+        else {
+            print("Cant Get Summary View Controlle")
+        }
+    }
+    
     public func ActionToWaitView(order: Order) {
         if let waitView = waitViewController as? WaitViewController {
             waitView.SetOrder(order: order)
-            self.isOrdering = true
-            showView(index: 5)
+            showView(tab: .wait)
         }
     }
     

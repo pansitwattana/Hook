@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SwiftyJSON
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
 
@@ -64,19 +65,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
                     self.tabViewController.showAlert(title: "Connection Error", text: "Internet is unstable!")
                 }
                 else {
-                    User.current = User(userJson: userJson!)
-                    print(userJson!)
-                    if (User.current.name != "Guest") {
-                        print("Log on as \(User.current.name)")
+                    if self.isUserValidate(json: userJson!) {
+                        User.Save()
                         self.tabViewController.ActionFromLoginSubmit()
                     }
                     else {
-                        print("Cannot login by user: \(user)")
-                        self.tabViewController.showAlert(title: "Login Error", text: "User is incorrect")
+                        self.showError(json: userJson!)
                     }
                 }
             })
         }
+    }
+    
+    func isUserValidate(json: JSON?) -> Bool{
+        User.current = User(userJson: json!)
+        print(json!)
+        if (User.current.isLogin()) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func showError(json: JSON?) {
+        self.tabViewController.showAlert(title: "Login Error", text: "User is incorrect")
     }
     
     func hideLoadingProgress() {

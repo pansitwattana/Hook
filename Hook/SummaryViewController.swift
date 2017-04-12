@@ -57,20 +57,27 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (!checkSubmit) {
             if (User.current.isLogin()) {
                 checkSubmit = true
-                print("Submit Order \(order.GetParam())")
-                Request.postOrderJson(order: order.GetParam(), {
-                    (error, queueJson) in
-                    if error != nil {
-                        print(error!)
-                    }
-                    else {
-                        print(queueJson!)
-                        self.order.SetQueue(json: queueJson!)
-                        self.tabView.ActionToWaitView(order: self.order)
-//                        self.performSegue(withIdentifier: "summarySegue", sender: self)
-                    }
-                    self.checkSubmit = false
-                })
+                if (User.current.isOrdering) {
+                    print("Show order")
+                    self.tabView.ActionToWaitView(order: self.order)
+                }
+                else {
+                    print("Submit Order \(order.GetParam())")
+                    Request.postOrderJson(order: order.GetParam(), {
+                        (error, queueJson) in
+                        if error != nil {
+                            print(error!)
+                        }
+                        else {
+                            print(queueJson!)
+                            User.current.isOrdering = true
+                            self.order.SetQueue(json: queueJson!)
+                            self.tabView.ActionToWaitView(order: self.order)
+                            //                        self.performSegue(withIdentifier: "summarySegue", sender: self)
+                        }
+                        self.checkSubmit = false
+                    })
+                }
             }
             else {
                 self.tabView.showAlert(title: "Please Login", text: "You have to login before submit the order")
