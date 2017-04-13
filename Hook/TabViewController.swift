@@ -114,8 +114,6 @@ class TabViewController: UIViewController {
     }
     
     func homeTabPressed() {
-        actionButton.setBackgroundImage(imageButtons[1], for: .normal)
-        
         showView(tab: .home)
     }
     

@@ -12,6 +12,7 @@ import CoreLocation
 import NVActivityIndicatorView
 
 class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate {
+    @IBOutlet weak var loadingview: NVActivityIndicatorView!
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var storeLabel: UILabel!
@@ -38,10 +39,16 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadingview.type = .ballClipRotatePulse
+        loadingview.color = .yellow
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_search"), for: .normal)
+        
         print("response to search")
     }
     
@@ -64,6 +71,14 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         print("Search do action")
+    }
+    
+    func hideLoadingProgress() {
+        loadingview.stopAnimating()
+    }
+    
+    func showLoadingProgress() {
+        loadingview.startAnimating()
     }
     
     public func SetStores(stores: NSMutableArray, focusOnSearch: Bool) {
@@ -91,8 +106,10 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         
         userLocation = (location.coordinate.latitude, location.coordinate.longitude)
         if userLocation != nil {
+            showLoadingProgress()
             Request.getSearchJson(location: userLocation!) {
                 (error, searchJson) in
+                self.hideLoadingProgress()
                 if (error != nil) {
                     print(error!)
                 }
@@ -122,8 +139,10 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     public func SetSearchText(keyword: String) {
         textToSearch = keyword
         print("Start loading Store...")
+        showLoadingProgress()
         Request.getSearchJson(keyword: textToSearch) {
             (error, searchJson) in
+            self.hideLoadingProgress()
             if error != nil {
                 print("error: \(error!)")
             }
@@ -150,8 +169,10 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func SearchStoreByText(text: String) {
+        showLoadingProgress()
         Request.getSearchJson(keyword: text) {
             (error, searchJson) in
+            self.hideLoadingProgress()
             self.SetStoresFromJson(json: searchJson!)
         }
     }

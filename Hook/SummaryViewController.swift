@@ -40,7 +40,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.tabView.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
         totalLabel.text = "Total " + String(order.GetSumPrice())  + " Baht"
         tableView.reloadData()
         // Do any additional setup after loading the view.

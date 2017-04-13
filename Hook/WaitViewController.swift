@@ -85,6 +85,8 @@ class WaitViewController: UIViewController{
             alreadySetAnimated = true
         }
         
+        self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_logo"), for: .normal)
+        
         isDone = false
         updateQueue(order: self.order)
         waitOrderDone()
@@ -124,6 +126,7 @@ class WaitViewController: UIViewController{
     }
     
     func showDone(order: Order) {
+        self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
         pushNotification()
         stopAnimate()
         alreadySetAnimated = false

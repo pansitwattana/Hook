@@ -61,6 +61,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
         print("Start loading Menu from \(store.name)")
         Request.getMenuJson(store: store.name, {
             (error, json) in

@@ -63,6 +63,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if User.current.isOrdering {
+            self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_logo"), for: .normal)
+        }
+        else {
+            self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_search"), for: .normal)
+        }
         
         print("home did appear called")
     }

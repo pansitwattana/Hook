@@ -15,10 +15,14 @@ class StoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet var stars: [UIImageView]!
     
     public func setStar(rate: Double) {
-        print(rate)
-        for star in stars {
-            if Double(star.tag) >= rate {
-                star.image = #imageLiteral(resourceName: "circle")
+        
+        let roundRate = Int(round(rate))
+        
+        print(roundRate)
+        
+        if roundRate < stars.count {
+            for i in roundRate...stars.count - 1 {
+                stars[i].image = #imageLiteral(resourceName: "main_unstar")
             }
         }
     }
