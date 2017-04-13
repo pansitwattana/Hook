@@ -29,6 +29,7 @@ class Store {
     var ownerId: String = ""
     var categories: [String] = ["Food", "Drink", "Dessert", "Fruit"]
     var coordinates: (latitude: Double, longitude: Double) = (1.2, 2.2)
+    var rating: Double = 5
     var distance: Double = 0
     init(name: String) {
         self.name = name
@@ -69,6 +70,10 @@ class Store {
             
             if let distance = json["Distance"].double {
                 self.distance = distance
+            }
+            
+            if let rate = json["Rate"].double {
+                self.rating = rate
             }
         }
     }

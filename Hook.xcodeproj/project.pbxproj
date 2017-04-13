@@ -155,12 +155,12 @@
 			children = (
 				E62B87281E972C5E002E7003 /* TabViewController.swift */,
 				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
+				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
 				E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */,
 				E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */,
 				E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */,
 				E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */,
 				E6F234B51E8CD19D00396261 /* StoreTableViewCell.swift */,
-				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
 				E6ADE77F1E85531700389E5D /* SummaryViewController.swift */,
 				E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */,
 				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,

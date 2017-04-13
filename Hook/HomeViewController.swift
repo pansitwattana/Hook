@@ -30,6 +30,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     var fastestStores = NSMutableArray()
     
+    private var refreshControl: UIRefreshControl!
+    
     @IBAction func nearbyButtonClick(_ sender: Any) {
         print("nearbyClick")
         
@@ -51,6 +53,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
                 self.splitStoresList(json: json!)
             }
         })
+        
+        refreshControl = UIRefreshControl()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
+        refreshControl.addTarget(self, action: #selector(	HomeViewController.refreshData), for: .valueChanged)
+        scrollView.addSubview(refreshControl)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,9 +67,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         print("home did appear called")
     }
     
+    public func refreshData() {
+        Request.Home({
+            (error, json) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                self.splitStoresList(json: json!)
+            }
+        })
+        refreshControl.endRefreshing()
+    }
+    
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         if !User.current.isOrdering {
-            self.tabViewController.showView(tab: .search)
+            self.tabViewController.ActionToStoreWithDefault(storesToShow: recommendStores, focus: true)
         }
         else {
             self.tabViewController.showView(tab: .wait)
@@ -72,6 +93,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         super.viewWillAppear(animated)
     }
 
+    @IBAction func seeAllPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            print("see all Popular")
+            tabViewController.ActionToStoreWithDefault(storesToShow: popularStores, focus: false)
+        case 1:
+            print("see all Recommend")
+            tabViewController.ActionToStoreWithDefault(storesToShow: recommendStores, focus: false)
+        case 2:
+            print("see all Fastest")
+            tabViewController.ActionToStoreWithDefault(storesToShow: fastestStores, focus: false)
+        default:
+            print("no button tag \(sender.tag)")
+        }
+    }
+    
     func splitStoresList(json: JSON) {
         let jsonData = json
         if jsonData != JSON.null {
@@ -93,34 +130,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
                 }
             }
         }
-    }
-        
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        if let keyword = searchBar.text! as String? {
-//            textToSearch = keyword
-//            self.searchType = SearchType.Text
-//            self.performSegue(withIdentifier: "segueSearch", sender: self)
-//        }
-//    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "segueSearch" {
-//            if let destination = segue.destination as? SearchStoreViewController {
-//                switch self.searchType {
-//                case .Text:
-//                    destination.SetSearchText(keyword: textToSearch)
-//                case .Location:
-//                    destination.SearchByLocation()
-//                case .Popular:
-//                    destination.SetSearchText(keyword: textToSearch)
-//                }
-//            }
-//        }
-//        else if segue.identifier == "logoutSegue" {
-//            if let destination = segue.destination as? LoginViewController {
-//                destination.logout()
-//            }
-//        }
     }
 }
 
@@ -176,6 +185,7 @@ extension HomeViewController: UICollectionViewDataSource {
             if indexPath.row < popularStores.count {
                 if let store = popularStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
+                    cell.setStar(rate: store.rating)
                 }
             }
             return cell
@@ -187,6 +197,7 @@ extension HomeViewController: UICollectionViewDataSource {
             if indexPath.row < recommendStores.count {
                 if let store = recommendStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
+                    cell.setStar(rate: store.rating)
                 }
             }
             return cell
@@ -197,6 +208,7 @@ extension HomeViewController: UICollectionViewDataSource {
             if indexPath.row < fastestStores.count {
                 if let store = fastestStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
+                    cell.setStar(rate: store.rating)
                 }
             }
             return cell

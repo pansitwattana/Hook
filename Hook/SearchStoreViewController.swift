@@ -30,6 +30,8 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     var textToSearch = ""
     
+    var focusOnSearch = false
+    
     public func setMain(tabView: TabViewController) {
         self.tabViewController = tabView
     }
@@ -45,12 +47,30 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        searchBar.text = ""
-        searchBar.becomeFirstResponder()
+        
+        if stores.count > 0 {
+            print("reload data")
+            tableView.reloadData()
+        }
+        else {
+            print("no stores set")
+        }
+        
+        if focusOnSearch {
+            searchBar.text = ""
+            searchBar.becomeFirstResponder()
+        }
     }
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         print("Search do action")
+    }
+    
+    public func SetStores(stores: NSMutableArray, focusOnSearch: Bool) {
+        print("set stores \(stores.count)")
+        self.stores = stores
+        self.storeCount = stores.count
+        self.focusOnSearch = focusOnSearch
     }
     
     func CheckLocationServices() -> Bool {
@@ -151,7 +171,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
     }
-
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.storeCount
     }
@@ -176,7 +200,6 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             let url = URL(string: store.imgUrl)
             
             print("cell change \(store.name) \(indexPath.row)")
-            view.endEditing(true)
             if store.doneLoadImg {
                 cell.mainImage.image = store.imageView
             }
@@ -193,6 +216,9 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+        }
+        else {
+            print("cant parse store")
         }
         
         return cell

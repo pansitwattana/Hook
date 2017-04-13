@@ -86,12 +86,16 @@ class TabViewController: UIViewController {
         
         waitViewController = storyboard.instantiateViewController(withIdentifier: "WaitViewController")
         
+        if let wait = waitViewController as? WaitViewController {
+            wait.setMain(tabView: self)
+        }
+        
         profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
         
         viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController]
         
         showView(tab: .home)
-        
+        actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_1eye"), for: .highlighted)
         // Do any additional setup after loading the view.
     }
     
@@ -170,27 +174,6 @@ class TabViewController: UIViewController {
         }
     }
     
-//    public func ActionFromLoginSubmit () {
-//        if previousIndex >= 0 && previousIndex != 6{
-//            showView(index: previousIndex)
-//        }
-//        else {
-//            showView(tab: .home)
-//        }
-//    }
-//    
-//    public func ActionGoToLogin() {
-//        showView(tab: .login)
-//    }
-//    
-//    public func ActionFromRegisterSubmit () {
-//        ActionGoToLogin()
-//    }
-//    
-//    public func ActionGoToRegister() {
-//        showView(tab: .register)
-//    }
-//    
     public func ActionToStore(type: SearchType) {
         print("Action To Store")
 //        let store = searchStoreViewController as! SearchStoreViewController
@@ -203,6 +186,17 @@ class TabViewController: UIViewController {
             default:
                 store.SearchStoreByText(text: "Recommend")
             }
+            showView(tab: .search)
+        }
+        else {
+            print("error")
+        }
+    }
+    
+    public func ActionToStoreWithDefault(storesToShow: NSMutableArray, focus: Bool) {
+        print("Will Show Stores")
+        if let store = searchStoreViewController as? SearchStoreViewController {
+            store.SetStores(stores: storesToShow, focusOnSearch: focus)
             showView(tab: .search)
         }
         else {
