@@ -40,6 +40,7 @@ class TabViewController: UIViewController {
     
     var previousIndex: Int = -1
 
+    @IBOutlet weak var navigatorBar: UINavigationItem!
     
     var stackIndexes: [Int] = []
     
@@ -289,6 +290,11 @@ class TabViewController: UIViewController {
                 selectedIndex = 0
             }
             
+            if let tab = Tab(rawValue: selectedIndex) {
+                let titleString = String(describing: tab)
+                navigatorBar.title = titleString.uppercaseFirst
+            }
+            
             let vc = viewControllers[selectedIndex]
             
             addChildViewController(vc)
@@ -316,5 +322,17 @@ extension UIViewController
     func dismissKeyboard()
     {
         view.endEditing(true)
+    }
+}
+
+extension String {
+    var first: String {
+        return String(characters.prefix(1))
+    }
+    var last: String {
+        return String(characters.suffix(1))
+    }
+    var uppercaseFirst: String {
+        return first.uppercased() + String(characters.dropFirst())
     }
 }

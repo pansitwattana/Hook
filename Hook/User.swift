@@ -22,21 +22,70 @@ class User {
     var isOrdering: Bool = false
     
     public static func Save() {
-        //UserDefaults.standard.setValue(User.current, forKey: "user_auth_token")
-        //print("\(UserDefaults.standard.value(forKey: "user_auth_token")!)")
+        UserDefaults.standard.set(current.getDictionary(), forKey: "user_auth_token")
         print("User Saved")
     }
     
     public static func Load() {
-        if let user = UserDefaults.standard.value(forKey: "user_auth_token") as? User {
-            User.current = user
-            print("User Loaded")
+        if let userDictionary = UserDefaults.standard.dictionary(forKey: "user_auth_token")
+        {
+            print(userDictionary)
+            User.current = User()
+            for (key, value) : (String, Any) in userDictionary {
+                switch key {
+                case "Email":
+                    if let email = value as? String {
+                        User.current.email = email
+                    }
+                    else {
+                        print("Cant parse email")
+                    }
+                case "Type":
+                    if let type = value as? String {
+                        User.current.type = Int(type) ?? 0
+                    }
+                    else {
+                        print("Cant parse type")
+                    }
+                case "Name":
+                    if let name = value as? String {
+                        User.current.name = name
+                    }
+                    else {
+                        print("Cant parse name")
+                    }
+                case "Lastname":
+                    if let lastname = value as? String {
+                        User.current.lastName = lastname
+                    }
+                    else {
+                        print("Cant parse last name")
+                    }
+                default:
+                    print("Error, There is no key \(key)")
+                }
+            }
+            
         }
         else {
             print(UserDefaults.standard.value(forKey: "user_auth_token") ?? "cant get User")
             print("Login as Guest")
             User.current = User()
         }
+    }
+    
+    public func getDictionary() -> Dictionary<String, String> {
+        let userDictionary = [
+            "Email": self.email,
+            "Type" : String(self.type),
+            "Name" : self.name,
+            "Lastname" : self.lastName
+        ]
+        return userDictionary
+    }
+    
+    init(dict: Dictionary<String, String>) {
+        
     }
     
     init(params: Parameters) {
