@@ -21,9 +21,15 @@ class Store {
     var name: String = "not assigned"
     var id: Int = -1
     var address: String = "not assigned"
+    
     var imgUrl: String = ""
     var imageView: UIImage!
     var doneLoadImg: Bool = false
+    
+    var thumnailUrl: String = ""
+    var thumnailImageView: UIImage!
+    var doneLoadThumnail: Bool = false
+    
     var detail: String = "detail"
     var open: Bool = false
     var ownerId: String = ""
@@ -50,6 +56,13 @@ class Store {
             
             if let imgUrl = json["Img"].string {
                 self.imgUrl = imgUrl
+            }
+            
+            if let thumnailUrl = json["Thumnail"].string {
+                self.thumnailUrl = thumnailUrl
+            }
+            else {
+                print("no thumnail key")
             }
             
             if let location = json["Location"].dictionary {

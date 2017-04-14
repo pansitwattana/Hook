@@ -88,6 +88,24 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         return newMenus
     }
     
+    public func increaseOrder(index: Int) {
+        if let menuSelected = menusToShow[index] as? Menu {
+            order.AddMenu(menu: menuSelected)
+        }
+    }
+    
+    public func increaseMenu(sender: UIButton) {
+        print(sender.tag)
+    }
+    
+    public func decreaseOrder(index: Int) {
+        print("decrease menu")
+    }
+    
+    public func decreaseMenu(sender: UIButton) {
+        print(sender.tag)
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.menusToShow.count
     }
@@ -99,11 +117,26 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             if let menu = menusToShow[indexPath.row] as? Menu {
                 cell.nameLabel.text = menu.name
                 cell.priceLabel.text = menu.GetPriceWithCurrency()
-                if menu.count > 0 {
-                    cell.countLabel.text = String(menu.count)
+                cell.countLabel.text = String(menu.count)
+                if menu.count == 0 {
+                    cell.statusImage.image = #imageLiteral(resourceName: "status_offline")
                 }
                 else {
-                    cell.countLabel.text = ""
+                    cell.statusImage.image = #imageLiteral(resourceName: "status_online")
+                }
+                
+                cell.increaseAction = {
+                    (cell) in
+//                    print(tableView.indexPath(for: cell)!.row)
+                    self.order.AddMenu(menu: menu)
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+                
+                cell.decreaseAction = {
+                    (cell) in
+//                    print(tableView.indexPath(for: cell)!.row)
+                    self.order.ReduceMenu(menu: menu)
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
                 
                 if menu.isLoadDone {
@@ -112,7 +145,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                 else {
                     let url = URL(string: menu.imgUrl)
                     print("loading : " + menu.imgUrl)
-                    cell.storeImg.image = #imageLiteral(resourceName: "logo_mini_hook")
+                    cell.storeImg.image = #imageLiteral(resourceName: "order_loading")
                     DispatchQueue.global().async {
                         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {
@@ -130,29 +163,29 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let more = UITableViewRowAction(style: .normal, title: "Remove") { action, index in
-            if let menu = self.menusToShow[index.row] as? Menu {
-                print("remove menu \(menu.name)")
-                menu.count = 0
-                self.order.RemoveMenu(menu: menu)
-                self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
-            }
-            
-        }
-        more.backgroundColor = .lightGray
-        
-        return [more]
-    }
+//    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let more = UITableViewRowAction(style: .normal, title: "Remove") { action, index in
+//            if let menu = self.menusToShow[index.row] as? Menu {
+//                print("remove menu \(menu.name)")
+//                menu.count = 0
+//                self.order.RemoveMenu(menu: menu)
+//                self.tableView.reloadRows(at: [index], with: UITableViewRowAnimation.automatic)
+//            }
+//            
+//        }
+//        more.backgroundColor = .lightGray
+//        
+//        return [more]
+//    }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-        let index = indexPath.row
-        if let menu = menusToShow[index] as? Menu {
-            print(menu.name + " is selected")
-            order.AddMenu(menu: menu)
-            self.tableView.reloadData()
-        }
+        print("cell pressed")
+//        let index = indexPath.row
+//        if let menu = menusToShow[index] as? Menu {
+//            print(menu.name + " is selected")
+//            order.AddMenu(menu: menu)
+//            self.tableView.reloadData()
+//        }
     }
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {

@@ -57,6 +57,24 @@ class Order {
         }
     }
     
+    func ReduceMenu(menu: Menu) {
+        let isDuplicated = menus.contains { item in
+            return item.id == menu.id
+        }
+        
+        if (isDuplicated) {
+            let index = self.menus.index{ item in
+                return item.id == menu.id
+            }
+            
+            self.menus[index!].count -= 1
+            
+            if self.menus[index!].count == 0 {
+                self.menus.remove(at: index!)
+            }
+        }
+    }
+    
     func containMenu() -> Bool {
         return menus.count > 0
     }

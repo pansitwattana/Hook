@@ -12,13 +12,14 @@ import CoreLocation
 import NVActivityIndicatorView
 
 class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate {
-    @IBOutlet weak var loadingview: NVActivityIndicatorView!
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var tabViewController: TabViewController!
+    
+    let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition)
     
     var locationManager: CLLocationManager = CLLocationManager()
     var userLocation:(Double, Double)!
@@ -33,15 +34,14 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     var focusOnSearch = false
     
+    var willShowLoading = false
+    
     public func setMain(tabView: TabViewController) {
         self.tabViewController = tabView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadingview.type = .ballClipRotatePulse
-        loadingview.color = .yellow
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,12 +49,14 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_search"), for: .normal)
         
+        self.tableView.rowHeight = view.frame.height * 0.34
+        
         print("response to search")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+
         if stores.count > 0 {
             print("reload data")
             tableView.reloadData()
@@ -67,6 +69,12 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             searchBar.text = ""
             searchBar.becomeFirstResponder()
         }
+        
+        if willShowLoading {
+            showLoadingProgress()
+            print("Show loading")
+            willShowLoading = false
+        }
     }
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
@@ -74,11 +82,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func hideLoadingProgress() {
-        loadingview.stopAnimating()
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
     
     func showLoadingProgress() {
-        loadingview.startAnimating()
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
     
     public func SetStores(stores: NSMutableArray, focusOnSearch: Bool) {
@@ -106,7 +114,6 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         
         userLocation = (location.coordinate.latitude, location.coordinate.longitude)
         if userLocation != nil {
-            showLoadingProgress()
             Request.getSearchJson(location: userLocation!) {
                 (error, searchJson) in
                 self.hideLoadingProgress()
@@ -114,7 +121,6 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
                     print(error!)
                 }
                 else {
-                    print(searchJson!)
                     self.SetStoresFromJson(json: searchJson!)
                 }
             }
@@ -137,9 +143,9 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     public func SetSearchText(keyword: String) {
+        showLoadingProgress()
         textToSearch = keyword
         print("Start loading Store...")
-        showLoadingProgress()
         Request.getSearchJson(keyword: textToSearch) {
             (error, searchJson) in
             self.hideLoadingProgress()
@@ -154,8 +160,11 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     public func SearchByLocation() {
+        focusOnSearch = false
         if CheckLocationServices() {
             if #available(iOS 9.0, *) {
+                willShowLoading = true
+                print("set willShowLoading")
                 locationManager.requestLocation()
             } else {
                 // Fallback on earlier versions
@@ -225,7 +234,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.mainImage.image = store.imageView
             }
             else {
-                cell.mainImage.image = #imageLiteral(resourceName: "logo_hook")
+                cell.mainImage.image = #imageLiteral(resourceName: "search_loading")
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {

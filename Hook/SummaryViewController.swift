@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 import SwiftyJSON
 
 class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var totalLabel: UILabel!
+    
+    let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition)
+    
     
     var tabView: TabViewController!
     
@@ -52,6 +56,14 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    func hideLoadingProgress() {
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+    }
+    
+    func showLoadingProgress() {
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+    }
+    
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         print("summary do action")
         if (!checkSubmit) {
@@ -63,8 +75,10 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 else {
                     print("Submit Order \(order.GetParam())")
+                    showLoadingProgress()
                     Request.postOrderJson(order: order.GetParam(), {
                         (error, queueJson) in
+                        self.hideLoadingProgress()
                         if error != nil {
                             print(error!)
                         }

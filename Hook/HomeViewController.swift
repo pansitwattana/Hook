@@ -192,6 +192,29 @@ extension HomeViewController: UICollectionViewDataSource {
                 if let store = popularStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
                     cell.setStar(rate: store.rating)
+                    
+                    let url = URL(string: store.thumnailUrl)
+                    
+                    if store.doneLoadThumnail {
+                        cell.storeImage.image = store.thumnailImageView
+                    }
+                    else {
+                        cell.storeImage.image = #imageLiteral(resourceName: "main_loading")
+                        DispatchQueue.global().async {
+                            
+                            let data = try? Data(contentsOf: url!)
+                            
+                            if data != nil {
+                                DispatchQueue.main.async {
+                                
+                                    store.thumnailImageView = UIImage(data: data!)
+                                    store.doneLoadThumnail = true
+                                    cell.storeImage.image = store.thumnailImageView
+                                
+                                }
+                            }
+                        }
+                    }
                 }
             }
             return cell
@@ -204,6 +227,28 @@ extension HomeViewController: UICollectionViewDataSource {
                 if let store = recommendStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
                     cell.setStar(rate: store.rating)
+                    let url = URL(string: store.thumnailUrl)
+                    
+                    if store.doneLoadThumnail {
+                        cell.storeImage.image = store.thumnailImageView
+                    }
+                    else {
+                        cell.storeImage.image = #imageLiteral(resourceName: "main_loading")
+                        DispatchQueue.global().async {
+                            
+                            let data = try? Data(contentsOf: url!)
+                            
+                            if data != nil {
+                                DispatchQueue.main.async {
+                                    
+                                    store.thumnailImageView = UIImage(data: data!)
+                                    store.doneLoadThumnail = true
+                                    cell.storeImage.image = store.thumnailImageView
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
             }
             return cell
@@ -215,6 +260,28 @@ extension HomeViewController: UICollectionViewDataSource {
                 if let store = fastestStores[indexPath.row] as? Store {
                     cell.storeName.text = store.name
                     cell.setStar(rate: store.rating)
+                    let url = URL(string: store.thumnailUrl)
+                    
+                    if store.doneLoadThumnail {
+                        cell.storeImage.image = store.thumnailImageView
+                    }
+                    else {
+                        cell.storeImage.image = #imageLiteral(resourceName: "main_loading")
+                        DispatchQueue.global().async {
+                            
+                            let data = try? Data(contentsOf: url!)
+                            
+                            if data != nil {
+                                DispatchQueue.main.async {
+                                    
+                                    store.thumnailImageView = UIImage(data: data!)
+                                    store.doneLoadThumnail = true
+                                    cell.storeImage.image = store.thumnailImageView
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
             }
             return cell
