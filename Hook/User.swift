@@ -21,6 +21,11 @@ class User {
     var type: Int = -1
     var isOrdering: Bool = false
     
+    public static func Logout() {
+        User.current = User()
+        Save()
+    }
+    
     public static func Save() {
         UserDefaults.standard.set(current.getDictionary(), forKey: "user_auth_token")
         print("User Saved")
