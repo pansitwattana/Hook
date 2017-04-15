@@ -17,11 +17,10 @@ enum OrderStatus : Int {
 
 class Order {
     var comment: String = "-"
-    var customerId: String = ""
+//    var customerId: String = ""
     var user = User()
     var id: Int = -1
     var storeId: Int = -1
-    var type: String = "Undone"
     
     var menus: [Menu] = []
  
@@ -165,7 +164,11 @@ class Order {
     }
     
     func IsDone() -> Bool {
-        return queue == 0 || status == OrderStatus.Done
+        return queue == 0 || status == .Done
+    }
+    
+    func IsCancel() -> Bool {
+        return status == .Cancel
     }
 }
 

@@ -53,7 +53,6 @@ class TabViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        
         homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         
         if let homeView = homeViewController as? HomeViewController {
@@ -159,7 +158,15 @@ class TabViewController: UIViewController {
     }
     
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
-        BackAction()
+        switch viewControllers[selectedIndex] {
+        case waitViewController:
+            if let waitView = waitViewController as? WaitViewController {
+                waitView.backButtonPressed()
+            }
+        default:
+            BackAction()
+        }
+        
     }
     
     public func BackAction() {

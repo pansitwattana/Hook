@@ -36,6 +36,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        totalLabel.layer.cornerRadius = 0.5 * totalLabel.bounds.size.width
     }
     
     public func setMain(tabView: TabViewController) {
@@ -45,6 +46,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabView.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
+        
         totalLabel.text = "Total " + String(order.GetSumPrice())  + " Baht"
         tableView.reloadData()
         // Do any additional setup after loading the view.

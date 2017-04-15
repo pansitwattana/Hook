@@ -12,6 +12,7 @@ class WaitViewController: UIViewController{
 
     @IBOutlet weak var hookWaitImage: UIImageView!
     
+    @IBOutlet weak var cancelButton: UIButton!
     var tabViewController: TabViewController!
     
     var order = Order()
@@ -57,6 +58,17 @@ class WaitViewController: UIViewController{
         }
     }
     
+    func backButtonPressed() {
+        print("Wait do action")
+        if checkDone() {
+            tabViewController.BackAction()
+        }
+        else {
+            alertCancel()
+//            self.tabViewController.showAlert(title: "Alert!", text: "Your order will be cancel, do you want to continue?")
+        }
+    }
+    
     func startAnimate() {
         if timer == nil {
             timer = Timer.scheduledTimer(
@@ -87,6 +99,7 @@ class WaitViewController: UIViewController{
         
         isDone = false
         updateQueue(order: self.order)
+        cancelButton.isHidden = false
         waitOrderDone()
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization( options: [.alert,.sound,.badge], completionHandler: {
@@ -113,8 +126,13 @@ class WaitViewController: UIViewController{
                         print("order done")
                         self.showDone(order: self.order)
                     }
+                    else if self.order.IsCancel() {
+                        print("order is cancel")
+                        self.showCancel(order: self.order)
+                    }
                     else {
                         print("order not done yet \(self.order.queue)")
+                        User.current.isOrdering = true
                         self.updateQueue(order: self.order)
                         self.waitOrderDone()
                     }
@@ -123,10 +141,25 @@ class WaitViewController: UIViewController{
         }
     }
     
+    func showCancel(order: Order) {
+        self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
+        pushNotification()
+        stopAnimate()
+        cancelButton.isHidden = true
+        User.current.isOrdering = false
+        alreadySetAnimated = false
+        hookWaitImage.image = #imageLiteral(resourceName: "hook_complete")
+        isDone = true
+        waitLabel.text = "Your order was canceled"
+        timeLabel.text = ""
+    }
+    
     func showDone(order: Order) {
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
         pushNotification()
         stopAnimate()
+        cancelButton.isHidden = true
+        User.current.isOrdering = false
         alreadySetAnimated = false
         hookWaitImage.image = #imageLiteral(resourceName: "hook_complete")
         isDone = true
@@ -172,7 +205,6 @@ class WaitViewController: UIViewController{
     }
     
     public func checkDone() -> Bool {
-        User.current.isOrdering = !isDone
         return isDone
     }
     
@@ -181,9 +213,12 @@ class WaitViewController: UIViewController{
         timeLabel.text = "Estimate wait time \(order.time) minutes"
     }
     
-    @IBAction func cancelOrder(_ sender: UIButton) {
+    @IBAction func cancelOrder(_ sender: Any) {
+        requestCancel()
+    }
+    
+    func requestCancel() {
         if (isDone) {
-//            self.performSegue(withIdentifier: "finishSegue", sender: self)
             self.tabViewController.ActionToHome()
         }
         else {
@@ -200,22 +235,24 @@ class WaitViewController: UIViewController{
                     }
                     else {
                         print(response!)
-//                        self.performSegue(withIdentifier: "finishSegue", sender: self)
-                        //popup
-                        self.tabViewController.ActionToHome()
+                        User.current.isOrdering = false
                     }
                 })
             }
         }
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cancelSegue" {
+    
+    func alertCancel() {
+        let alert = UIAlertController(title: "Alert!", message: "The Order will be cancel, do you want to continue?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default) { action in
+            self.requestCancel()
+        })
+        alert.addAction(UIAlertAction(title: "No", style: .default) { action in
             
-        }
-        else if segue.identifier == "finishSegue" {
-            
-        }
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     func animate() {

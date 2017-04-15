@@ -49,6 +49,22 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         self.order = Order()
         self.store = store
         self.order.setUser(customerUser: User.current, storeId: store.id)
+        fetchingMenus()
+    }
+    
+    func fetchingMenus() {
+        print("Start loading Menu from \(store.name)")
+        Request.getMenuJson(store: store.name, {
+            (error, json) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                HookAPI.parseMenus(json: json!, menus: self.menus)
+                self.menusToShow = self.menus
+                self.tableView.reloadData()
+            }
+        })
     }
 
     public func setMain(tabView: TabViewController) {
@@ -62,18 +78,6 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
-        print("Start loading Menu from \(store.name)")
-        Request.getMenuJson(store: store.name, {
-            (error, json) in
-            if error != nil {
-                print(error!)
-            }
-            else {
-                HookAPI.parseMenus(json: json!, menus: self.menus)
-                self.menusToShow = self.menus
-                self.tableView.reloadData()
-            }
-        })
     }
     
     func filterCategory(menus: NSMutableArray) -> NSMutableArray {

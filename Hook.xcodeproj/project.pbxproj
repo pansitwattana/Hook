@@ -19,6 +19,13 @@
 		E678C0251E9635C100036DD5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6ADE78B1E857D1500389E5D /* MapKit.framework */; };
 		E68D18501EA0ACFD000E8A65 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; };
 		E68D18511EA0AD06000E8A65 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E691FCC21EA148AE00AD9DEE /* HookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691FCC11EA148AE00AD9DEE /* HookTests.swift */; };
+		E691FCCE1EA1491D00AD9DEE /* MenuTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691FCCD1EA1491D00AD9DEE /* MenuTest.swift */; };
+		E691FCD01EA1492300AD9DEE /* OrderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691FCCF1EA1492300AD9DEE /* OrderTest.swift */; };
+		E691FCD11EA149AA00AD9DEE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1461E9A2744000FDBD2 /* Alamofire.framework */; };
+		E691FCD21EA149AA00AD9DEE /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; };
+		E691FCD31EA149AA00AD9DEE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */; };
+		E691FCD41EA149AA00AD9DEE /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */; };
 		E69FD14A1E9A2744000FDBD2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1461E9A2744000FDBD2 /* Alamofire.framework */; };
 		E69FD14C1E9A2744000FDBD2 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */; };
 		E69FD14D1E9A2744000FDBD2 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */; };
@@ -44,14 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E603D9431E8EAEC300E18E65 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6F0C0D21E417ECE00C3B990 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E602B1A41E7E93B100F084BC;
-			remoteInfo = HookTests;
-		};
-		E64A78D51E936076006AC6FB /* PBXContainerItemProxy */ = {
+		E691FCC41EA148AE00AD9DEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6F0C0D21E417ECE00C3B990 /* Project object */;
 			proxyType = 1;
@@ -79,7 +79,6 @@
 
 /* Begin PBXFileReference section */
 		E601D5531E7198E400B906CD /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		E602B1A51E7E93B100F084BC /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderTableViewCell.swift; sourceTree = "<group>"; };
 		E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +89,11 @@
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		E691FCBF1EA148AE00AD9DEE /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E691FCC11EA148AE00AD9DEE /* HookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookTests.swift; sourceTree = "<group>"; };
+		E691FCC31EA148AE00AD9DEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E691FCCD1EA1491D00AD9DEE /* MenuTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTest.swift; sourceTree = "<group>"; };
+		E691FCCF1EA1492300AD9DEE /* OrderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTest.swift; sourceTree = "<group>"; };
 		E69FD1461E9A2744000FDBD2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = Carthage/Build/iOS/TextFieldEffects.framework; sourceTree = "<group>"; };
@@ -114,10 +118,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E602B1A21E7E93B100F084BC /* Frameworks */ = {
+		E691FCBC1EA148AE00AD9DEE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E691FCD11EA149AA00AD9DEE /* Alamofire.framework in Frameworks */,
+				E691FCD21EA149AA00AD9DEE /* NVActivityIndicatorView.framework in Frameworks */,
+				E691FCD31EA149AA00AD9DEE /* SwiftyJSON.framework in Frameworks */,
+				E691FCD41EA149AA00AD9DEE /* TextFieldEffects.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +190,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E691FCC01EA148AE00AD9DEE /* HookTests */ = {
+			isa = PBXGroup;
+			children = (
+				E691FCC11EA148AE00AD9DEE /* HookTests.swift */,
+				E691FCCF1EA1492300AD9DEE /* OrderTest.swift */,
+				E691FCCD1EA1491D00AD9DEE /* MenuTest.swift */,
+				E691FCC31EA148AE00AD9DEE /* Info.plist */,
+			);
+			path = HookTests;
+			sourceTree = "<group>";
+		};
 		E6B2FABA1E9504B2007CC9A8 /* Src */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F0C0DC1E417ECE00C3B990 /* Hook */,
+				E691FCC01EA148AE00AD9DEE /* HookTests */,
 				E6F0C0DB1E417ECE00C3B990 /* Products */,
 				E66616291E7E6A8800267D98 /* Frameworks */,
 			);
@@ -203,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				E6F0C0DA1E417ECE00C3B990 /* Hook.app */,
-				E602B1A51E7E93B100F084BC /* HookTests.xctest */,
+				E691FCBF1EA148AE00AD9DEE /* HookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,22 +246,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E602B1A41E7E93B100F084BC /* HookTests */ = {
+		E691FCBE1EA148AE00AD9DEE /* HookTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E602B1AE1E7E93B100F084BC /* Build configuration list for PBXNativeTarget "HookTests" */;
+			buildConfigurationList = E691FCC61EA148AE00AD9DEE /* Build configuration list for PBXNativeTarget "HookTests" */;
 			buildPhases = (
-				E602B1A21E7E93B100F084BC /* Frameworks */,
-				E602B1A11E7E93B100F084BC /* Sources */,
-				E602B1A31E7E93B100F084BC /* Resources */,
+				E691FCBB1EA148AE00AD9DEE /* Sources */,
+				E691FCBC1EA148AE00AD9DEE /* Frameworks */,
+				E691FCBD1EA148AE00AD9DEE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E64A78D61E936076006AC6FB /* PBXTargetDependency */,
+				E691FCC51EA148AE00AD9DEE /* PBXTargetDependency */,
 			);
 			name = HookTests;
 			productName = HookTests;
-			productReference = E602B1A51E7E93B100F084BC /* HookTests.xctest */;
+			productReference = E691FCBF1EA148AE00AD9DEE /* HookTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E6F0C0D91E417ECE00C3B990 /* Hook */ = {
@@ -256,7 +276,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E603D9441E8EAEC300E18E65 /* PBXTargetDependency */,
 			);
 			name = Hook;
 			productName = Hook;
@@ -269,15 +288,14 @@
 		E6F0C0D21E417ECE00C3B990 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Pansit Wattana";
 				TargetAttributes = {
-					E602B1A41E7E93B100F084BC = {
-						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 9JU5BHUYWU;
-						LastSwiftMigration = 0820;
+					E691FCBE1EA148AE00AD9DEE = {
+						CreatedOnToolsVersion = 8.3.1;
 						ProvisioningStyle = Automatic;
+						TestTargetID = E6F0C0D91E417ECE00C3B990;
 					};
 					E6F0C0D91E417ECE00C3B990 = {
 						CreatedOnToolsVersion = 8.2;
@@ -305,13 +323,13 @@
 			projectRoot = "";
 			targets = (
 				E6F0C0D91E417ECE00C3B990 /* Hook */,
-				E602B1A41E7E93B100F084BC /* HookTests */,
+				E691FCBE1EA148AE00AD9DEE /* HookTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E602B1A31E7E93B100F084BC /* Resources */ = {
+		E691FCBD1EA148AE00AD9DEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -332,10 +350,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E602B1A11E7E93B100F084BC /* Sources */ = {
+		E691FCBB1EA148AE00AD9DEE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E691FCD01EA1492300AD9DEE /* OrderTest.swift in Sources */,
+				E691FCCE1EA1491D00AD9DEE /* MenuTest.swift in Sources */,
+				E691FCC21EA148AE00AD9DEE /* HookTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,15 +391,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E603D9441E8EAEC300E18E65 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E602B1A41E7E93B100F084BC /* HookTests */;
-			targetProxy = E603D9431E8EAEC300E18E65 /* PBXContainerItemProxy */;
-		};
-		E64A78D61E936076006AC6FB /* PBXTargetDependency */ = {
+		E691FCC51EA148AE00AD9DEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E6F0C0D91E417ECE00C3B990 /* Hook */;
-			targetProxy = E64A78D51E936076006AC6FB /* PBXContainerItemProxy */;
+			targetProxy = E691FCC41EA148AE00AD9DEE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -402,36 +418,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E602B1AC1E7E93B100F084BC /* Debug */ = {
+		E691FCC71EA148AE00AD9DEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 9JU5BHUYWU;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = HookTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HookTests/HookTests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hook.app/Hook";
 			};
 			name = Debug;
 		};
-		E602B1AD1E7E93B100F084BC /* Release */ = {
+		E691FCC81EA148AE00AD9DEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 9JU5BHUYWU;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = HookTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jjinwinw.HookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HookTests/HookTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hook.app/Hook";
 			};
 			name = Release;
 		};
@@ -576,14 +597,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E602B1AE1E7E93B100F084BC /* Build configuration list for PBXNativeTarget "HookTests" */ = {
+		E691FCC61EA148AE00AD9DEE /* Build configuration list for PBXNativeTarget "HookTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E602B1AC1E7E93B100F084BC /* Debug */,
-				E602B1AD1E7E93B100F084BC /* Release */,
+				E691FCC71EA148AE00AD9DEE /* Debug */,
+				E691FCC81EA148AE00AD9DEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		E6F0C0D51E417ECE00C3B990 /* Build configuration list for PBXProject "Hook" */ = {
 			isa = XCConfigurationList;
