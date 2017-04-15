@@ -7,6 +7,7 @@
 //
 import UserNotifications
 import UIKit
+import NVActivityIndicatorView
 
 class WaitViewController: UIViewController{
 
@@ -15,11 +16,13 @@ class WaitViewController: UIViewController{
     @IBOutlet weak var cancelButton: UIButton!
     var tabViewController: TabViewController!
     
+    let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition, minimumDisplayTime: 1000)
+    
+//    let activity = ActivityData(size: <#T##CGSize?#>, message: <#T##String?#>, messageFont: <#T##UIFont?#>, type: <#T##NVActivityIndicatorType?#>, color: <#T##UIColor?#>, padding: <#T##CGFloat?#>, displayTimeThreshold: <#T##Int?#>, minimumDisplayTime: <#T##Int?#>, backgroundColor: <#T##UIColor?#>, textColor: <#T##UIColor?#>)
+    
     var order = Order()
     
     var timer : Timer?
-    
-    var checkOrderSubmit = false
 
     var hookImageNameSet = [#imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_right"), #imageLiteral(resourceName: "hook_sleep_mid"), #imageLiteral(resourceName: "hook_sleep_left")]
 
@@ -52,6 +55,7 @@ class WaitViewController: UIViewController{
         print("Wait do action")
         if checkDone() {
             tabViewController.showView(tab: .home)
+            tabViewController.ResetBackStack()
         }
         else {
             print("Toggle Hook Button")
@@ -61,7 +65,8 @@ class WaitViewController: UIViewController{
     func backButtonPressed() {
         print("Wait do action")
         if checkDone() {
-            tabViewController.BackAction()
+            tabViewController.showView(tab: .home)
+            tabViewController.ResetBackStack()
         }
         else {
             alertCancel()
@@ -128,6 +133,7 @@ class WaitViewController: UIViewController{
                     }
                     else if self.order.IsCancel() {
                         print("order is cancel")
+                        self.hideLoadingProgress()
                         self.showCancel(order: self.order)
                     }
                     else {
@@ -222,24 +228,28 @@ class WaitViewController: UIViewController{
             self.tabViewController.ActionToHome()
         }
         else {
-            if (!checkOrderSubmit) {
-                checkOrderSubmit = true
-                
-                print("cancel order id: \(order.id)")
-                
-                Request.cancelOrder(orderID: order.id, {
-                    (error, response) in
-                    if error != nil {
-                        print(error!)
-                        self.checkOrderSubmit = false
-                    }
-                    else {
-                        print(response!)
-                        User.current.isOrdering = false
-                    }
-                })
-            }
+            print("cancel order id: \(order.id)")
+            showLoadingProgress()
+            Request.cancelOrder(orderID: order.id, {
+                (error, response) in
+                if error != nil {
+                    print(error!)
+                    self.hideLoadingProgress()
+                }
+                else {
+                    print(response!)
+                    User.current.isOrdering = false
+                }
+            })
         }
+    }
+    
+    func hideLoadingProgress() {
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+    }
+    
+    func showLoadingProgress() {
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
     
     func alertCancel() {

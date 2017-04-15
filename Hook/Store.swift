@@ -17,6 +17,10 @@ public enum SearchType {
     case Popular
 }
 
+public enum Category {
+    case All
+}
+
 class Store {
     var name: String = "not assigned"
     var id: Int = -1

@@ -95,10 +95,26 @@ class TabViewController: UIViewController {
         
         showView(tab: .home)
         actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_1eye"), for: .highlighted)
+        addNotificationButton()
         // Do any additional setup after loading the view.
     }
     
     @IBOutlet var buttons: [UIButton]!
+    
+    func addNotificationButton() {
+        let notiImage: UIImage =  #imageLiteral(resourceName: "main_notification_clicked")
+        
+        let button = UIButton.init(type: .custom)
+        button.setImage(notiImage, for: .normal)
+        button.addTarget(self, action:#selector(TabViewController.notificationPressed), for: UIControlEvents.touchUpInside)
+        button.frame = CGRect.init(x: 0, y: 0, width: 24, height: 24) //CGRectMake(0, 0, 30, 30)
+        let barButton = UIBarButtonItem.init(customView: button)
+        navigatorBar.rightBarButtonItem = barButton
+    }
+    
+    func notificationPressed() {
+        print("noti pressed")
+    }
     
     func profileTabPressed() {
         print(User.current.name)
@@ -177,6 +193,10 @@ class TabViewController: UIViewController {
                 stackIndexes.removeLast()
             }
         }
+    }
+    
+    public func ResetBackStack() {
+        stackIndexes.removeAll()
     }
     
     public func ActionToStore(type: SearchType) {

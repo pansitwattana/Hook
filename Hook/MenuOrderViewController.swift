@@ -10,6 +10,7 @@ import UIKit
 
 class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var allCat: UIButton!
     @IBOutlet weak var firstCat: UIButton!
     @IBOutlet weak var secondCat: UIButton!
     @IBOutlet weak var thirdCat: UIButton!
@@ -27,8 +28,12 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var catSelected = "Food"
     
+    var previousButtonSelected: UIButton!
+    
     @IBAction func doChangeCat(_ sender: UIButton) {
         switch sender {
+        case allCat:
+            catSelected = "All"
         case firstCat:
             catSelected = store.categories[0]
         case secondCat:
@@ -40,7 +45,15 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         default:
             catSelected = "Food"
         }
-        self.menusToShow = self.filterCategory(menus: self.menus);
+        
+        if previousButtonSelected != nil {
+            previousButtonSelected.isSelected = false
+        }
+        
+        sender.isSelected = true
+        previousButtonSelected = sender
+        
+        self.menusToShow = self.filterCategory(menus: self.menus, cat: catSelected);
         self.tableView.reloadData()
     }
     @IBOutlet weak var tableView: UITableView!
@@ -80,12 +93,17 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
     }
     
-    func filterCategory(menus: NSMutableArray) -> NSMutableArray {
+    func filterCategory(menus: NSMutableArray, cat: String) -> NSMutableArray {
         let newMenus = NSMutableArray()
         
-        for menu in (menus as NSArray as! [Menu]) {
-            if menu.catagory == catSelected {
-                newMenus.add(menu)
+        if cat == "All" {
+            return menus
+        }
+        else {
+            for menu in (menus as NSArray as! [Menu]) {
+                if menu.catagory == cat {
+                    newMenus.add(menu)
+                }
             }
         }
         
@@ -116,17 +134,18 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuOrderTableViewCell
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         if indexPath.row < menusToShow.count {
             if let menu = menusToShow[indexPath.row] as? Menu {
                 cell.nameLabel.text = menu.name
                 cell.priceLabel.text = menu.GetPriceWithCurrency()
                 cell.countLabel.text = String(menu.count)
+                cell.statusImage.image = #imageLiteral(resourceName: "status_online")
                 if menu.count == 0 {
-                    cell.statusImage.image = #imageLiteral(resourceName: "status_offline")
+                    cell.checkImage.image = #imageLiteral(resourceName: "order_uncheck")
                 }
                 else {
-                    cell.statusImage.image = #imageLiteral(resourceName: "status_online")
+                    cell.checkImage.image = #imageLiteral(resourceName: "order_check")
                 }
                 
                 cell.increaseAction = {

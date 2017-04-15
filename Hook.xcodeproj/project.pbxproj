@@ -13,6 +13,7 @@
 		E606D94F1E9A2FF900147CC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */; };
 		E607C2961E93D99600FD4454 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607C2951E93D99600FD4454 /* RegisterViewController.swift */; };
 		E60C45961E9E778300AF3610 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C45951E9E778300AF3610 /* Router.swift */; };
+		E624F9F41EA2587F006D88D2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624F9F31EA2587F006D88D2 /* HistoryViewController.swift */; };
 		E62B87291E972C5E002E7003 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62B87281E972C5E002E7003 /* TabViewController.swift */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
@@ -85,6 +86,7 @@
 		E607C2951E93D99600FD4454 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E60C45951E9E778300AF3610 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bangnampueng.ttf; sourceTree = "<group>"; };
+		E624F9F31EA2587F006D88D2 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E62B87281E972C5E002E7003 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				E6FDA9CE1E596F95001EB252 /* HomeViewController.swift */,
 				E6B9D7D21E968203000CCC25 /* StoreCollectionViewCell.swift */,
 				E606D94E1E9A2FF900147CC2 /* ProfileViewController.swift */,
+				E624F9F31EA2587F006D88D2 /* HistoryViewController.swift */,
 				E6F234B71E8CD35500396261 /* SearchStoreViewController.swift */,
 				E60327DE1E8807DD00991DE1 /* MenuOrderViewController.swift */,
 				E60327DC1E88019300991DE1 /* MenuOrderTableViewCell.swift */,
@@ -369,6 +372,7 @@
 				E6F0C0F81E4183BC00C3B990 /* LoginViewController.swift in Sources */,
 				E6F0C0DE1E417ECE00C3B990 /* AppDelegate.swift in Sources */,
 				E6B9D7D31E968203000CCC25 /* StoreCollectionViewCell.swift in Sources */,
+				E624F9F41EA2587F006D88D2 /* HistoryViewController.swift in Sources */,
 				E60327DD1E88019300991DE1 /* MenuOrderTableViewCell.swift in Sources */,
 				E6F234B81E8CD35500396261 /* SearchStoreViewController.swift in Sources */,
 				E601D5541E7198E400B906CD /* Store.swift in Sources */,
@@ -604,6 +608,7 @@
 				E691FCC81EA148AE00AD9DEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E6F0C0D51E417ECE00C3B990 /* Build configuration list for PBXProject "Hook" */ = {
 			isa = XCConfigurationList;
