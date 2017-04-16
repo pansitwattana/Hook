@@ -94,7 +94,7 @@ class TabViewController: UIViewController {
         viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController]
         
         showView(tab: .home)
-        actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_1eye"), for: .highlighted)
+        actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_logo_selected"), for: .highlighted)
         addNotificationButton()
         // Do any additional setup after loading the view.
     }

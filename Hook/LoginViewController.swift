@@ -14,12 +14,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var userLabel: UITextField!
     
-    @IBOutlet weak var loadingView: NVActivityIndicatorView!
-    
     @IBOutlet weak var passLabel: UITextField!
     
     var isLoginClick = false
-
+    
+    let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition)
+    
+    
     @IBOutlet weak var login: UIButton!
 
     @IBAction func submit(_ sender: Any) {
@@ -87,11 +88,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func hideLoadingProgress() {
-        loadingView.stopAnimating()
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
     
     func showLoadingProgress() {
-        loadingView.startAnimating()
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
 
     @IBAction func signup(_ sender: Any) {
@@ -100,10 +101,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadingView.type = .ballClipRotatePulse
-        loadingView.color = .yellow
-        
+  
         self.hideKeyboard()
         // Do any additional setup after loading the view.
     }

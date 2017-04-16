@@ -10,6 +10,10 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+    @IBOutlet weak var orderID: UILabel!
+    
+    var order = Order()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

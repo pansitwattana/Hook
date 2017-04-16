@@ -19,7 +19,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
     
     var tabViewController: TabViewController!
     
-    let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition)
+    let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition, minimumDisplayTime: 2000)
     
     var locationManager: CLLocationManager = CLLocationManager()
     var userLocation:(Double, Double)!
@@ -116,12 +116,15 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         if userLocation != nil {
             Request.getSearchJson(location: userLocation!) {
                 (error, searchJson) in
-                self.hideLoadingProgress()
                 if (error != nil) {
                     print(error!)
+                    self.hideLoadingProgress()
                 }
                 else {
                     self.SetStoresFromJson(json: searchJson!)
+                    self.hideLoadingProgress()
+                    self.SortStoresByDistance(stores: self.stores)
+                    self.UpdateSearch()
                 }
             }
         }
@@ -135,6 +138,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             view.endEditing(true)
             textToSearch = keyword
             SetSearchText(keyword: textToSearch)
+            UpdateSearch()
         }
     }
     
@@ -154,6 +158,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             }
             else {
                 self.SetStoresFromJson(json: searchJson!)
+                self.UpdateSearch()
             }
         }
     }
@@ -183,6 +188,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             (error, searchJson) in
             self.hideLoadingProgress()
             self.SetStoresFromJson(json: searchJson!)
+            self.UpdateSearch()
         }
     }
     
@@ -190,16 +196,37 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         
         if (json != JSON.null){
             HookAPI.parseStores(json: json, stores: self.stores)
-            
-            self.storeCount = self.stores.count
-            
-            self.tableView.reloadData()
-            
         }
         else {
             print("No Search Match Result")
         }
         
+    }
+    
+    func SortStoresByDistance(stores: NSMutableArray) {
+        if (stores.count > 0) {
+            for i in 1..<stores.count {
+                var y = i
+                let store1 = stores[y] as! Store
+                let store2 = stores[y - 1] as! Store
+                while y > 0 && store1.distance < store2.distance {
+                    swap(&stores[y - 1], &stores[y])
+                    y -= 1
+                }
+            }
+        }
+    }
+//    
+//    func printAllStores() {
+//        for store in stores as! [Store] {
+//            print(store.id)
+//        }
+//    }
+    
+    func UpdateSearch() {
+        self.storeCount = self.stores.count
+        
+        self.tableView.reloadData()
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -217,7 +244,14 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         
         if let store = stores[indexPath.row] as? Store {
             cell.name.text = store.name
-            cell.distanceLabel.text = "< " + String(store.getDistance()) + " km"
+            
+            if store.hasDistance() {
+                cell.distanceLabel.text = "< " + store.getDistance() + " km"
+            }
+            else {
+                cell.distanceLabel.text = ""
+            }
+            
             
             if store.open {
                 cell.statusImage.image = #imageLiteral(resourceName: "status_online")

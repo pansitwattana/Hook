@@ -85,8 +85,12 @@ class Store {
                 self.ownerId = id
             }
             
-            if let distance = json["Distance"].double {
-                self.distance = distance
+            if let distance = json["Distant"].number {
+                self.distance = Double(distance)
+            }
+            else {
+                print(json["Distant"].type)
+                print("can't parse distance")
             }
             
             if let rate = json["Rate"].double {
@@ -95,7 +99,11 @@ class Store {
         }
     }
     
-    func getDistance() -> Double {
-        return 1.3
+    func hasDistance() -> Bool {
+        return distance != 0
+    }
+    
+    func getDistance() -> String {
+        return String(format: "%.2f", distance)
     }
 }
