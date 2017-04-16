@@ -123,7 +123,7 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
                 else {
                     self.SetStoresFromJson(json: searchJson!)
                     self.hideLoadingProgress()
-                    self.SortStoresByDistance(stores: self.stores)
+//                    self.SortStoresByDistance(stores: self.stores)
                     self.UpdateSearch()
                 }
             }
@@ -203,25 +203,26 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    func SortStoresByDistance(stores: NSMutableArray) {
-        if (stores.count > 0) {
-            for i in 1..<stores.count {
-                var y = i
-                let store1 = stores[y] as! Store
-                let store2 = stores[y - 1] as! Store
-                while y > 0 && store1.distance < store2.distance {
-                    swap(&stores[y - 1], &stores[y])
-                    y -= 1
-                }
-            }
+//    func SortStoresByDistance(stores: NSMutableArray) {
+//        if (stores.count > 0) {
+//            for i in 1..<stores.count {
+//                var y = i
+//                let store1 = stores[y] as! Store
+//                let store2 = stores[y - 1] as! Store
+//                while y > 0 && store1.distance < store2.distance {
+//                    swap(&stores[y - 1], &stores[y])
+//                    y -= 1
+//                }
+//            }
+//        }
+//        printAllStores()
+//    }
+    
+    func printAllStores() {
+        for store in stores as! [Store] {
+            print("\(store.id), \(String(store.distance))")
         }
     }
-//    
-//    func printAllStores() {
-//        for store in stores as! [Store] {
-//            print(store.id)
-//        }
-//    }
     
     func UpdateSearch() {
         self.storeCount = self.stores.count
