@@ -510,7 +510,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga1-5X-m5H">
-                                                <rect key="frame" x="42" y="53" width="36" height="12"/>
+                                                <rect key="frame" x="42.5" y="53" width="36" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <color key="highlightedColor" red="0.7602851390838623" green="0.76898974180221558" blue="0.65836083889007568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -525,13 +525,13 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLD-yS-TbW">
-                                                <rect key="frame" x="121" y="53" width="41" height="12"/>
+                                                <rect key="frame" x="121.5" y="53" width="40.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-zC-3Mv">
-                                                <rect key="frame" x="203" y="53" width="35" height="12"/>
+                                                <rect key="frame" x="203.5" y="53" width="34.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1109,7 +1109,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oc0-G0-Lbd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
                                                     <color key="backgroundColor" red="0.8784313725490196" green="0.92549019607843142" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shop_triangle" translatesAutoresizingMaskIntoConstraints="NO" id="e4A-Lx-RxM">
@@ -1120,16 +1120,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huX-hE-Y6F">
-                                                    <rect key="frame" x="0.0" y="152" width="320" height="38"/>
+                                                    <rect key="frame" x="0.0" y="152" width="375" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee Cafe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA5-3h-rN4">
-                                                            <rect key="frame" x="26" y="4" width="288" height="19"/>
+                                                            <rect key="frame" x="26" y="4" width="337.5" height="18.5"/>
                                                             <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;&gt; detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuD-Hc-wMb">
-                                                            <rect key="frame" x="265" y="26" width="47" height="12"/>
+                                                            <rect key="frame" x="320" y="26" width="47" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="47" id="zGn-Eg-SbZ"/>
                                                             </constraints>
@@ -1138,7 +1138,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status_online" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-MB-jBI">
-                                                            <rect key="frame" x="8" y="8" width="10" height="10"/>
+                                                            <rect key="frame" x="8" y="8.5" width="10" height="10"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="10" id="UKh-zi-SF6"/>
                                                                 <constraint firstAttribute="width" constant="10" id="VNJ-4W-o2W"/>
@@ -1157,7 +1157,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.3 km from your location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkg-eq-48H">
-                                                    <rect key="frame" x="27" y="173" width="226" height="12"/>
+                                                    <rect key="frame" x="27" y="172.5" width="226" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="226" id="b8N-jA-EV4"/>
                                                     </constraints>
@@ -1405,6 +1405,275 @@
             </objects>
             <point key="canvasLocation" x="-2298.4000000000001" y="524.8875562218891"/>
         </scene>
+        <!--Store View Controller-->
+        <scene sceneID="lAC-ox-P7w">
+            <objects>
+                <viewController storyboardIdentifier="StoreViewController" id="7C3-yx-KhF" customClass="StoreViewController" customModule="Hook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dWK-2W-moz"/>
+                        <viewControllerLayoutGuide type="bottom" id="89D-rd-uPA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YZW-D8-nNC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNh-ff-Ixj">
+                                <rect key="frame" x="0.0" y="28" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e6A-rv-fUS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="255" id="SWf-hF-0Vh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="store_money" translatesAutoresizingMaskIntoConstraints="NO" id="06q-DK-kRh">
+                                        <rect key="frame" x="40" y="263" width="41.5" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="06q-DK-kRh" secondAttribute="height" multiplier="41:40" id="Stf-fa-lkZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500 Baht / Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVh-LJ-LAW">
+                                        <rect key="frame" x="91.5" y="277" width="267.5" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="SW7-dx-r4A"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-HG-5pD">
+                                        <rect key="frame" x="16" y="311" width="343" height="83"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjS-gm-hJ6">
+                                                <rect key="frame" x="8" y="8" width="281" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ms-nZ-Nh0">
+                                                <rect key="frame" x="8" y="57" width="281" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sN9-gl-Ext">
+                                                <rect key="frame" x="297" y="0.0" width="46" height="83"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                <color key="tintColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="&gt;"/>
+                                                <connections>
+                                                    <action selector="lookMapDidPress:" destination="7C3-yx-KhF" eventType="touchUpInside" id="pTM-DW-7nu"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="83" id="e3t-Kj-eKF"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRj-Zl-zmt">
+                                        <rect key="frame" x="16" y="396" width="343" height="52"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="store_phone" translatesAutoresizingMaskIntoConstraints="NO" id="Euq-lu-HAU">
+                                                <rect key="frame" x="15" y="12" width="30" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="08X-XXXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEc-29-z3w">
+                                                <rect key="frame" x="53" y="16" width="282" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="IpV-XM-s2d"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bh2-30-ViE">
+                                        <rect key="frame" x="16" y="450" width="343" height="52"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="store_clock" translatesAutoresizingMaskIntoConstraints="NO" id="gfs-iw-wl8">
+                                                <rect key="frame" x="15" y="12" width="30" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="08.00 - 20.00 P.M." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK5-Mj-cmV">
+                                                <rect key="frame" x="53" y="16" width="282" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="Wk6-eG-SrN"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5m-e3-fWE">
+                                        <rect key="frame" x="16" y="503" width="343" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monday, Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQM-8Q-vge">
+                                                <rect key="frame" x="53" y="16" width="282" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="store_clock" translatesAutoresizingMaskIntoConstraints="NO" id="BKV-ai-eOl">
+                                                <rect key="frame" x="15" y="12" width="30" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="FKf-uG-K3g"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYm-pG-YKX">
+                                        <rect key="frame" x="16" y="556" width="343" height="143"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-PM-5vY">
+                                                <rect key="frame" x="8" y="8" width="327" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate this store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRG-gs-HdT">
+                                                <rect key="frame" x="8" y="31" width="327" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaC-0l-cfH">
+                                                <rect key="frame" x="29" y="60" width="291" height="42"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMl-I1-Ygv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" backgroundImage="store_rate_glow"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2N-pL-gju">
+                                                        <rect key="frame" x="61" y="0.0" width="42" height="42"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" backgroundImage="store_rate_glow"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHU-G1-wCW">
+                                                        <rect key="frame" x="124" y="0.0" width="42" height="42"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" backgroundImage="store_rate_glow"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1T-AE-Bjz">
+                                                        <rect key="frame" x="190" y="0.0" width="42" height="42"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" backgroundImage="store_rate_glow"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-Zf-xMJ">
+                                                        <rect key="frame" x="249" y="0.0" width="42" height="42"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" backgroundImage="store_rate_glow"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3h-I0-BuY">
+                                                <rect key="frame" x="123" y="110" width="97" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.50974768400192261" green="0.50944900512695312" blue="0.4979393482208252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                                <state key="normal" title="Feedback">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="feedbackDidPress:" destination="7C3-yx-KhF" eventType="touchUpInside" id="UnC-0c-lW3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="143" id="0KU-4o-Quk"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZ8-hK-yT1">
+                                        <rect key="frame" x="304" y="17" width="33" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                        <color key="textColor" red="0.95210784673690796" green="0.9596671462059021" blue="0.6259116530418396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLH-FK-A6G">
+                                        <rect key="frame" x="342" y="13" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="store_rate_glow"/>
+                                        <connections>
+                                            <action selector="starDidPress:" destination="7C3-yx-KhF" eventType="touchUpInside" id="Gu7-3e-90P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="e6A-rv-fUS" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" id="03l-xN-ziC"/>
+                                    <constraint firstItem="06q-DK-kRh" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" constant="40" id="11M-5k-RkC"/>
+                                    <constraint firstItem="PX9-HG-5pD" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" constant="16" id="9GT-6P-RdW"/>
+                                    <constraint firstItem="bRj-Zl-zmt" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" constant="16" id="9cp-tX-HIa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bh2-30-ViE" secondAttribute="trailing" constant="16" id="CZ7-Uc-AW9"/>
+                                    <constraint firstItem="x5m-e3-fWE" firstAttribute="top" secondItem="Bh2-30-ViE" secondAttribute="bottom" constant="1" id="Heu-zw-Lw7"/>
+                                    <constraint firstItem="PX9-HG-5pD" firstAttribute="top" secondItem="06q-DK-kRh" secondAttribute="bottom" constant="8" symbolic="YES" id="JhY-iM-dao"/>
+                                    <constraint firstItem="e6A-rv-fUS" firstAttribute="top" secondItem="jNh-ff-Ixj" secondAttribute="top" id="M9J-ei-gYt"/>
+                                    <constraint firstItem="Bh2-30-ViE" firstAttribute="top" secondItem="bRj-Zl-zmt" secondAttribute="bottom" constant="2" id="MLy-ZS-ens"/>
+                                    <constraint firstAttribute="bottom" secondItem="bRj-Zl-zmt" secondAttribute="bottom" constant="226" id="RwM-Ks-5Me"/>
+                                    <constraint firstItem="tVh-LJ-LAW" firstAttribute="bottom" secondItem="06q-DK-kRh" secondAttribute="bottom" id="UWl-ZC-2B9"/>
+                                    <constraint firstItem="bRj-Zl-zmt" firstAttribute="top" secondItem="PX9-HG-5pD" secondAttribute="bottom" constant="2" id="VW5-dg-Dxk"/>
+                                    <constraint firstItem="06q-DK-kRh" firstAttribute="top" secondItem="e6A-rv-fUS" secondAttribute="bottom" constant="8" id="WaH-oz-hSc"/>
+                                    <constraint firstAttribute="trailing" secondItem="bRj-Zl-zmt" secondAttribute="trailing" constant="16" id="Wqs-Jf-qgg"/>
+                                    <constraint firstAttribute="trailing" secondItem="PX9-HG-5pD" secondAttribute="trailing" constant="16" id="XH7-Hz-Rbi"/>
+                                    <constraint firstItem="HYm-pG-YKX" firstAttribute="top" secondItem="x5m-e3-fWE" secondAttribute="bottom" constant="1" id="b9P-aK-IcX"/>
+                                    <constraint firstItem="e6A-rv-fUS" firstAttribute="centerX" secondItem="jNh-ff-Ixj" secondAttribute="centerX" id="bc5-lo-7wl"/>
+                                    <constraint firstItem="x5m-e3-fWE" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" constant="16" id="dXt-Tt-jNe"/>
+                                    <constraint firstAttribute="trailing" secondItem="x5m-e3-fWE" secondAttribute="trailing" constant="16" id="fhG-DC-hyt"/>
+                                    <constraint firstItem="tVh-LJ-LAW" firstAttribute="top" secondItem="e6A-rv-fUS" secondAttribute="bottom" constant="22" id="hb7-I8-uJ0"/>
+                                    <constraint firstItem="Bh2-30-ViE" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" constant="16" id="ih9-Ty-GKv"/>
+                                    <constraint firstItem="HYm-pG-YKX" firstAttribute="leading" secondItem="jNh-ff-Ixj" secondAttribute="leading" constant="16" id="loZ-al-eAm"/>
+                                    <constraint firstAttribute="trailing" secondItem="HYm-pG-YKX" secondAttribute="trailing" constant="16" id="qVN-aj-QUx"/>
+                                    <constraint firstAttribute="trailing" secondItem="e6A-rv-fUS" secondAttribute="trailing" id="tEz-18-gIu"/>
+                                    <constraint firstItem="06q-DK-kRh" firstAttribute="width" secondItem="jNh-ff-Ixj" secondAttribute="width" multiplier="0.11" id="utp-fl-p7e"/>
+                                    <constraint firstItem="tVh-LJ-LAW" firstAttribute="leading" secondItem="06q-DK-kRh" secondAttribute="trailing" constant="10" id="wrU-P1-V9C"/>
+                                    <constraint firstAttribute="trailing" secondItem="tVh-LJ-LAW" secondAttribute="trailing" constant="16" id="z8e-AR-jtJ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jNh-ff-Ixj" firstAttribute="top" secondItem="dWK-2W-moz" secondAttribute="bottom" constant="8" id="4VU-q1-x5q"/>
+                            <constraint firstItem="jNh-ff-Ixj" firstAttribute="centerX" secondItem="YZW-D8-nNC" secondAttribute="centerX" id="M6n-dF-4QE"/>
+                            <constraint firstItem="jNh-ff-Ixj" firstAttribute="height" secondItem="YZW-D8-nNC" secondAttribute="height" id="ckw-qh-EIW"/>
+                            <constraint firstItem="jNh-ff-Ixj" firstAttribute="width" secondItem="YZW-D8-nNC" secondAttribute="width" id="kfA-eh-AGc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="5ms-nZ-Nh0" id="Le9-Yo-jLp"/>
+                        <outlet property="openDayLabel" destination="RQM-8Q-vge" id="BNc-PX-L9z"/>
+                        <outlet property="openTimeLabel" destination="lK5-Mj-cmV" id="UQC-TC-OpN"/>
+                        <outlet property="priceLabel" destination="tVh-LJ-LAW" id="2Tw-qd-ftz"/>
+                        <outlet property="ratingLabel" destination="RZ8-hK-yT1" id="SoP-vn-6ku"/>
+                        <outlet property="reviewLabel" destination="Fbh-PM-5vY" id="6j7-W2-PYV"/>
+                        <outlet property="storeImage" destination="e6A-rv-fUS" id="p43-1N-zO3"/>
+                        <outlet property="storeName" destination="rjS-gm-hJ6" id="agG-b7-glR"/>
+                        <outlet property="telLabel" destination="HEc-29-z3w" id="SVW-eY-9Yh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nn1-26-L5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="840.79999999999995" y="-1415.8920539730136"/>
+        </scene>
         <!--Menu Order View Controller-->
         <scene sceneID="XjC-6Z-xfB">
             <objects>
@@ -1576,13 +1845,13 @@
                                                             <rect key="frame" x="130" y="41" width="135.5" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Xbl-U0-TQZ">
-                                                                    <rect key="frame" x="10" y="0.0" width="125.5" height="19"/>
+                                                                    <rect key="frame" x="10" y="0.0" width="125.5" height="18.5"/>
                                                                     <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBh-ab-o9y">
-                                                                    <rect key="frame" x="10" y="28" width="124.5" height="16"/>
+                                                                    <rect key="frame" x="10" y="27.5" width="124.5" height="15.5"/>
                                                                     <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="20"/>
                                                                     <color key="textColor" red="0.79580610990524292" green="0.80355125665664673" blue="0.79597240686416626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1664,6 +1933,9 @@
                                     <constraint firstAttribute="width" constant="46" id="5dH-2u-p7k"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="order_detail"/>
+                                <connections>
+                                    <action selector="showDetailDidPress:" destination="Lma-ZB-op5" eventType="touchUpInside" id="Oel-lu-fPO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1720,13 +1992,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yRi-ve-OIe">
-                                                            <rect key="frame" x="8" y="18" width="124" height="20"/>
+                                                            <rect key="frame" x="8" y="18" width="151.5" height="20"/>
                                                             <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBf-K4-slJ">
-                                                            <rect key="frame" x="194" y="18" width="46" height="21"/>
+                                                            <rect key="frame" x="249" y="18" width="46" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="46" id="wt0-BD-xCS"/>
                                                             </constraints>
@@ -1735,7 +2007,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYc-8h-LPb">
-                                                            <rect key="frame" x="137" y="18" width="25" height="21"/>
+                                                            <rect key="frame" x="164.5" y="18" width="25" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="25" id="fSQ-Ce-XcT"/>
                                                             </constraints>
@@ -1744,7 +2016,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="฿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVg-wd-PIB">
-                                                            <rect key="frame" x="180" y="18" width="11" height="21"/>
+                                                            <rect key="frame" x="235" y="18" width="11" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="11" id="T89-1j-b02"/>
                                                             </constraints>
@@ -1928,5 +2200,9 @@
         <image name="register_user" width="512" height="512"/>
         <image name="shop_triangle" width="124" height="102"/>
         <image name="status_online" width="74" height="74"/>
+        <image name="store_clock" width="1122" height="1122"/>
+        <image name="store_money" width="801" height="889"/>
+        <image name="store_phone" width="745" height="826"/>
+        <image name="store_rate_glow" width="548" height="533"/>
     </resources>
 </document>

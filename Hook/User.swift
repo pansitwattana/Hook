@@ -73,7 +73,7 @@ class User {
             
         }
         else {
-            print(UserDefaults.standard.value(forKey: "user_auth_token") ?? "cant get User")
+            print(UserDefaults.standard.value(forKey: "user_auth_token") ?? "No User Found")
             print("Login as Guest")
             User.current = User()
         }

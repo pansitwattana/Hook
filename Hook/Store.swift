@@ -33,7 +33,7 @@ class Store {
     var thumnailUrl: String = ""
     var thumnailImageView: UIImage!
     var doneLoadThumnail: Bool = false
-    
+    var currency: String = "$"
     var detail: String = "detail"
     var open: Bool = false
     var ownerId: String = ""
@@ -87,10 +87,6 @@ class Store {
             
             if let distance = json["Distant"].number {
                 self.distance = Double(distance)
-            }
-            else {
-                print(json["Distant"].type)
-                print("can't parse distance")
             }
             
             if let rate = json["Rate"].double {

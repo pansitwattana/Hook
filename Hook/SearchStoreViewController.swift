@@ -178,8 +178,6 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         else {
             print("Location Service is disable!")
         }
-        
-        
     }
     
     func SearchStoreByText(text: String) {
@@ -260,7 +258,6 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             else {
                 cell.statusImage.image = #imageLiteral(resourceName: "status_offline")
             }
-            
             
             let url = URL(string: store.imgUrl)
             

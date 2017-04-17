@@ -15,6 +15,7 @@ public enum Tab : Int {
     case order
     case summary
     case wait
+    case store
 }
 
 
@@ -31,6 +32,7 @@ class TabViewController: UIViewController {
     var waitViewController: UIViewController!
     var registerViewController: UIViewController!
     var profileViewController: UIViewController!
+    var storeViewController: UIViewController!
     
     var imageButtons = [#imageLiteral(resourceName: "home_hook_logo"), #imageLiteral(resourceName: "home_hook_search")]
     
@@ -51,51 +53,15 @@ class TabViewController: UIViewController {
         
         User.Load()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        initializeAllViews()
         
-        homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         
-        if let homeView = homeViewController as? HomeViewController {
-            homeView.setMain(tabView: self)
-        }
-        else {
-            print("set main in home view error")
-        }
-
-        searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
         
-        if let searchStore = searchStoreViewController as? SearchStoreViewController {
-            searchStore.setMain(tabView: self)
-        }
-        else {
-            print("set main in search store error")
-        }
+        actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_logo_selected"), for: .highlighted)
         
-        menuOrderViewController = storyboard.instantiateViewController(withIdentifier: "MenuOrderViewController")
-        
-        if let menuOrder = menuOrderViewController as? MenuOrderViewController {
-            menuOrder.setMain(tabView: self)
-        }
-        
-        summaryViewController = storyboard.instantiateViewController(withIdentifier: "SummaryViewController")
-        
-        if let summary = summaryViewController as? SummaryViewController {
-            summary.setMain(tabView: self)
-        }
-        
-        waitViewController = storyboard.instantiateViewController(withIdentifier: "WaitViewController")
-        
-        if let wait = waitViewController as? WaitViewController {
-            wait.setMain(tabView: self)
-        }
-        
-        profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
-        
-        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController]
+        addNotificationButton()
         
         showView(tab: .home)
-        actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_logo_selected"), for: .highlighted)
-        addNotificationButton()
         // Do any additional setup after loading the view.
     }
     
@@ -229,6 +195,13 @@ class TabViewController: UIViewController {
         }
     }
     
+    public func ActionShowStoreDetail(store: Store) {
+        if let storeView = storeViewController as? StoreViewController {
+            storeView.setStore(store: store)
+            showView(tab: .store)
+        }
+    }
+    
     public func ActionToMenuOrder(store: Store) {
         if let menuOrderView = menuOrderViewController as? MenuOrderViewController {
             menuOrderView.SetStore(store: store)
@@ -324,6 +297,56 @@ class TabViewController: UIViewController {
             
             vc.didMove(toParentViewController: self)
         }
+    }
+    
+    func initializeAllViews() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        
+        if let homeView = homeViewController as? HomeViewController {
+            homeView.setMain(tabView: self)
+        }
+        else {
+            print("set main in home view error")
+        }
+        
+        searchStoreViewController = storyboard.instantiateViewController(withIdentifier: "SearchStoreViewController")
+        
+        if let searchStore = searchStoreViewController as? SearchStoreViewController {
+            searchStore.setMain(tabView: self)
+        }
+        else {
+            print("set main in search store error")
+        }
+        
+        menuOrderViewController = storyboard.instantiateViewController(withIdentifier: "MenuOrderViewController")
+        
+        if let menuOrder = menuOrderViewController as? MenuOrderViewController {
+            menuOrder.setMain(tabView: self)
+        }
+        
+        summaryViewController = storyboard.instantiateViewController(withIdentifier: "SummaryViewController")
+        
+        if let summary = summaryViewController as? SummaryViewController {
+            summary.setMain(tabView: self)
+        }
+        
+        waitViewController = storyboard.instantiateViewController(withIdentifier: "WaitViewController")
+        
+        if let wait = waitViewController as? WaitViewController {
+            wait.setMain(tabView: self)
+        }
+        
+        profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        
+        storeViewController = storyboard.instantiateViewController(withIdentifier: "StoreViewController")
+        
+        if let store = storeViewController as? StoreViewController {
+            store.setMain(tabView: self)
+        }
+        
+        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, storeViewController]
     }
 }
 

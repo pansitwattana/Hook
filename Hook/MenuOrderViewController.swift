@@ -66,7 +66,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func fetchingMenus() {
-        print("Start loading Menu from \(store.name)")
+        print("Loading Menu from \(store.name)")
         Request.getMenuJson(store: store.name, {
             (error, json) in
             if error != nil {
@@ -91,6 +91,10 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
+    }
+    
+    @IBAction func showDetailDidPress(_ sender: Any) {
+        tabViewController.ActionShowStoreDetail(store: self.store)
     }
     
     func filterCategory(menus: NSMutableArray, cat: String) -> NSMutableArray {

@@ -44,6 +44,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Loading Home Page...")
         Request.Home({
             (error, json) in
             if error != nil {
@@ -69,8 +71,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         else {
             self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_search"), for: .normal)
         }
-        
-        print("home did appear called")
     }
     
     public func refreshData() {
