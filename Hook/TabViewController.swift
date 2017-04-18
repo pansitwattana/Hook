@@ -16,6 +16,7 @@ public enum Tab : Int {
     case summary
     case wait
     case store
+    case history
 }
 
 
@@ -33,6 +34,7 @@ class TabViewController: UIViewController {
     var registerViewController: UIViewController!
     var profileViewController: UIViewController!
     var storeViewController: UIViewController!
+    var historyViewController: UIViewController!
     
     var imageButtons = [#imageLiteral(resourceName: "home_hook_logo"), #imageLiteral(resourceName: "home_hook_search")]
     
@@ -79,7 +81,7 @@ class TabViewController: UIViewController {
     }
     
     func notificationPressed() {
-        print("noti pressed")
+        showView(tab: .history)
     }
     
     func profileTabPressed() {
@@ -346,7 +348,9 @@ class TabViewController: UIViewController {
             store.setMain(tabView: self)
         }
         
-        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, storeViewController]
+        historyViewController = storyboard.instantiateViewController(withIdentifier: "HistoryViewController")
+        
+        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, storeViewController, historyViewController]
     }
 }
 

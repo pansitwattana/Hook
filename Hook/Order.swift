@@ -16,15 +16,24 @@ enum OrderStatus : Int {
 }
 
 class Order {
+    static var current = Order()
+    
+    static func Reset() {
+        current = Order()
+    }
+    
     var comment: String = "-"
 //    var customerId: String = ""
     var user = User()
+    
     var id: Int = -1
+    
     var storeId: Int = -1
     
     var menus: [Menu] = []
  
     var queue: Int = -1
+    
     var time: Int = 1
     
     var status: OrderStatus = .Wait
@@ -161,6 +170,10 @@ class Order {
                 print("Can't Set Queue")
             }
         }
+    }
+    
+    func IsOrdering() -> Bool {
+        return id != -1
     }
     
     func IsDone() -> Bool {

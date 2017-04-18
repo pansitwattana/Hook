@@ -452,7 +452,7 @@
         <!--History View Controller-->
         <scene sceneID="sJX-dm-pR4">
             <objects>
-                <viewController id="fHT-ga-emL" customClass="HistoryViewController" customModule="Hook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HistoryViewController" id="fHT-ga-emL" customClass="HistoryViewController" customModule="Hook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1DQ-wS-sau"/>
                         <viewControllerLayoutGuide type="bottom" id="rpW-iL-fQV"/>
@@ -461,23 +461,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npA-dh-RKL">
-                                <rect key="frame" x="167" y="97" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y81-T1-0lH">
+                                <rect key="frame" x="0.0" y="28" width="375" height="167"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your current ordering" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J74-YZ-hBv">
+                                        <rect key="frame" x="8" y="8" width="183" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.97639578580856323" green="0.976512610912323" blue="0.97635620832443237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sW-oT-bQF">
+                                        <rect key="frame" x="8" y="37" width="359" height="118"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0W-EM-b6A">
+                                                <rect key="frame" x="8" y="8" width="133" height="102"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#9" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npA-dh-RKL">
+                                                <rect key="frame" x="307" y="0.0" width="52" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="store name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWU-ah-rkv">
+                                                <rect key="frame" x="149" y="8" width="210" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="total 20 baht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pc-au-SWv">
+                                                <rect key="frame" x="149" y="92" width="210" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzI-gf-Aev">
+                                <rect key="frame" x="0.0" y="195" width="375" height="500.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recently" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWB-Rn-z3O">
+                                        <rect key="frame" x="8" y="8" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.97639578580856323" green="0.976512610912323" blue="0.97635620832443237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mc9-u9-9hl">
+                                        <rect key="frame" x="8" y="37" width="359" height="435"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.86957895755767822" green="0.88568705320358276" blue="0.57900798320770264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="See All &gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjP-Rq-toY">
+                                        <rect key="frame" x="288" y="17" width="79" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.97639578580856323" green="0.976512610912323" blue="0.97635620832443237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.83913552761077881" green="0.83887213468551636" blue="0.82731479406356812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vzI-gf-Aev" firstAttribute="width" secondItem="Rmi-lF-fIB" secondAttribute="width" id="2ug-hk-wTE"/>
+                            <constraint firstItem="vzI-gf-Aev" firstAttribute="height" secondItem="Rmi-lF-fIB" secondAttribute="height" multiplier="0.75" id="L6a-xL-r5w"/>
+                            <constraint firstItem="Y81-T1-0lH" firstAttribute="width" secondItem="Rmi-lF-fIB" secondAttribute="width" id="Mh6-9y-Rxy"/>
+                            <constraint firstItem="Y81-T1-0lH" firstAttribute="top" secondItem="1DQ-wS-sau" secondAttribute="bottom" constant="8" id="VvP-Zw-DEF"/>
+                            <constraint firstItem="vzI-gf-Aev" firstAttribute="top" secondItem="Y81-T1-0lH" secondAttribute="bottom" id="dAd-Qm-rl2"/>
+                            <constraint firstItem="Y81-T1-0lH" firstAttribute="height" secondItem="Rmi-lF-fIB" secondAttribute="height" multiplier="0.25" id="f38-X3-fbN"/>
+                            <constraint firstItem="Y81-T1-0lH" firstAttribute="centerX" secondItem="Rmi-lF-fIB" secondAttribute="centerX" id="kbd-SA-D1X"/>
+                            <constraint firstItem="vzI-gf-Aev" firstAttribute="centerX" secondItem="Rmi-lF-fIB" secondAttribute="centerX" id="sXh-xs-aSt"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="orderID" destination="npA-dh-RKL" id="pfD-Vs-1Zq"/>
+                        <outlet property="currentOrderId" destination="npA-dh-RKL" id="yKD-4e-Dxi"/>
+                        <outlet property="currentOrderImage" destination="H0W-EM-b6A" id="9Jf-Bo-TRh"/>
+                        <outlet property="currentOrderPrice" destination="0pc-au-SWv" id="Kei-yj-pvP"/>
+                        <outlet property="currentOrderStoreName" destination="ZWU-ah-rkv" id="sLE-p8-5Xx"/>
+                        <outlet property="currentOrderView" destination="Y81-T1-0lH" id="OGd-RC-3SP"/>
+                        <outlet property="recentlyOrderTableView" destination="mc9-u9-9hl" id="ans-3f-k1T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfQ-xm-CIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="500"/>
+            <point key="canvasLocation" x="100" y="499.70014992503752"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="V9U-ug-H07">
@@ -510,7 +591,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga1-5X-m5H">
-                                                <rect key="frame" x="42.5" y="53" width="36" height="11.5"/>
+                                                <rect key="frame" x="42" y="53" width="36" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <color key="highlightedColor" red="0.7602851390838623" green="0.76898974180221558" blue="0.65836083889007568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -525,7 +606,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLD-yS-TbW">
-                                                <rect key="frame" x="121.5" y="53" width="40.5" height="11.5"/>
+                                                <rect key="frame" x="121" y="53" width="40.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Bangnampueng" family="Bangnampueng" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1138,7 +1219,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status_online" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-MB-jBI">
-                                                            <rect key="frame" x="8" y="8.5" width="10" height="10"/>
+                                                            <rect key="frame" x="8" y="9" width="10" height="10"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="10" id="UKh-zi-SF6"/>
                                                                 <constraint firstAttribute="width" constant="10" id="VNJ-4W-o2W"/>
