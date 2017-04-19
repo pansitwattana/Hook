@@ -39,7 +39,7 @@ class Request {
             ]
         
         print(userParam)
-        Alamofire.request("\(HookAPI.URL)login/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
+        Alamofire.request("\(HookAPI.URL)login/user/", method: .post, parameters: userParam, encoding: JSONEncoding.default).validate().responseJSON {
             (response) in
             do {
                 let json = JSON(response.data!)

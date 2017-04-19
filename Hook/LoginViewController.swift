@@ -84,7 +84,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func showError(json: JSON?) {
-        self.showAlert(title: "Login Error", text: "User is incorrect")
+        var errorMsg = "Application Failed"
+        if let error = json!["response"].string {
+            errorMsg = error
+        }
+        self.showAlert(title: "Failed To Login", text: errorMsg)
     }
     
     func hideLoadingProgress() {
