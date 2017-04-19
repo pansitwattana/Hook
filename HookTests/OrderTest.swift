@@ -240,10 +240,19 @@ class OrderTest: XCTestCase {
         order.Set(id: 0, queue: 0, time: 0, status: .Done)
         
         //var isDone = order.IsDone()
-        
         XCTAssert(order.IsDone())
+    }
+    
+    func testIsCancel() {
         
+        let order = Order()
+        order.queue = 2
         
+        order.Set(id: 0, queue: 0, time: 0, status: .Cancel)
+        
+        //var isDone = order.IsDone()
+        XCTAssert(!order.IsDone())
+        XCTAssert(order.IsCancel())
     }
     
 }

@@ -177,7 +177,7 @@ class Order {
     }
     
     func IsDone() -> Bool {
-        return queue == 0 || status == .Done
+        return status == .Done
     }
     
     func IsCancel() -> Bool {

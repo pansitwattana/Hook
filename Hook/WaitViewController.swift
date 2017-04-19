@@ -129,6 +129,7 @@ class WaitViewController: UIViewController{
                     self.order.SetQueue(json: response!)
                     if self.order.IsDone() {
                         print("order done")
+                        self.hideLoadingProgress()
                         self.showDone(order: self.order)
                     }
                     else if self.order.IsCancel() {

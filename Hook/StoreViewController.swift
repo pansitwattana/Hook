@@ -18,10 +18,14 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var openDayLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet var starButton: [UIButton]!
+    
     
     var tabView: TabViewController!
     
     var store = Store(name: "Store")
+    
+    var rate = 5
     
     func setMain(tabView: TabViewController) {
         self.tabView = tabView
@@ -29,8 +33,6 @@ class StoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,8 +68,20 @@ class StoreViewController: UIViewController {
         ratingLabel.text = String(store.rating)
     }
     
-    @IBAction func starDidPress(_ sender: Any) {
+    @IBAction func starDidPress(_ sender: UIButton) {
+        self.rate = sender.tag
         
+        let index = sender.tag
+        var count = 0
+        for j in 0...index - 1{
+            starButton[j].setBackgroundImage(#imageLiteral(resourceName: "store_rate_glow"), for: .normal)
+            count += 1
+        }
+        if count < starButton.count {
+            for i in count...starButton.count - 1{
+                starButton[i].setBackgroundImage(#imageLiteral(resourceName: "store_rate_gray"), for: .normal)
+            }
+        }
     }
     
     @IBAction func lookMapDidPress(_ sender: Any) {
@@ -75,6 +89,7 @@ class StoreViewController: UIViewController {
     }
     
     @IBAction func feedbackDidPress(_ sender: Any) {
+        print("submit \(rate)")
         
     }
 }

@@ -56,6 +56,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         self.menusToShow = self.filterCategory(menus: self.menus, cat: catSelected);
         self.tableView.reloadData()
     }
+    
     @IBOutlet weak var tableView: UITableView!
     //do not have user -> default customer id = 1
     func SetStore(store: Store) {
@@ -91,6 +92,9 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
+        self.menusToShow.removeAllObjects()
+        self.menus.removeAllObjects()
+        self.tableView.reloadData()
     }
     
     @IBAction func showDetailDidPress(_ sender: Any) {

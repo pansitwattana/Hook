@@ -24,15 +24,6 @@ class Request {
 
     
     static func Login(user: String, password: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        
-//        Alamofire.request(HookAPI.URL + "/login/").validate().responseJSON { (response) in
-//            do {
-//                let userJson = JSON(data: response.data!)
-//                let error = response.error
-//                completion(error as NSError?, userJson)
-//            }
-//        }
-        
         let userParam: Parameters = [
             "username" : user,
             "password" : password,
@@ -64,7 +55,6 @@ class Request {
                 completion(error as NSError?, json)
             }
         }
-        
     }
     
     static func Register(userParam: Parameters,  _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
@@ -106,6 +96,16 @@ class Request {
                 let searchJson = JSON(data: response.data!)
                 let error = response.error
                 completion(error as NSError?, searchJson)
+            }
+        }
+    }
+    
+    static func postFeedback(feedback: Parameters, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+        Alamofire.request(HookAPI.URL + "feedback/add").validate().responseJSON { (response) in
+            do {
+                let response = JSON(data: response.data!)
+                let error = response.error
+                completion(error as NSError?, response)
             }
         }
     }
