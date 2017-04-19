@@ -2,3 +2,4 @@ github "Alamofire/Alamofire" ~> 4.4
 github "SwiftyJSON/SwiftyJSON"
 github "ninjaprox/NVActivityIndicatorView"
 github "raulriera/TextFieldEffects"
+github "facebook/Facebook-SDK-Swift"

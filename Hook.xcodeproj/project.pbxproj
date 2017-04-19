@@ -20,7 +20,7 @@
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
 		E678C0251E9635C100036DD5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6ADE78B1E857D1500389E5D /* MapKit.framework */; };
 		E68D18501EA0ACFD000E8A65 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; };
-		E68D18511EA0AD06000E8A65 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E68D18511EA0AD06000E8A65 /* NVActivityIndicatorView.framework in Embed Frameworks (8 items) */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E691FCC21EA148AE00AD9DEE /* HookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691FCC11EA148AE00AD9DEE /* HookTests.swift */; };
 		E691FCCE1EA1491D00AD9DEE /* MenuTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691FCCD1EA1491D00AD9DEE /* MenuTest.swift */; };
 		E691FCD01EA1492300AD9DEE /* OrderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691FCCF1EA1492300AD9DEE /* OrderTest.swift */; };
@@ -31,9 +31,9 @@
 		E69FD14A1E9A2744000FDBD2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1461E9A2744000FDBD2 /* Alamofire.framework */; };
 		E69FD14C1E9A2744000FDBD2 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */; };
 		E69FD14D1E9A2744000FDBD2 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */; };
-		E69FD14E1E9A27E9000FDBD2 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1461E9A2744000FDBD2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E69FD1501E9A27E9000FDBD2 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E69FD1511E9A27E9000FDBD2 /* TextFieldEffects.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E69FD14E1E9A27E9000FDBD2 /* Alamofire.framework in Embed Frameworks (8 items) */ = {isa = PBXBuildFile; fileRef = E69FD1461E9A2744000FDBD2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E69FD1501E9A27E9000FDBD2 /* SwiftyJSON.framework in Embed Frameworks (8 items) */ = {isa = PBXBuildFile; fileRef = E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E69FD1511E9A27E9000FDBD2 /* TextFieldEffects.framework in Embed Frameworks (8 items) */ = {isa = PBXBuildFile; fileRef = E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6ADE7801E85531700389E5D /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE77F1E85531700389E5D /* SummaryViewController.swift */; };
 		E6ADE7821E8558BB00389E5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7811E8558BB00389E5D /* User.swift */; };
 		E6ADE7841E85676400389E5D /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADE7831E85676400389E5D /* MenuTableViewCell.swift */; };
@@ -53,7 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E691FCC41EA148AE00AD9DEE /* PBXContainerItemProxy */ = {
+		E66490B91EA756BB007956B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6F0C0D21E417ECE00C3B990 /* Project object */;
 			proxyType = 1;
@@ -63,18 +63,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E66616281E7E6A7B00267D98 /* Embed Frameworks */ = {
+		E66616281E7E6A7B00267D98 /* Embed Frameworks (8 items) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E68D18511EA0AD06000E8A65 /* NVActivityIndicatorView.framework in Embed Frameworks */,
-				E69FD14E1E9A27E9000FDBD2 /* Alamofire.framework in Embed Frameworks */,
-				E69FD1501E9A27E9000FDBD2 /* SwiftyJSON.framework in Embed Frameworks */,
-				E69FD1511E9A27E9000FDBD2 /* TextFieldEffects.framework in Embed Frameworks */,
+				E68D18511EA0AD06000E8A65 /* NVActivityIndicatorView.framework in Embed Frameworks (8 items) */,
+				E69FD14E1E9A27E9000FDBD2 /* Alamofire.framework in Embed Frameworks (8 items) */,
+				E69FD1501E9A27E9000FDBD2 /* SwiftyJSON.framework in Embed Frameworks (8 items) */,
+				E69FD1511E9A27E9000FDBD2 /* TextFieldEffects.framework in Embed Frameworks (8 items) */,
 			);
-			name = "Embed Frameworks";
+			name = "Embed Frameworks (8 items)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -263,7 +263,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E691FCC51EA148AE00AD9DEE /* PBXTargetDependency */,
+				E66490BA1EA756BB007956B4 /* PBXTargetDependency */,
 			);
 			name = HookTests;
 			productName = HookTests;
@@ -274,10 +274,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6F0C0EC1E417ECE00C3B990 /* Build configuration list for PBXNativeTarget "Hook" */;
 			buildPhases = (
-				E6F0C0D61E417ECE00C3B990 /* Sources */,
 				E6F0C0D71E417ECE00C3B990 /* Frameworks */,
+				E6F0C0D61E417ECE00C3B990 /* Sources */,
 				E6F0C0D81E417ECE00C3B990 /* Resources */,
-				E66616281E7E6A7B00267D98 /* Embed Frameworks */,
+				E66616281E7E6A7B00267D98 /* Embed Frameworks (8 items) */,
 			);
 			buildRules = (
 			);
@@ -399,10 +399,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E691FCC51EA148AE00AD9DEE /* PBXTargetDependency */ = {
+		E66490BA1EA756BB007956B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E6F0C0D91E417ECE00C3B990 /* Hook */;
-			targetProxy = E691FCC41EA148AE00AD9DEE /* PBXContainerItemProxy */;
+			targetProxy = E66490B91EA756BB007956B4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
