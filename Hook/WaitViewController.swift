@@ -18,8 +18,6 @@ class WaitViewController: UIViewController{
     
     let activityData = ActivityData(message: "Loading...", messageFont: UIFont(name: "Bangnampueng", size: 20), type: NVActivityIndicatorType.cubeTransition, minimumDisplayTime: 1000)
     
-//    let activity = ActivityData(size: <#T##CGSize?#>, message: <#T##String?#>, messageFont: <#T##UIFont?#>, type: <#T##NVActivityIndicatorType?#>, color: <#T##UIColor?#>, padding: <#T##CGFloat?#>, displayTimeThreshold: <#T##Int?#>, minimumDisplayTime: <#T##Int?#>, backgroundColor: <#T##UIColor?#>, textColor: <#T##UIColor?#>)
-    
     var order = Order()
     
     var timer : Timer?

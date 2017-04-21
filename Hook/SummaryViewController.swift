@@ -88,6 +88,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                             print(queueJson!)
                             User.current.isOrdering = true
                             self.order.SetQueue(json: queueJson!)
+                            Order.current = self.order
                             self.tabView.ActionToWaitView(order: self.order)
                             //                        self.performSegue(withIdentifier: "summarySegue", sender: self)
                         }

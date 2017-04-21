@@ -75,7 +75,7 @@ class TabViewController: UIViewController {
         let button = UIButton.init(type: .custom)
         button.setImage(notiImage, for: .normal)
         button.addTarget(self, action:#selector(TabViewController.notificationPressed), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect.init(x: 0, y: 0, width: 24, height: 24) //CGRectMake(0, 0, 30, 30)
+        button.frame = CGRect.init(x: 0, y: 0, width: 22, height: 24) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         navigatorBar.rightBarButtonItem = barButton
     }

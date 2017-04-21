@@ -16,6 +16,7 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var currentOrderImage: UIImageView!
     @IBOutlet weak var currentOrderStoreName: UILabel!
     @IBOutlet weak var currentOrderPrice: UILabel!
+    @IBOutlet weak var currentOrderContraint: NSLayoutConstraint!
     
     @IBOutlet weak var recentlyOrderTableView: UITableView!
 
@@ -29,15 +30,35 @@ class HistoryViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if Order.current.IsOrdering() {
-            currentOrderView.isHidden = false
             showOrder(order: Order.current)
         }
         else {
-            currentOrderView.isHidden = true
+            hideOrder()
         }
     }
     
+    func hideOrder() {
+        print("Hide order")
+        currentOrderView.isHidden = true
+        let newConstraint = self.currentOrderContraint.constraintWithMultiplier(multiplier: 0.01)
+        self.view!.removeConstraint(self.currentOrderContraint)
+        self.currentOrderContraint = newConstraint
+        self.view!.addConstraint(currentOrderContraint)
+        self.view!.layoutIfNeeded()
+    }
+    
     func showOrder(order: Order) {
-        
+        currentOrderView.isHidden = false
+        print("Show Order")
+        let newConstraint = self.currentOrderContraint.constraintWithMultiplier(multiplier: 0.25)
+        self.view!.removeConstraint(self.currentOrderContraint)
+        self.currentOrderContraint = newConstraint
+        self.view!.addConstraint(currentOrderContraint)
+        self.view!.layoutIfNeeded()
+    }
+}
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
     }
 }
