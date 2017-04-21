@@ -28,6 +28,8 @@ class Order {
     
     var id: Int = -1
     
+    var store: Store!
+    
     var storeId: Int = -1
     
     var menus: [Menu] = []
@@ -42,9 +44,10 @@ class Order {
         
     }
     
-    func setUser(customerUser: User, storeId: Int) {
+    func setUser(customerUser: User, store: Store) {
         self.user = customerUser
-        self.storeId = storeId
+        self.storeId = store.id
+        self.store = store
     }
     
     func AddMenu(menu: Menu) {

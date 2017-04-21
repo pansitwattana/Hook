@@ -62,7 +62,7 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     func SetStore(store: Store) {
         self.order = Order()
         self.store = store
-        self.order.setUser(customerUser: User.current, storeId: store.id)
+        self.order.setUser(customerUser: User.current, store: store)
         fetchingMenus()
     }
     

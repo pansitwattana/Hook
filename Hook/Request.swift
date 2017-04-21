@@ -101,7 +101,7 @@ class Request {
     }
     
     static func postFeedback(feedback: Parameters, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
-        Alamofire.request(HookAPI.URL + "feedback/add").validate().responseJSON { (response) in
+        Alamofire.request(HookAPI.URL + "feedback/add", method: .post, parameters: feedback, encoding: JSONEncoding.default).validate().responseJSON { (response) in
             do {
                 let response = JSON(data: response.data!)
                 let error = response.error

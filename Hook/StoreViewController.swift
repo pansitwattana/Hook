@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class StoreViewController: UIViewController {
     @IBOutlet weak var storeImage: UIImageView!
@@ -89,7 +90,24 @@ class StoreViewController: UIViewController {
     }
     
     @IBAction func feedbackDidPress(_ sender: Any) {
-        print("submit \(rate)")
-        
+        let feedback = Feedback(msg: "", rate: self.rate, store_id: self.store.id, sender: User.current.email, subject: "Comment")
+        Request.postFeedback(feedback: feedback.getParam(), {
+            (error, response) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                let json = JSON(response!)
+                if json != JSON.null {
+                    print("Success")
+                    print(json)
+                }
+                else {
+                    print(json)
+                }
+            }
+        })
     }
+    
+    
 }

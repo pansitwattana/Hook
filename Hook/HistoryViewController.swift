@@ -38,19 +38,24 @@ class HistoryViewController: UIViewController {
     }
     
     func hideOrder() {
-        print("Hide order")
-        currentOrderView.isHidden = true
-        let newConstraint = self.currentOrderContraint.constraintWithMultiplier(multiplier: 0.01)
-        self.view!.removeConstraint(self.currentOrderContraint)
-        self.currentOrderContraint = newConstraint
-        self.view!.addConstraint(currentOrderContraint)
-        self.view!.layoutIfNeeded()
+        setConstraint(value: 0)
     }
     
     func showOrder(order: Order) {
+        setConstraint(value: 0.25)
+        
+        currentOrderId.text = "#" + String(Order.current.id)
+        if Order.current.store.imageView != nil {
+            currentOrderImage.image = Order.current.store.imageView
+        }
+        currentOrderPrice.text = String(Order.current.GetSumPrice())
+        currentOrderStoreName.text = Order.current.store.name
+    }
+    
+    func setConstraint(value: Double) {
         currentOrderView.isHidden = false
         print("Show Order")
-        let newConstraint = self.currentOrderContraint.constraintWithMultiplier(multiplier: 0.25)
+        let newConstraint = self.currentOrderContraint.constraintWithMultiplier(multiplier: CGFloat(value))
         self.view!.removeConstraint(self.currentOrderContraint)
         self.currentOrderContraint = newConstraint
         self.view!.addConstraint(currentOrderContraint)
