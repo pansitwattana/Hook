@@ -19,6 +19,7 @@
 		E62B87291E972C5E002E7003 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62B87281E972C5E002E7003 /* TabViewController.swift */; };
 		E650C94E1E8100E9002CF5D7 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650C94D1E8100E9002CF5D7 /* Menu.swift */; };
 		E65E01EA1E7FDADD0045562F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E01E91E7FDADD0045562F /* Request.swift */; };
+		E66FD46B1EAD979200FEE53E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66FD46A1EAD979200FEE53E /* CategoryViewController.swift */; };
 		E678C0251E9635C100036DD5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6ADE78B1E857D1500389E5D /* MapKit.framework */; };
 		E68D18501EA0ACFD000E8A65 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; };
 		E68D18511EA0AD06000E8A65 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -93,11 +94,16 @@
 		E62B87281E972C5E002E7003 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		E650C94D1E8100E9002CF5D7 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E65E01E91E7FDADD0045562F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		E66FD46A1EAD979200FEE53E /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E68D184F1EA0ACFD000E8A65 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		E691FCBF1EA148AE00AD9DEE /* HookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E691FCC31EA148AE00AD9DEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E691FCCD1EA1491D00AD9DEE /* MenuTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTest.swift; sourceTree = "<group>"; };
 		E691FCCF1EA1492300AD9DEE /* OrderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTest.swift; sourceTree = "<group>"; };
+		E69303F21EACE8B600AF3C8B /* CSPraJad-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CSPraJad-bold.otf"; path = "../../../Downloads/CS_PraJad/CSPraJad-bold.otf"; sourceTree = "<group>"; };
+		E69303F31EACE8B600AF3C8B /* CSPraJad-boldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CSPraJad-boldItalic.otf"; path = "../../../Downloads/CS_PraJad/CSPraJad-boldItalic.otf"; sourceTree = "<group>"; };
+		E69303F41EACE8B600AF3C8B /* CSPraJad-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CSPraJad-Italic.otf"; path = "../../../Downloads/CS_PraJad/CSPraJad-Italic.otf"; sourceTree = "<group>"; };
+		E69303F51EACE8B600AF3C8B /* CSPraJad.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CSPraJad.otf; path = ../../../Downloads/CS_PraJad/CSPraJad.otf; sourceTree = "<group>"; };
 		E69FD1461E9A2744000FDBD2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E69FD1481E9A2744000FDBD2 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		E69FD1491E9A2744000FDBD2 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = Carthage/Build/iOS/TextFieldEffects.framework; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				E6F0C0FD1E4183E600C3B990 /* WaitViewController.swift */,
 				E6F0C0F71E4183BC00C3B990 /* LoginViewController.swift */,
 				E607C2951E93D99600FD4454 /* RegisterViewController.swift */,
+				E66FD46A1EAD979200FEE53E /* CategoryViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -211,6 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				E60D4BDE1E8D0B4F000B4455 /* Bangnampueng.ttf */,
+				E69303F21EACE8B600AF3C8B /* CSPraJad-bold.otf */,
+				E69303F31EACE8B600AF3C8B /* CSPraJad-boldItalic.otf */,
+				E69303F41EACE8B600AF3C8B /* CSPraJad-Italic.otf */,
+				E69303F51EACE8B600AF3C8B /* CSPraJad.otf */,
 			);
 			name = Src;
 			sourceTree = "<group>";
@@ -389,6 +400,7 @@
 				E6F0C0FE1E4183E600C3B990 /* WaitViewController.swift in Sources */,
 				E6FDA9CF1E596F95001EB252 /* HomeViewController.swift in Sources */,
 				E6B5E4701E76619A0048F75B /* HookAPI.swift in Sources */,
+				E66FD46B1EAD979200FEE53E /* CategoryViewController.swift in Sources */,
 				E606D94F1E9A2FF900147CC2 /* ProfileViewController.swift in Sources */,
 				E62B0EAE1EA4F40100A09F07 /* StoreViewController.swift in Sources */,
 				E6ADE7801E85531700389E5D /* SummaryViewController.swift in Sources */,
@@ -571,7 +583,7 @@
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Hook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.jqhook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,7 +605,7 @@
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Hook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.jqhook;
 				PRODUCT_NAME = "$(TARGET_NAME)";

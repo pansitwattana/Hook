@@ -18,8 +18,6 @@ class StoreCollectionViewCell: UICollectionViewCell {
         
         let roundRate = Int(round(rate))
         
-        print(roundRate)
-        
         if roundRate < stars.count {
             for i in roundRate...stars.count - 1 {
                 stars[i].image = #imageLiteral(resourceName: "main_unstar")

@@ -48,6 +48,7 @@ class Order {
         self.user = customerUser
         self.storeId = store.id
         self.store = store
+        self.time = Int(store.getWaitTime())
     }
     
     func AddMenu(menu: Menu) {

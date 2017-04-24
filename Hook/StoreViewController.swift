@@ -18,6 +18,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var openTimeLabel: UILabel!
     @IBOutlet weak var openDayLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
+    @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet var starButton: [UIButton]!
     
@@ -26,7 +27,9 @@ class StoreViewController: UIViewController {
     
     var store = Store(name: "Store")
     
-    var rate = 5
+    var rate = 0
+    
+    var feedbackPress = false
     
     func setMain(tabView: TabViewController) {
         self.tabView = tabView
@@ -63,10 +66,13 @@ class StoreViewController: UIViewController {
                 }
             }
         }
-        
+        priceLabel.text = "\(store.avgMoney) baht/person"
         storeName.text = store.name
-        
+        locationLabel.text = store.address
+        telLabel.text = store.tel
+        openTimeLabel.text = store.getOpenTime()
         ratingLabel.text = String(store.rating)
+        reviewLabel.text = "\(store.review) reviews"
     }
     
     @IBAction func starDidPress(_ sender: UIButton) {
@@ -86,28 +92,44 @@ class StoreViewController: UIViewController {
     }
     
     @IBAction func lookMapDidPress(_ sender: Any) {
-        
+        let url = URL(string: "https://www.google.com/maps?q=\(store.coordinates.latitude),\(store.coordinates.longitude)")!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @IBAction func feedbackDidPress(_ sender: Any) {
-        let feedback = Feedback(msg: "", rate: self.rate, store_id: self.store.id, sender: User.current.email, subject: "Comment")
-        Request.postFeedback(feedback: feedback.getParam(), {
-            (error, response) in
-            if error != nil {
-                print(error!)
-            }
-            else {
-                let json = JSON(response!)
-                if json != JSON.null {
-                    print("Success")
-                    print(json)
+        if rate != 0 {
+            if !feedbackPress {
+                feedbackPress = true
+                if User.current.isLogin() {
+                    let feedback = Feedback(msg: commentTextField.text!, rate: self.rate, store_id: self.store.id, sender: User.current.email, subject: "Feedback")
+                    Request.postFeedback(feedback: feedback.getParam(), {
+                        (error, response) in
+                        self.feedbackPress = false
+                        if error != nil {
+                            print(error!)
+                            self.tabView.showAlert(title: "Error to submit your feedback", text: "\(String(describing: error?.code))")
+                        }
+                        else {
+                            let json = JSON(response!)
+                            if json != JSON.null {
+                                print("Success")
+                                self.tabView.showAlert(title: "Thank for your feedback", text: "")
+                            }
+                            else {
+                                print(json)
+                                self.tabView.showAlert(title: "Error to submit your feedback", text: "\(json)")
+                            }
+                        }
+                    })
                 }
                 else {
-                    print(json)
+                    self.tabView.showAlert(title: "Can't Submit Your Feedback", text: "You do not log in")
                 }
             }
-        })
+        }
     }
-    
-    
 }

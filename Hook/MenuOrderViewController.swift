@@ -92,9 +92,10 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabViewController.actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_ok"), for: .normal)
-        self.menusToShow.removeAllObjects()
-        self.menus.removeAllObjects()
-        self.tableView.reloadData()
+        self.order.setUser(customerUser: User.current, store: store)
+//        self.menusToShow.removeAllObjects()
+//        self.menus.removeAllObjects()
+//        self.tableView.reloadData()
     }
     
     @IBAction func showDetailDidPress(_ sender: Any) {
@@ -158,14 +159,12 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 cell.increaseAction = {
                     (cell) in
-//                    print(tableView.indexPath(for: cell)!.row)
                     self.order.AddMenu(menu: menu)
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
                 
                 cell.decreaseAction = {
                     (cell) in
-//                    print(tableView.indexPath(for: cell)!.row)
                     self.order.ReduceMenu(menu: menu)
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
@@ -222,11 +221,16 @@ class MenuOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         print("menu order do action")
         if User.current.isLogin() {
-            if order.containMenu() {
-                tabViewController.ActionFromOrderSubmit(store: store,order: order)
+            if !Order.current.IsOrdering() {
+                if order.containMenu() {
+                    tabViewController.ActionFromOrderSubmit(store: store,order: order)
+                }
+                else {
+                    tabViewController.showAlert(title: "Can not order!", text: "You did not select a menu")
+                }
             }
             else {
-                tabViewController.showAlert(title: "Can not order!", text: "You did not select a menu")
+                tabViewController.showAlert(title: "Can not order", text: "You've already ordered.")
             }
         }
         else {

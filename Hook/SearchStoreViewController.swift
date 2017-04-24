@@ -163,6 +163,19 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func SearchByCategory(category: String) {
+        Request.getSearchJson(category: category) {
+            (error, searchJson) in
+            if error != nil {
+                print(error!)
+                self.tabViewController.showAlert(title: "Error", text: String(describing: error!.code))
+            }
+            else {
+                self.SetStoresFromJson(json: searchJson!)
+                self.UpdateSearch()
+            }
+        }
+    }
     
     public func SearchByLocation() {
         focusOnSearch = false
@@ -258,6 +271,8 @@ class SearchStoreViewController: UIViewController, UITableViewDelegate, UITableV
             else {
                 cell.statusImage.image = #imageLiteral(resourceName: "status_offline")
             }
+            
+            cell.queueLabel.text = "Q\(store.queue)"
             
             let url = URL(string: store.imgUrl)
             

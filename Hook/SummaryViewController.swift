@@ -37,6 +37,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         totalLabel.layer.cornerRadius = 0.5 * totalLabel.bounds.size.width
+        checkSubmit = false
     }
     
     public func setMain(tabView: TabViewController) {
@@ -49,6 +50,8 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         totalLabel.text = "Total " + String(order.GetSumPrice())  + " Baht"
         tableView.reloadData()
+        checkSubmit = false
+        
         // Do any additional setup after loading the view.
         
     }
@@ -68,6 +71,12 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
         print("summary do action")
+        
+        if Order.current.IsOrdering() {
+            self.tabView.showAlert(title: "Can't Order", text: "You've alrealy ordered")
+            return;
+        }
+        
         if (!checkSubmit) {
             if (User.current.isLogin()) {
                 checkSubmit = true
@@ -91,7 +100,7 @@ class SummaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                             Order.current = self.order
                             self.tabView.ActionToWaitView(order: self.order)
                             //                        self.performSegue(withIdentifier: "summarySegue", sender: self)
-                        }
+                        }   
                         self.checkSubmit = false
                     })
                 }

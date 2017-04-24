@@ -17,6 +17,7 @@ public enum Tab : Int {
     case wait
     case store
     case history
+    case category
 }
 
 
@@ -35,6 +36,7 @@ class TabViewController: UIViewController {
     var profileViewController: UIViewController!
     var storeViewController: UIViewController!
     var historyViewController: UIViewController!
+    var categoryViewController: UIViewController!
     
     var imageButtons = [#imageLiteral(resourceName: "home_hook_logo"), #imageLiteral(resourceName: "home_hook_search")]
     
@@ -61,7 +63,7 @@ class TabViewController: UIViewController {
         
         actionButton.setBackgroundImage(#imageLiteral(resourceName: "home_hook_logo_selected"), for: .highlighted)
         
-        addNotificationButton()
+        //addNotificationButton()
         
         showView(tab: .home)
         // Do any additional setup after loading the view.
@@ -184,6 +186,16 @@ class TabViewController: UIViewController {
         else {
             print("error")
         }
+    }
+    
+    public func ActionToStore(category: String) {
+        print("\(category) selected")
+        
+        if let store = searchStoreViewController as? SearchStoreViewController {
+            store.SearchByCategory(category: category)
+            showView(tab: .search)
+        }
+        
     }
     
     public func ActionToStoreWithDefault(storesToShow: NSMutableArray, focus: Bool) {
@@ -342,6 +354,10 @@ class TabViewController: UIViewController {
         
         profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
         
+        if let profile = profileViewController as? ProfileViewController {
+            profile.setMain(tabView: self)
+        }
+        
         storeViewController = storyboard.instantiateViewController(withIdentifier: "StoreViewController")
         
         if let store = storeViewController as? StoreViewController {
@@ -350,7 +366,13 @@ class TabViewController: UIViewController {
         
         historyViewController = storyboard.instantiateViewController(withIdentifier: "HistoryViewController")
         
-        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, storeViewController, historyViewController]
+        categoryViewController = storyboard.instantiateViewController(withIdentifier: "CategoryViewController")
+        
+        if let category = categoryViewController as? CategoryViewController {
+            category.setMain(tabView: self)
+        }
+        
+        viewControllers = [homeViewController, profileViewController, searchStoreViewController, menuOrderViewController, summaryViewController, waitViewController, storeViewController, historyViewController, categoryViewController]
     }
 }
 

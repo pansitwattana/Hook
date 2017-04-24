@@ -153,10 +153,11 @@ class WaitViewController: UIViewController{
         cancelButton.isHidden = true
         User.current.isOrdering = false
         alreadySetAnimated = false
-        hookWaitImage.image = #imageLiteral(resourceName: "hook_complete")
+        hookWaitImage.image = #imageLiteral(resourceName: "wait_cancel")
         isDone = true
         waitLabel.text = "Your order was canceled"
         timeLabel.text = ""
+        Order.current = Order()
     }
     
     func showDone(order: Order) {
@@ -170,6 +171,7 @@ class WaitViewController: UIViewController{
         isDone = true
         waitLabel.text = "Your order is now complete"
         timeLabel.text = ""
+        Order.current = Order()
     }
     
     func pushNotification() {

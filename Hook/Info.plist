@@ -31,6 +31,9 @@
 	<string>This application use this information to get nearby stores</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>CSPraJad-Italic.otf</string>
+		<string>CSPraJad-boldItalic.otf</string>
+		<string>CSPraJad-bold.otf</string>
 		<string>Bangnampueng.tff</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

@@ -73,6 +73,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
+    @IBAction func storeCatPressed(_ sender: UIButton) {
+        tabViewController.showView(tab: .category)
+    }
     public func refreshData() {
         Request.Home({
             (error, json) in
@@ -199,7 +202,7 @@ extension HomeViewController: UICollectionViewDataSource {
                         cell.storeImage.image = store.thumnailImageView
                     }
                     else {
-                        cell.storeImage.image = #imageLiteral(resourceName: "main_loading")
+                        cell.storeImage.image = #imageLiteral(resourceName: "search_loading")
                         DispatchQueue.global().async {
                             
                             let data = try? Data(contentsOf: url!)
@@ -233,7 +236,7 @@ extension HomeViewController: UICollectionViewDataSource {
                         cell.storeImage.image = store.thumnailImageView
                     }
                     else {
-                        cell.storeImage.image = #imageLiteral(resourceName: "main_loading")
+                        cell.storeImage.image = #imageLiteral(resourceName: "search_loading")
                         DispatchQueue.global().async {
                             
                             let data = try? Data(contentsOf: url!)
@@ -266,7 +269,7 @@ extension HomeViewController: UICollectionViewDataSource {
                         cell.storeImage.image = store.thumnailImageView
                     }
                     else {
-                        cell.storeImage.image = #imageLiteral(resourceName: "main_loading")
+                        cell.storeImage.image = #imageLiteral(resourceName: "search_loading")
                         DispatchQueue.global().async {
                             
                             let data = try? Data(contentsOf: url!)

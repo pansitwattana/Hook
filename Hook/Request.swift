@@ -90,6 +90,26 @@ class Request {
         }
     }
     
+    static func getSearchJson(category: String, _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
+        
+        let url = HookAPI.URL + "browse/category/\(category)"
+        
+        let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        if urlString != nil {
+            Alamofire.request(urlString!).validate().responseJSON { (response) in
+                do {
+                    let searchJson = JSON(data: response.data!)
+                    let error = response.error
+                    completion(error as NSError?, searchJson)
+                }
+            }
+        }
+        else {
+            print(url + " is not valid")
+        }
+    }
+    
     static func getSearchJson(location: (Double, Double), _ completion: @escaping (_ error: NSError?, _ json: JSON?) -> Void) {
         Alamofire.request(HookAPI.URL + "browse/\(location.0),\(location.1)").validate().responseJSON { (response) in
             do {

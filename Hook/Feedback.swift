@@ -29,9 +29,10 @@ class Feedback {
             "Rate" : rate,
             "Receiver" : store_id,
             "Sender": sender,
-            "Subject": subject,
+            "Subject": msg,
             "Type" : 0
         ]
+        print(param)
         return param
     }
 //    "Detail": "อาหารอร่อยมาก",
